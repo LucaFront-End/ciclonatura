@@ -109,7 +109,7 @@ export default function Timeline({
   periodLabel = "2018 — 2026",
   textColor = "#0f172a",
   mutedTextColor = "#64748b",
-  activeColor = "#059669",
+  activeColor = "#AFF94F",
   backgroundColor = "#ffffff",
   imageUrl = defaultHqImg,
   imageAlt = "Sede corporativa Ciclonatura y unidades express en CDMX",
@@ -344,14 +344,14 @@ export default function Timeline({
               
               {/* Styled Track Display Title */}
               <div className="h-full w-[20%] pt-[1vw] max-[600px]:h-fit max-[600px]:pt-[3vw]">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-800 mb-2 shadow-2xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#AFF94F]/20 border border-[#AFF94F]/60 text-[10px] font-mono font-bold uppercase tracking-wider text-slate-950 mb-2 shadow-2xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#AFF94F] shadow-[0_0_6px_#AFF94F] animate-pulse" />
                   <span>Capítulos 01–07</span>
                 </div>
                 
                 <h2 className="w-[95%] font-heading font-black text-[2.7vw] leading-[0.98] text-slate-900 max-[600px]:text-[8.5vw] tracking-tight">
                   Evolución <br />
-                  <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 bg-clip-text text-transparent">
+                  <span className="text-slate-950 underline decoration-[#AFF94F] decoration-4">
                     Oficial
                   </span>
                 </h2>
@@ -377,7 +377,7 @@ export default function Timeline({
                     <div className="mt-[-0.8vw] space-y-[0.45vw] max-[600px]:mt-[-2vw]">
                       {item.phase && (
                         <div
-                          className={`badge-${item.id} inline-flex items-center px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200/90 text-[10px] font-mono font-bold tracking-wider opacity-0`}
+                          className={`badge-${item.id} inline-flex items-center px-2 py-0.5 rounded bg-[#AFF94F]/25 text-slate-950 border border-[#AFF94F]/70 text-[10px] font-mono font-bold tracking-wider opacity-0`}
                         >
                           {item.phase}
                         </div>
@@ -402,9 +402,9 @@ export default function Timeline({
             {/* Bottom Milestones Section */}
             <div className="h-1/2 flex items-center justify-start w-full">
               <div className="w-[28%] pt-[1vw] max-[600px]:pt-[3vw] max-[600px]:w-[30%] h-full">
-                <div className="inline-flex items-center gap-2 bg-emerald-50/90 border border-emerald-200/90 px-3.5 py-1.5 rounded-full shadow-2xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="font-mono text-[1.1vw] font-bold tracking-wider leading-none text-emerald-800 max-[600px]:text-[3.8vw]">
+                <div className="inline-flex items-center gap-2 bg-[#AFF94F]/20 border border-[#AFF94F]/60 px-3.5 py-1.5 rounded-full shadow-2xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#AFF94F] shadow-[0_0_6px_#AFF94F] animate-pulse" />
+                  <span className="font-mono text-[1.1vw] font-black tracking-wider leading-none text-slate-950 max-[600px]:text-[3.8vw]">
                     {periodLabel}
                   </span>
                 </div>
@@ -430,7 +430,7 @@ export default function Timeline({
                     <div className="flex h-full w-full flex-col justify-end space-y-[0.45vw]">
                       {item.phase && (
                         <div
-                          className={`badge-${item.id} inline-flex items-center px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200/90 text-[10px] font-mono font-bold tracking-wider self-start opacity-0`}
+                          className={`badge-${item.id} inline-flex items-center px-2 py-0.5 rounded bg-[#AFF94F]/25 text-slate-950 border border-[#AFF94F]/70 text-[10px] font-mono font-bold tracking-wider self-start opacity-0`}
                         >
                           {item.phase}
                         </div>

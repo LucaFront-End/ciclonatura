@@ -27,7 +27,7 @@ export default function ServicePage({ serviceSlug, onNavigateHome, onSelectServi
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 relative flex flex-col font-sans selection:bg-lime-200 selection:text-slate-900">
+    <div className="min-h-screen bg-slate-50 text-slate-900 relative flex flex-col font-sans selection:bg-[#AFF94F] selection:text-slate-950">
       
       {/* Light Mode Floating Navigation Bar */}
       <Navbar 
@@ -97,13 +97,13 @@ export default function ServicePage({ serviceSlug, onNavigateHome, onSelectServi
                   <div
                     key={item.id}
                     onClick={() => onSelectService(item.slug)}
-                    className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-lg hover:border-emerald-400 transition-all cursor-pointer group flex flex-col justify-between"
+                    className="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm hover:shadow-lg hover:border-[#AFF94F] transition-all cursor-pointer group flex flex-col justify-between"
                   >
                     <div>
-                      <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 inline-block mb-2">
+                      <span className="text-[10px] font-mono font-black text-slate-950 bg-[#AFF94F]/30 px-2 py-0.5 rounded border border-[#AFF94F]/70 inline-block mb-2">
                         {item.code}
                       </span>
-                      <h4 className="font-heading text-sm font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                      <h4 className="font-heading text-sm font-bold text-slate-900 group-hover:text-black transition-colors">
                         {item.name}
                       </h4>
                       <p className="text-slate-500 text-xs mt-1.5 line-clamp-2">
@@ -111,9 +111,9 @@ export default function ServicePage({ serviceSlug, onNavigateHome, onSelectServi
                       </p>
                     </div>
 
-                    <div className="pt-3 mt-4 border-t border-slate-100 flex items-center justify-between text-xs text-emerald-600 font-heading font-bold">
-                      <span>Ver servicio</span>
-                      <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                    <div className="pt-3 mt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-900 group-hover:text-black font-heading font-black">
+                      <span className="group-hover:underline decoration-[#AFF94F] decoration-2">Ver servicio</span>
+                      <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform text-slate-900" />
                     </div>
                   </div>
                 ))}

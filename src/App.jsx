@@ -8,6 +8,7 @@ import TestimonialsMarqueeSection from './components/TestimonialsMarqueeSection'
 import FAQSection from './components/FAQSection';
 import TrustMarquee from './components/TrustMarquee';
 import MultiStepCTA from './components/MultiStepCTA';
+import LiveTrackingSection from './components/LiveTrackingSection';
 import CinematicFooter from '@/components/ui/motion-footer';
 import ServicePage from './components/ServicePage';
 import ContactPage from './components/ContactPage';
@@ -103,7 +104,7 @@ export default function App() {
 
   // Master Home Page View
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 relative flex flex-col font-sans selection:bg-lime-200 selection:text-slate-900">
+    <div className="min-h-screen bg-slate-50 text-slate-900 relative flex flex-col font-sans selection:bg-[#AFF94F] selection:text-slate-950">
       {/* Light Mode Floating Navigation Bar */}
       <Navbar 
         onNavigateHome={navigateToHome} 
@@ -124,6 +125,11 @@ export default function App() {
         {/* Scroll-Driven Split-Screen Contrast: El Coyote vs Ciclonatura */}
         <SectionErrorBoundary>
           <ComparisonSplitSection />
+        </SectionErrorBoundary>
+
+        {/* Real-Time Live Tracking Panel Section */}
+        <SectionErrorBoundary>
+          <LiveTrackingSection />
         </SectionErrorBoundary>
 
         {/* 21st.dev Horizontal Scroll-Pinned Timeline Section */}

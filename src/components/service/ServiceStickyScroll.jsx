@@ -50,7 +50,7 @@ export default function ServiceStickyScroll({ service }) {
         {/* Minimal Header with Live Progress Line */}
         <div className="shrink-0 flex items-center justify-between pb-3 border-b border-slate-100">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#AFF94F] shadow-[0_0_8px_#AFF94F] animate-pulse" />
             <span className="text-xs font-heading font-black text-slate-900 tracking-tight">
               Pilares de Seguridad • {service.shortName}
             </span>
@@ -63,7 +63,7 @@ export default function ServiceStickyScroll({ service }) {
             {/* Smooth Progress Track */}
             <div className="w-24 sm:w-32 h-1.5 bg-slate-100 rounded-full overflow-hidden">
               <div 
-                className="h-full bg-emerald-600 transition-all duration-150 ease-out rounded-full"
+                className="h-full bg-[#AFF94F] transition-all duration-150 ease-out rounded-full shadow-[0_0_8px_rgba(175,249,79,0.5)]"
                 style={{ width: `${Math.round(scrollProgress * 100)}%` }}
               />
             </div>
@@ -93,11 +93,11 @@ export default function ServiceStickyScroll({ service }) {
                           : 'bg-slate-100 text-slate-400'
                       }`}
                     >
-                      <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-emerald-400' : 'bg-slate-300'}`} />
+                      <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-[#AFF94F] shadow-[0_0_6px_#AFF94F]' : 'bg-slate-300'}`} />
                       <span>0{idx + 1}</span>
                     </div>
                     {idx < features.length - 1 && (
-                      <div className={`w-4 h-0.5 transition-colors duration-300 ${activeIndex > idx ? 'bg-emerald-500' : 'bg-slate-200'}`} />
+                      <div className={`w-4 h-0.5 transition-colors duration-300 ${activeIndex > idx ? 'bg-[#AFF94F]' : 'bg-slate-200'}`} />
                     )}
                   </div>
                 );
@@ -116,13 +116,13 @@ export default function ServiceStickyScroll({ service }) {
               >
                 {/* Meta Category & Metric */}
                 <div className="flex items-center justify-between gap-3 mb-3">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold font-heading">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#AFF94F]/25 border border-[#AFF94F]/80 text-slate-950 text-xs font-black font-heading shadow-2xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-slate-950 animate-pulse" />
                     {activeFeature.badge}
                   </span>
 
                   <div className="text-right">
-                    <span className="font-heading font-black text-lg text-emerald-700 block leading-none">
+                    <span className="font-heading font-black text-lg text-slate-950 block leading-none">
                       {activeFeature.metric}
                     </span>
                     <span className="text-[10px] text-slate-400 font-mono">
@@ -136,7 +136,7 @@ export default function ServiceStickyScroll({ service }) {
                   {activeFeature.title}
                 </h3>
 
-                <p className="text-emerald-700 font-heading text-xs font-bold mt-1">
+                <p className="text-slate-800 font-heading text-xs font-bold mt-1">
                   {activeFeature.subtitle}
                 </p>
 
@@ -148,7 +148,7 @@ export default function ServiceStickyScroll({ service }) {
                 <div className="space-y-2 mt-4 pt-4 border-t border-slate-100">
                   {activeFeature.points.map((pt, i) => (
                     <div key={i} className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-700">
-                      <div className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                      <div className="w-4 h-4 rounded-full bg-[#AFF94F] text-slate-950 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
                         <Check size={11} strokeWidth={3} />
                       </div>
                       <span className="leading-snug font-medium">{pt}</span>
@@ -186,13 +186,13 @@ export default function ServiceStickyScroll({ service }) {
                   {/* Bottom Image Caption Pill */}
                   <div className="absolute bottom-5 left-5 right-5 z-20 flex items-center justify-between gap-3 bg-white/95 backdrop-blur-md rounded-2xl p-3 sm:p-3.5 border border-white/60 shadow-lg">
                     <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                      <div className="w-2 h-2 rounded-full bg-[#AFF94F] shadow-[0_0_6px_#AFF94F] animate-ping" />
                       <span className="text-xs font-heading font-bold text-slate-900 line-clamp-1">
                         {activeFeature.imageCaption}
                       </span>
                     </div>
 
-                    <span className="text-[10px] font-mono text-emerald-800 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 shrink-0">
+                    <span className="text-[10px] font-mono text-slate-950 font-black bg-[#AFF94F] px-2.5 py-0.5 rounded border border-[#AFF94F] shrink-0 shadow-2xs">
                       Cotejo en Vivo
                     </span>
                   </div>
@@ -206,13 +206,13 @@ export default function ServiceStickyScroll({ service }) {
         {/* Minimal Scroll Instruction Indicator */}
         <div className="shrink-0 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
           <div className="flex items-center gap-2">
-            <ShieldCheck size={14} className="text-emerald-600" />
+            <ShieldCheck size={14} className="text-slate-900" />
             <span>Garantía notarial por escrito y factura SAT CFDI en cada etapa.</span>
           </div>
 
           <div className="hidden sm:flex items-center gap-1.5 text-[11px] font-mono font-medium text-slate-400">
             <span>Desplaza hacia abajo para avanzar</span>
-            <ChevronDown size={13} className="animate-bounce text-emerald-600" />
+            <ChevronDown size={13} className="animate-bounce text-slate-900" />
           </div>
         </div>
 

@@ -248,7 +248,7 @@ function TunnelCard({ card, progress, pointer, total, stage, onSelect }: TunnelC
         <ModelCard3D type={card.item.modelType} progress={localProgress} />
 
         {/* Luminous aura on hover */}
-        <div className="absolute inset-0 rounded-full bg-lime-400/0 group-hover:bg-lime-400/20 blur-2xl transition-all duration-500 pointer-events-none -z-10" />
+        <div className="absolute inset-0 rounded-full bg-[#AFF94F]/0 group-hover:bg-[#AFF94F]/25 blur-2xl transition-all duration-500 pointer-events-none -z-10" />
       </div>
 
       {/* Floating Informative Label */}
@@ -256,12 +256,12 @@ function TunnelCard({ card, progress, pointer, total, stage, onSelect }: TunnelC
         style={{ opacity: labelOpacity, y: labelY }}
         className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-center pointer-events-auto whitespace-nowrap"
       >
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 backdrop-blur-md text-white shadow-xl shadow-slate-950/20 border border-slate-700/50 group-hover:border-lime-400 transition-colors">
-          <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse" />
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/95 backdrop-blur-md text-white shadow-xl shadow-slate-950/20 border border-slate-700/50 group-hover:border-[#AFF94F] transition-colors">
+          <span className="w-2 h-2 rounded-full bg-[#AFF94F] animate-pulse shadow-[0_0_8px_#AFF94F]" />
           <span className="text-xs font-heading font-bold tracking-tight">
             {card.item.title}
           </span>
-          <span className="text-[10px] font-semibold text-lime-300 border-l border-white/20 pl-2">
+          <span className="text-[10px] font-semibold text-[#AFF94F] border-l border-white/20 pl-2">
             {card.item.badge}
           </span>
         </div>
@@ -370,7 +370,7 @@ export default function PerspectiveTunnelHero({ onOpenSiteMap }: { onOpenSiteMap
       particleCount: 35,
       spread: 60,
       origin: { y: 0.6 },
-      colors: ["#84cc16", "#0284c7", "#0f172a"]
+      colors: ["#AFF94F", "#0284c7", "#0f172a"]
     });
   };
 
@@ -385,11 +385,11 @@ export default function PerspectiveTunnelHero({ onOpenSiteMap }: { onOpenSiteMap
     >
       {/* Light Theme Background: Elegant Dot Matrix & Soft Ambient Light */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:26px_26px] [mask-image:radial-gradient(ellipse_75%_75%_at_50%_50%,#000_50%,transparent_100%)] opacity-70" />
-      <div className="pointer-events-none absolute top-10 right-10 w-[450px] height-[450px] bg-lime-100/40 rounded-full blur-3xl -z-10" />
+      <div className="pointer-events-none absolute top-10 right-10 w-[450px] height-[450px] bg-[#AFF94F]/20 rounded-full blur-3xl -z-10" />
       <div className="pointer-events-none absolute bottom-10 left-10 w-[400px] height-[400px] bg-sky-100/40 rounded-full blur-3xl -z-10" />
 
       {/* Spatial 3D Guide Rings */}
-      <div className="pointer-events-none absolute h-[50vmin] w-[50vmin] rounded-full border border-lime-500/20" />
+      <div className="pointer-events-none absolute h-[50vmin] w-[50vmin] rounded-full border border-[#AFF94F]/30" />
       <div className="pointer-events-none absolute h-[80vmin] w-[80vmin] rounded-full border border-dashed border-slate-300/80" />
 
       {/* Central Anchor Typography (Ciclonatura Value Proposition) - Softens mid-flight, ends 100% solid */}
@@ -399,7 +399,7 @@ export default function PerspectiveTunnelHero({ onOpenSiteMap }: { onOpenSiteMap
       >
         {/* Live Authority Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 border border-slate-200 shadow-xs backdrop-blur-md mb-5 pointer-events-auto">
-          <span className="w-2 h-2 rounded-full bg-lime-500 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-[#AFF94F] animate-pulse shadow-[0_0_8px_#AFF94F]" />
           <span className="text-xs font-bold tracking-wider uppercase text-slate-800 font-heading">
             Gestoría Vehicular Digital • CDMX, Edomex & Morelos
           </span>
@@ -408,7 +408,7 @@ export default function PerspectiveTunnelHero({ onOpenSiteMap }: { onOpenSiteMap
         {/* Main H1 Headline */}
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05] text-slate-900 font-heading">
           TU VEHÍCULO EN REGLA,{" "}
-          <span className="bg-gradient-to-r from-lime-600 to-emerald-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-emerald-700 via-teal-600 to-emerald-500 bg-clip-text text-transparent">
             SIN FILAS.
           </span>
         </h1>
@@ -420,22 +420,22 @@ export default function PerspectiveTunnelHero({ onOpenSiteMap }: { onOpenSiteMap
         {/* CTA Actions */}
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3.5 pointer-events-auto">
           <a
-            href="https://wa.me/525548116379?text=Hola%20Ciclonatura,%20quiero%20iniciar%20mi%20trámite%20vehicular"
+            href="https://wa.me/525547021799?text=Hola%20Ciclonatura,%20quiero%20iniciar%20mi%20trámite%20vehicular"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 bg-slate-950 hover:bg-slate-800 text-white font-heading font-bold text-sm sm:text-base px-6 py-3.5 rounded-full shadow-lg shadow-slate-950/15 transition-all duration-200 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 bg-slate-950 hover:bg-slate-800 text-white font-heading font-bold text-sm sm:text-base px-6 py-3.5 rounded-full shadow-lg shadow-slate-950/15 border border-[#AFF94F]/40 transition-all duration-200 hover:-translate-y-0.5"
           >
             <span>Iniciar mi trámite</span>
-            <ArrowRight size={17} />
+            <ArrowRight size={17} className="text-[#AFF94F]" />
           </a>
 
           <a
-            href="https://wa.me/525548116379?text=Hola%20Ciclonatura,%20deseo%20asesoría%20con%20un%20ejecutivo"
+            href="https://wa.me/525547021799?text=Hola%20Ciclonatura,%20deseo%20asesoría%20con%20un%20ejecutivo"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-800 font-heading font-semibold text-sm sm:text-base px-5 py-3.5 rounded-full border border-slate-200 shadow-xs backdrop-blur-md transition-all duration-200 hover:-translate-y-0.5"
           >
-            <ShieldCheck size={17} className="text-lime-600" />
+            <ShieldCheck size={17} className="text-emerald-600" />
             <span>Hablar con un gestor</span>
           </a>
         </div>

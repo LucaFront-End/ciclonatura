@@ -9,7 +9,8 @@ import {
   Sparkles, 
   Menu, 
   X,
-  ChevronDown
+  ChevronDown,
+  Radio
 } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 
@@ -116,7 +117,7 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
                   transition={{ duration: 0.2 }}
                   className="absolute top-full left-0 w-80 p-3 mt-2 bg-white rounded-2xl border border-slate-200/90 shadow-xl backdrop-blur-xl z-50"
                 >
-                  <div className="text-[11px] uppercase tracking-wider text-emerald-800 font-bold px-3 py-1.5 font-heading">
+                  <div className="text-[11px] uppercase tracking-wider text-slate-950 font-black px-3 py-1.5 font-heading">
                     5 Servicios Oficiales
                   </div>
                   {serviceNavItems.map((item, idx) => (
@@ -127,7 +128,7 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
                       className="flex items-center justify-between p-2.5 rounded-xl text-slate-700 hover:text-slate-950 hover:bg-slate-50 transition-colors text-sm cursor-pointer"
                     >
                       <span className="font-medium text-xs sm:text-sm">{item.label}</span>
-                      <span className="text-[10px] text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md font-mono font-semibold border border-emerald-200/80">
+                      <span className="text-[10px] text-slate-950 bg-[#AFF94F] px-2 py-0.5 rounded-md font-mono font-bold border border-[#AFF94F] shadow-2xs">
                         {item.time}
                       </span>
                     </a>
@@ -156,8 +157,16 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
             href="/#seguridad" 
             className="text-slate-700 hover:text-slate-950 font-heading font-medium text-sm px-3.5 py-1.5 rounded-full flex items-center gap-1.5 transition-colors"
           >
-            <ShieldCheck size={14} className="text-lime-600" />
+            <ShieldCheck size={14} className="text-slate-900" />
             <span>Cero Fraudes</span>
+          </a>
+
+          <a 
+            href="/#rastreo" 
+            className="text-slate-700 hover:text-slate-950 font-heading font-medium text-sm px-3.5 py-1.5 rounded-full flex items-center gap-1.5 transition-colors"
+          >
+            <Radio size={14} className="text-slate-950" />
+            <span>Rastreo en Vivo</span>
           </a>
 
           <button 
@@ -177,9 +186,9 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
             href="https://wa.me/525547021799?text=Hola%20Ciclonatura,%20deseo%20cotizar%20un%20trámite%20vehicular"
             target="_blank"
             rel="noreferrer"
-            className="hidden sm:inline-flex items-center gap-2 bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200/80 px-3.5 py-1.5 rounded-full text-emerald-800 text-xs font-semibold transition-colors"
+            className="hidden sm:inline-flex items-center gap-2 bg-[#AFF94F]/20 hover:bg-[#AFF94F]/35 border border-[#AFF94F]/70 px-3.5 py-1.5 rounded-full text-slate-950 text-xs font-black transition-colors shadow-2xs"
           >
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#AFF94F] shadow-[0_0_8px_#AFF94F] animate-pulse" />
             <span>WhatsApp Activo</span>
           </a>
 
@@ -190,7 +199,7 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
             href="https://wa.me/525547021799?text=Hola%20Ciclonatura,%20quiero%20iniciar%20mi%20trámite%20vehicular"
             target="_blank"
             rel="noreferrer"
-            className="bg-slate-950 hover:bg-slate-800 text-white font-heading font-bold text-xs sm:text-sm px-5 py-2.5 rounded-full shadow-md shadow-slate-950/15 flex items-center gap-2 transition-all"
+            className="bg-slate-950 hover:bg-[#AFF94F] text-white hover:text-slate-950 font-heading font-black text-xs sm:text-sm px-5 py-2.5 rounded-full shadow-md shadow-slate-950/15 flex items-center gap-2 transition-all border border-slate-800 hover:border-[#AFF94F]"
           >
             <span>Iniciar Trámite</span>
             <ArrowRight size={14} />
@@ -242,6 +251,14 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
               className="text-slate-800 font-semibold text-base py-1"
             >
               Protección Anti-Fraude
+            </a>
+            <a 
+              href="/#rastreo" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-slate-800 font-semibold text-base py-1 flex items-center justify-between"
+            >
+              <span>Mesa de Rastreo en Vivo</span>
+              <span className="w-2 h-2 rounded-full bg-[#AFF94F] shadow-[0_0_6px_#AFF94F] animate-pulse" />
             </a>
             <button 
               type="button"

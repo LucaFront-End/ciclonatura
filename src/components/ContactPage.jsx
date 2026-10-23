@@ -103,7 +103,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-emerald-200 selection:text-slate-900">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-[#AFF94F] selection:text-slate-950">
       
       {/* Light Mode Header Navigation */}
       <Navbar 
@@ -115,7 +115,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
       <main className="flex-1 pt-28 sm:pt-36 pb-20 relative overflow-hidden">
         
         {/* Ambient Top Glows */}
-        <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-emerald-100/40 via-slate-100/60 to-teal-100/30 rounded-full blur-3xl -z-10" />
+        <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-[#AFF94F]/20 via-slate-100/60 to-lime-100/15 rounded-full blur-3xl -z-10" />
 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -123,7 +123,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
           <div className="flex items-center gap-2 text-xs text-slate-500 mb-6">
             <button 
               onClick={onNavigateHome}
-              className="hover:text-emerald-700 transition-colors cursor-pointer"
+              className="hover:text-slate-950 transition-colors cursor-pointer"
             >
               Inicio
             </button>
@@ -133,14 +133,14 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
 
           {/* Page Hero Header */}
           <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-heading font-bold mb-4 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#AFF94F]/20 border border-[#AFF94F]/60 text-slate-950 text-xs font-heading font-black mb-4 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#AFF94F] shadow-[0_0_8px_#AFF94F] animate-pulse" />
               <span>Mesa de Control & Atención Notarial</span>
             </div>
 
             <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.1]">
               Comunícate con Gestores Certificados en{' '}
-              <span className="text-emerald-600">CDMX</span>
+              <span className="text-slate-950 underline decoration-[#AFF94F] decoration-4 underline-offset-4">CDMX</span>
             </h1>
 
             <p className="text-slate-600 text-sm sm:text-base mt-3 max-w-xl mx-auto leading-relaxed">
@@ -158,13 +158,13 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
               href="https://wa.me/525547021799?text=Hola%20Ciclonatura,%20deseo%20asesoria%20notarial%20para%20un%20tramite"
               target="_blank"
               rel="noreferrer"
-              className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all duration-300 group cursor-pointer flex flex-col justify-between"
+              className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#AFF94F] transition-all duration-300 group cursor-pointer flex flex-col justify-between"
             >
               <div>
-                <div className="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                <div className="w-11 h-11 rounded-2xl bg-[#AFF94F]/20 text-slate-950 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#AFF94F] transition-all">
                   <MessageSquare size={20} />
                 </div>
-                <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                <span className="text-[10px] font-mono font-black text-slate-950 bg-[#AFF94F] px-2 py-0.5 rounded border border-[#AFF94F]">
                   Respuesta en &lt;15 min
                 </span>
                 <h3 className="font-heading font-bold text-base text-slate-900 mt-2.5">
@@ -174,7 +174,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
                   Atención prioritaria y pre-revisión de fotos de tu factura o placas en vivo.
                 </p>
               </div>
-              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-700">
+              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-950">
                 <span>+52 55 4702 1799</span>
                 <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
               </div>
@@ -230,13 +230,13 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
             {/* 4. Correo Notarial y CFDI */}
             <a
               href="mailto:contacto@ciclonatura.com.mx"
-              className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all duration-300 group cursor-pointer flex flex-col justify-between"
+              className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#AFF94F] transition-all duration-300 group cursor-pointer flex flex-col justify-between"
             >
               <div>
-                <div className="w-11 h-11 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                <div className="w-11 h-11 rounded-2xl bg-[#AFF94F]/20 text-slate-950 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#AFF94F] transition-all">
                   <Mail size={20} />
                 </div>
-                <span className="text-[10px] font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                <span className="text-[10px] font-mono font-black text-slate-950 bg-[#AFF94F] px-2 py-0.5 rounded border border-[#AFF94F]">
                   B2B & Facturación
                 </span>
                 <h3 className="font-heading font-bold text-base text-slate-900 mt-2.5">
@@ -246,7 +246,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
                   Envío de constancias fiscales, contratos de flotillas y facturas SAT.
                 </p>
               </div>
-              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-700">
+              <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-950">
                 <span className="truncate">contacto@ciclonatura.com.mx</span>
                 <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform shrink-0" />
               </div>
@@ -271,7 +271,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
                     Recibe asesoría directa y folio oficial en menos de 15 minutos.
                   </p>
                 </div>
-                <span className="font-mono text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+                <span className="font-mono text-xs font-black text-slate-950 bg-[#AFF94F] px-2.5 py-1 rounded-md border border-[#AFF94F]">
                   Folio Activo
                 </span>
               </div>
@@ -282,7 +282,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-10 text-center space-y-4"
                 >
-                  <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-inner">
+                  <div className="w-16 h-16 rounded-full bg-[#AFF94F]/30 text-slate-950 flex items-center justify-center mx-auto shadow-inner">
                     <CheckCircle2 size={32} />
                   </div>
                   <h3 className="font-heading text-2xl font-black text-slate-900">
@@ -299,7 +299,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
                       href="https://wa.me/525547021799"
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-heading font-bold text-xs sm:text-sm shadow-lg shadow-emerald-600/20 hover:bg-emerald-500 transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-[#AFF94F] hover:bg-[#9ee83e] text-slate-950 font-heading font-black text-xs sm:text-sm shadow-lg shadow-[#AFF94F]/25 transition-all cursor-pointer"
                     >
                       <MessageSquare size={16} />
                       <span>Abrir Chat de WhatsApp</span>
@@ -422,7 +422,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full py-3.5 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-black text-xs sm:text-sm tracking-wide shadow-lg shadow-emerald-600/20 flex items-center justify-center gap-2 transition-all hover:scale-101 active:scale-99 cursor-pointer"
+                      className="w-full py-3.5 px-6 rounded-2xl bg-[#AFF94F] hover:bg-[#9ee83e] text-slate-950 font-heading font-black text-xs sm:text-sm tracking-wide shadow-lg shadow-[#AFF94F]/25 flex items-center justify-center gap-2 transition-all hover:scale-101 active:scale-99 cursor-pointer"
                     >
                       <Send size={15} />
                       <span>Enviar Consulta & Iniciar en WhatsApp</span>
@@ -431,7 +431,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
                   </div>
 
                   <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400 text-center pt-1">
-                    <Lock size={12} className="text-emerald-600" />
+                    <Lock size={12} className="text-slate-900" />
                     <span>Tus datos están protegidos bajo secreto notarial y privacidad CFDI 4.0.</span>
                   </div>
 
@@ -453,7 +453,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-5">
                     <div className="text-white">
-                      <span className="text-[10px] font-mono font-bold bg-emerald-500/90 text-slate-950 px-2 py-0.5 rounded">
+                      <span className="text-[10px] font-mono font-black bg-[#AFF94F] text-slate-950 px-2 py-0.5 rounded shadow-2xs">
                         Sede Notarial Propia
                       </span>
                       <h4 className="font-heading font-black text-base mt-1">
@@ -465,7 +465,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
 
                 <div className="p-6 space-y-4">
                   <div className="flex items-start gap-3 text-xs text-slate-700">
-                    <MapPin size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+                    <MapPin size={16} className="text-slate-900 shrink-0 mt-0.5" />
                     <div className="leading-snug">
                       <strong>Dirección:</strong> Calz. de Tlalpan No. 1820, Col. Country Club, Coyoacán, C.P. 04220, Ciudad de México.
                       <div className="text-[11px] text-slate-400 mt-1">
@@ -475,7 +475,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
                   </div>
 
                   <div className="flex items-start gap-3 text-xs text-slate-700 pt-3 border-t border-slate-100">
-                    <Clock size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+                    <Clock size={16} className="text-slate-900 shrink-0 mt-0.5" />
                     <div className="leading-snug">
                       <strong>Horario de Atención:</strong>
                       <div className="text-slate-500 mt-0.5">
@@ -486,7 +486,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
                   </div>
 
                   <div className="flex items-start gap-3 text-xs text-slate-700 pt-3 border-t border-slate-100">
-                    <ShieldCheck size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+                    <ShieldCheck size={16} className="text-slate-900 shrink-0 mt-0.5" />
                     <div className="leading-snug">
                       <strong>Custodia Segura:</strong>
                       <div className="text-slate-500 mt-0.5">

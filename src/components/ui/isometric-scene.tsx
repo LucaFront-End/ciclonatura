@@ -101,7 +101,7 @@ export default function IsometricScene({ type, className = "" }: IsometricSceneP
     scene.add(keyLight);
 
     // Signature Ciclonatura Lime Rim Light
-    const limeRimLight = new THREE.DirectionalLight(0x84cc16, 1.8);
+    const limeRimLight = new THREE.DirectionalLight(0xAFF94F, 1.8);
     limeRimLight.position.set(-10, 8, -12);
     scene.add(limeRimLight);
 
@@ -122,7 +122,7 @@ export default function IsometricScene({ type, className = "" }: IsometricSceneP
     const animationCallbacks: ((elapsed: number) => void)[] = [];
 
     // --- Helper: Isometric Platform Base ---
-    const createPlatformBase = (color = 0xf8fafc, accentColor = 0x84cc16) => {
+    const createPlatformBase = (color = 0xf8fafc, accentColor = 0xAFF94F) => {
       const baseGroup = new THREE.Group();
 
       // Chamfered circular/pill pedestal
@@ -169,7 +169,7 @@ export default function IsometricScene({ type, className = "" }: IsometricSceneP
     // SCENE 1: Inspection & Dyno Verification Station
     // ==========================================
     if (type === "inspection-dyno") {
-      sceneRoot.add(createPlatformBase(0xffffff, 0x84cc16));
+      sceneRoot.add(createPlatformBase(0xffffff, 0xAFF94F));
 
       // Dyno Roller Cylinders (animated rotation)
       const rollerGroup = new THREE.Group();
@@ -239,7 +239,7 @@ export default function IsometricScene({ type, className = "" }: IsometricSceneP
       // Holographic laser fan
       const laserPlaneGeo = new THREE.PlaneGeometry(3.0, 1.4);
       const laserPlaneMat = new THREE.MeshBasicMaterial({
-        color: 0x84cc16,
+        color: 0xAFF94F,
         transparent: true,
         opacity: 0.35,
         side: THREE.DoubleSide,
@@ -317,7 +317,7 @@ export default function IsometricScene({ type, className = "" }: IsometricSceneP
 
       const ring2Geo = new THREE.TorusGeometry(1.9, 0.02, 16, 48);
       const ring2Mat = new THREE.MeshBasicMaterial({
-        color: 0x84cc16,
+        color: 0xAFF94F,
         transparent: true,
         opacity: 0.65,
       });
@@ -363,7 +363,7 @@ export default function IsometricScene({ type, className = "" }: IsometricSceneP
     // SCENE 3: Express 24h & Precision Chronos
     // ==========================================
     else if (type === "express-chronos") {
-      sceneRoot.add(createPlatformBase(0xffffff, 0x84cc16));
+      sceneRoot.add(createPlatformBase(0xffffff, 0xAFF94F));
 
       const watchContainer = new THREE.Group();
       sceneRoot.add(watchContainer);
@@ -385,7 +385,7 @@ export default function IsometricScene({ type, className = "" }: IsometricSceneP
       const waveGeo = new THREE.RingGeometry(0.8, 0.88, 36);
       waveGeo.rotateX(-Math.PI / 2);
       const waveMat = new THREE.MeshBasicMaterial({
-        color: 0x84cc16,
+        color: 0xAFF94F,
         transparent: true,
         opacity: 0.7,
         side: THREE.DoubleSide,
@@ -443,7 +443,7 @@ export default function IsometricScene({ type, className = "" }: IsometricSceneP
       shieldGeo.center();
 
       const shieldMat = new THREE.MeshStandardMaterial({
-        color: 0x84cc16,
+        color: 0xAFF94F,
         metalness: 0.9,
         roughness: 0.16,
       });

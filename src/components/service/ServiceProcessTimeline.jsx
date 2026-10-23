@@ -55,14 +55,14 @@ export default function ServiceProcessTimeline({ service }) {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold font-heading mb-3 shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#AFF94F]/20 border border-[#AFF94F]/60 text-slate-950 text-xs font-black font-heading mb-3 shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#AFF94F] shadow-[0_0_6px_#AFF94F] animate-pulse" />
             <span>Flujo Operativo Paso a Paso • Sin Intermediarios</span>
           </div>
 
           <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-tight">
             ¿Cómo se ejecuta tu trámite de{' '}
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 bg-clip-text text-transparent">
+            <span className="text-slate-950 underline decoration-[#AFF94F] decoration-4 underline-offset-4">
               {service.shortName}?
             </span>
           </h2>
@@ -75,8 +75,8 @@ export default function ServiceProcessTimeline({ service }) {
         {/* Vertical Chronological Process Timeline */}
         <div className="relative">
           {/* Central Connecting Vertical Line */}
-          <div className="hidden md:block absolute left-1/2 top-4 bottom-8 -translate-x-1/2 w-0.5 bg-gradient-to-b from-emerald-500 via-emerald-400 to-slate-200" />
-          <div className="md:hidden absolute left-5 top-4 bottom-8 w-0.5 bg-gradient-to-b from-emerald-500 via-emerald-400 to-slate-200" />
+          <div className="hidden md:block absolute left-1/2 top-4 bottom-8 -translate-x-1/2 w-0.5 bg-gradient-to-b from-[#AFF94F] via-[#AFF94F]/60 to-slate-200" />
+          <div className="md:hidden absolute left-5 top-4 bottom-8 w-0.5 bg-gradient-to-b from-[#AFF94F] via-[#AFF94F]/60 to-slate-200" />
 
           <div className="space-y-10 sm:space-y-14">
             {service.processTimeline.map((item, index) => {
@@ -96,11 +96,11 @@ export default function ServiceProcessTimeline({ service }) {
                 >
                   {/* Step Card Content */}
                   <div className="w-full md:w-[45%] pl-14 md:pl-0">
-                    <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-md shadow-slate-900/5 hover:border-emerald-400/80 hover:shadow-xl transition-all duration-300 group">
+                    <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-md shadow-slate-900/5 hover:border-[#AFF94F] hover:shadow-xl transition-all duration-300 group">
                       
                       {/* Top Meta Header */}
                       <div className="flex items-center justify-between gap-2 mb-2.5">
-                        <span className="text-[11px] font-mono font-bold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-md">
+                        <span className="text-[11px] font-mono font-black text-slate-950 bg-[#AFF94F] border border-[#AFF94F] px-2 py-0.5 rounded-md shadow-2xs">
                           {item.timeframe}
                         </span>
                         <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider font-heading">
@@ -108,7 +108,7 @@ export default function ServiceProcessTimeline({ service }) {
                         </span>
                       </div>
 
-                      <h3 className="font-heading text-base sm:text-lg font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                      <h3 className="font-heading text-base sm:text-lg font-bold text-slate-900 group-hover:text-black transition-colors">
                         {item.title}
                       </h3>
 
@@ -120,8 +120,8 @@ export default function ServiceProcessTimeline({ service }) {
 
                   {/* Central Node Indicator */}
                   <div className="absolute left-0 md:left-1/2 -translate-x-0 md:-translate-x-1/2 flex items-center justify-center">
-                    <div className="w-10 h-10 rounded-full bg-white border-2 border-emerald-500 shadow-md shadow-emerald-500/20 flex items-center justify-center text-emerald-700 font-heading font-black text-xs z-10 group-hover:scale-110 transition-transform">
-                      <IconComponent size={18} className="text-emerald-600" />
+                    <div className="w-10 h-10 rounded-full bg-white border-2 border-[#AFF94F] shadow-md shadow-[#AFF94F]/30 flex items-center justify-center text-slate-950 font-heading font-black text-xs z-10 group-hover:scale-110 transition-transform">
+                      <IconComponent size={18} className="text-slate-950" />
                     </div>
                   </div>
 
@@ -137,10 +137,10 @@ export default function ServiceProcessTimeline({ service }) {
         <div className="mt-14 sm:mt-16 text-center">
           <div className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-3 bg-white border border-slate-200/90 shadow-sm rounded-2xl sm:rounded-full px-5 py-2.5 text-xs text-slate-700 font-medium">
             <span className="flex items-center gap-1.5 font-bold text-slate-900 font-heading">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+              <span className="w-2 h-2 rounded-full bg-[#AFF94F] shadow-[0_0_6px_#AFF94F] animate-ping" />
               Plazo Contractual Garantizado:
             </span>
-            <span className="font-mono font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+            <span className="font-mono font-black text-slate-950 bg-[#AFF94F] px-2.5 py-0.5 rounded-full border border-[#AFF94F] shadow-2xs">
               {service.turnaround}
             </span>
             <span className="text-slate-400 hidden sm:inline">•</span>

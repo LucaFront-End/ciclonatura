@@ -62,7 +62,7 @@ function createSportWheelGroup(): THREE.Group {
   const hubGeo = new THREE.CylinderGeometry(0.24, 0.24, 0.5, 24);
   hubGeo.rotateX(Math.PI / 2);
   const hubMat = new THREE.MeshStandardMaterial({
-    color: 0x84cc16, // Ciclonatura lime emblem
+    color: 0xAFF94F, // Ciclonatura lime emblem
     metalness: 0.85,
     roughness: 0.2,
   });
@@ -137,7 +137,7 @@ function createShieldGroup(): THREE.Group {
 
   // Emerald/Lime metallic body
   const shieldMat = new THREE.MeshStandardMaterial({
-    color: 0x84cc16,
+    color: 0xAFF94F,
     metalness: 0.85,
     roughness: 0.22,
   });
@@ -242,7 +242,7 @@ export default function ModelCard3D({ type, progress }: ModelCard3DProps) {
           const car = gltf.scene;
           fitModelToBox(car, 2.5);
 
-          const paintColor = type === "car-lime" ? 0x84cc16 : 0xf8fafc;
+          const paintColor = type === "car-lime" ? 0xAFF94F : 0xf8fafc;
           car.traverse((child) => {
             if ((child as THREE.Mesh).isMesh) {
               const mesh = child as THREE.Mesh;

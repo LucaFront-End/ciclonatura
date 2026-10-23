@@ -11,10 +11,11 @@
   --bg-tertiary: #f1f5f9;
   --bg-card: rgba(255, 255, 255, 0.95);
 
-  --accent-lime: #84cc16;
-  --accent-lime-hover: #65a30d;
-  --accent-lime-dim: rgba(132, 204, 22, 0.12);
-  --accent-lime-glow: rgba(132, 204, 22, 0.25);
+  --accent-lime: #AFF94F;
+  --accent-lime-hover: #98e83b;
+  --accent-lime-dim: rgba(175, 249, 79, 0.16);
+  --accent-lime-glow: rgba(175, 249, 79, 0.45);
+  --brand-lime: #AFF94F;
 
   --accent-cyan: #0284c7;
   --accent-blue: #2563eb;
@@ -25,7 +26,7 @@
   --text-dim: #94a3b8;
 
   --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-highlight: rgba(132, 204, 22, 0.4);
+  --border-highlight: rgba(175, 249, 79, 0.6);
 
   --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -73,7 +74,7 @@ body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #84cc16;
+  background-color: #AFF94F;
   position: relative;
   display: inline-block;
 }
@@ -83,7 +84,7 @@ body {
   position: absolute;
   inset: -4px;
   border-radius: 50%;
-  border: 2px solid #84cc16;
+  border: 2px solid #AFF94F;
   animation: pulse-ring 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 

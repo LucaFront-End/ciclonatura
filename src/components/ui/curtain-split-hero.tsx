@@ -278,8 +278,8 @@ export default function CurtainSplitHero({
             {/* Subtle Minimal Dot Grid Background (Full-Width) */}
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#94a3b8_1px,transparent_1px)] [background-size:24px_24px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_50%,transparent_100%)] opacity-35" />
 
-            {/* Ambient Emerald Aura in the background */}
-            <div className="pointer-events-none absolute w-[550px] h-[400px] bg-emerald-400/15 rounded-full blur-[100px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+            {/* Ambient Brand Lime Aura in the background */}
+            <div className="pointer-events-none absolute w-[550px] h-[400px] bg-[#AFF94F]/18 rounded-full blur-[100px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 
             {/* ======================================================== */}
             {/* TOP BAR: Breadcrumb to Home & Service Selector Pills      */}
@@ -332,7 +332,7 @@ export default function CurtainSplitHero({
                 className="z-[25] flex flex-col items-center text-center px-4 max-w-md sm:max-w-xl my-auto pointer-events-none"
                 style={{ y: textY, opacity: textOpacity }}
             >
-                <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.25em] text-emerald-800 font-bold bg-emerald-50 border border-emerald-200/90 px-3 py-1 rounded-full shadow-2xs">
+                <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.25em] text-slate-950 font-black bg-[#AFF94F]/25 border border-[#AFF94F]/80 px-3.5 py-1 rounded-full shadow-2xs">
                     {monograph}
                 </span>
 
@@ -342,7 +342,7 @@ export default function CurtainSplitHero({
 
                 <motion.div
                     style={{ scaleX: lineScale }}
-                    className="my-3.5 sm:my-4 h-0.5 w-16 sm:w-20 bg-emerald-500 origin-center rounded-full"
+                    className="my-3.5 sm:my-4 h-1 w-16 sm:w-20 bg-[#AFF94F] shadow-[0_0_12px_#AFF94F] origin-center rounded-full"
                 />
 
                 <p className="max-w-[42ch] text-xs sm:text-sm font-normal text-slate-600 leading-relaxed font-body">
@@ -356,11 +356,11 @@ export default function CurtainSplitHero({
                             e.stopPropagation();
                             if (onCtaClick) onCtaClick();
                         }}
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-950 hover:bg-emerald-600 text-white font-heading font-bold text-xs shadow-md shadow-slate-950/20 hover:shadow-xl hover:shadow-emerald-600/30 transition-all duration-300 hover:scale-102 active:scale-98 cursor-pointer border border-slate-800 hover:border-emerald-500"
+                        className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-950 hover:bg-[#AFF94F] text-white hover:text-slate-950 font-heading font-black text-xs shadow-md shadow-slate-950/20 hover:shadow-xl hover:shadow-[#AFF94F]/30 transition-all duration-300 hover:scale-102 active:scale-98 cursor-pointer border border-slate-800 hover:border-[#AFF94F]"
                     >
-                        <MessageSquare size={13} className="text-emerald-400" />
+                        <MessageSquare size={13} className="text-[#AFF94F] group-hover:text-slate-950 transition-colors" />
                         <span>Cotizar por WhatsApp</span>
-                        <ArrowRight size={13} />
+                        <ArrowRight size={13} className="text-white group-hover:text-slate-950 transition-colors" />
                     </button>
 
                     <button
@@ -399,7 +399,7 @@ export default function CurtainSplitHero({
                 <div className="flex items-center gap-2 rounded-full bg-white/95 backdrop-blur-md px-3.5 py-1.5 border border-slate-200 shadow-sm text-[10px] font-medium tracking-wide text-slate-700 font-heading">
                     <span
                         className={`h-1.5 w-1.5 rounded-full transition-colors duration-300 ${
-                            isSpreadActive ? "bg-emerald-500 animate-pulse" : "bg-emerald-600"
+                            isSpreadActive ? "bg-[#AFF94F] shadow-[0_0_8px_#AFF94F] animate-pulse" : "bg-slate-400"
                         }`}
                     />
                     <span>{isSpreadActive ? statusTextOpen : statusTextClosed}</span>
@@ -408,22 +408,22 @@ export default function CurtainSplitHero({
                 {/* Bottom Trust Row */}
                 <div className="w-full flex items-center justify-center gap-4 sm:gap-8 text-[11px] text-slate-600 flex-wrap pt-2 border-t border-slate-200/60 font-medium">
                     <div className="flex items-center gap-1.5">
-                        <Clock size={13} className="text-emerald-600 shrink-0" />
+                        <Clock size={13} className="text-slate-900 shrink-0" />
                         <span>Plazo: <strong>{turnaround}</strong></span>
                     </div>
 
                     <div className="flex items-center gap-1.5">
-                        <Receipt size={13} className="text-emerald-600 shrink-0" />
+                        <Receipt size={13} className="text-slate-900 shrink-0" />
                         <span>Factura <strong>CFDI 4.0 SAT</strong></span>
                     </div>
 
                     <div className="flex items-center gap-1.5">
-                        <ShieldCheck size={13} className="text-emerald-600 shrink-0" />
+                        <ShieldCheck size={13} className="text-slate-900 shrink-0" />
                         <span>Garantía <strong>Notarial Escrita</strong></span>
                     </div>
 
                     <div className="hidden sm:flex items-center gap-1.5">
-                        <MapPin size={13} className="text-emerald-600 shrink-0" />
+                        <MapPin size={13} className="text-slate-900 shrink-0" />
                         <span>Sede <strong>Calzada de Tlalpan CDMX</strong></span>
                     </div>
                 </div>

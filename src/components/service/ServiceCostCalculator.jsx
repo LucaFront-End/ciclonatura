@@ -171,14 +171,14 @@ export default function ServiceCostCalculator({ service }) {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100/90 border border-slate-200 text-slate-700 text-xs font-semibold font-heading mb-3 shadow-2xs backdrop-blur-sm">
-            <Calculator size={13} className="text-emerald-600" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100/90 border border-slate-200 text-slate-800 text-xs font-semibold font-heading mb-3 shadow-2xs backdrop-blur-sm">
+            <Calculator size={13} className="text-slate-900" />
             <span>Cotizador Inteligente Interactivo</span>
           </div>
 
           <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-tight">
             Calcula tu Inversión en{' '}
-            <span className="text-emerald-600">{service.shortName}</span>
+            <span className="text-slate-950 underline decoration-[#AFF94F] decoration-4 underline-offset-4">{service.shortName}</span>
           </h2>
 
           <p className="text-slate-500 text-xs sm:text-sm mt-2 max-w-md mx-auto leading-relaxed">
@@ -204,13 +204,13 @@ export default function ServiceCostCalculator({ service }) {
                     <div 
                       className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-mono font-bold transition-all duration-300 ${
                         isCurrent 
-                          ? 'bg-slate-950 text-white ring-4 ring-slate-950/10 scale-105' 
+                          ? 'bg-slate-950 text-white ring-4 ring-[#AFF94F]/40 scale-105 shadow-sm' 
                           : isPassed 
-                            ? 'bg-emerald-600 text-white' 
+                            ? 'bg-[#AFF94F] text-slate-950 font-black shadow-2xs' 
                             : 'bg-slate-100 text-slate-400 border border-slate-200'
                       }`}
                     >
-                      {isPassed ? <CheckCircle2 size={14} /> : `0${item.s}`}
+                      {isPassed ? <CheckCircle2 size={14} className="text-slate-950" /> : `0${item.s}`}
                     </div>
                     <span className={`hidden sm:inline text-xs font-heading font-bold ${isCurrent ? 'text-slate-900' : 'text-slate-400'}`}>
                       {item.label}
@@ -223,7 +223,7 @@ export default function ServiceCostCalculator({ service }) {
             {/* Continuous Progress Track */}
             <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
               <motion.div 
-                className="h-full bg-emerald-600 rounded-full"
+                className="h-full bg-[#AFF94F] shadow-[0_0_8px_#AFF94F] rounded-full"
                 initial={false}
                 animate={{ width: `${(step / 4) * 100}%` }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
@@ -243,7 +243,7 @@ export default function ServiceCostCalculator({ service }) {
               {/* Folio Identifier & Step Subhead */}
               <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-100 text-xs">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="w-2 h-2 rounded-full bg-[#AFF94F] shadow-[0_0_8px_#AFF94F] animate-pulse" />
                   <span className="font-heading font-black text-slate-800">
                     Paso {step} de 4
                   </span>
@@ -286,11 +286,11 @@ export default function ServiceCostCalculator({ service }) {
                               onClick={() => setSelectedVehicle(vt.id)}
                               className={`p-3 rounded-2xl border text-left flex items-start gap-3 transition-all cursor-pointer ${
                                 isSelected
-                                  ? 'bg-slate-950 text-white border-slate-950 shadow-md ring-2 ring-emerald-500/30'
+                                  ? 'bg-slate-950 text-white border-slate-950 shadow-md ring-2 ring-[#AFF94F]/40'
                                   : 'bg-slate-50/70 text-slate-700 border-slate-200/90 hover:bg-slate-100/70 hover:border-slate-300'
                               }`}
                             >
-                              <div className={`p-2 rounded-xl shrink-0 mt-0.5 ${isSelected ? 'bg-white/10 text-emerald-400' : 'bg-white border border-slate-200 text-slate-600'}`}>
+                              <div className={`p-2 rounded-xl shrink-0 mt-0.5 ${isSelected ? 'bg-white/10 text-[#AFF94F]' : 'bg-white border border-slate-200 text-slate-600'}`}>
                                 <IconComp size={16} />
                               </div>
                               <div className="flex-1 min-w-0">
@@ -326,12 +326,12 @@ export default function ServiceCostCalculator({ service }) {
                               onClick={() => setSelectedState(st.id)}
                               className={`py-2.5 px-2 rounded-2xl border text-center transition-all cursor-pointer ${
                                 isSelected
-                                  ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
+                                  ? 'bg-[#AFF94F] text-slate-950 font-black border-[#AFF94F] shadow-sm'
                                   : 'bg-slate-50/80 text-slate-700 border-slate-200/90 hover:bg-slate-100'
                               }`}
                             >
                               <div className="text-xs font-heading font-bold">{st.label}</div>
-                              <div className={`text-[9px] font-mono mt-0.5 ${isSelected ? 'text-emerald-100' : 'text-slate-400'}`}>
+                              <div className={`text-[9px] font-mono mt-0.5 ${isSelected ? 'text-slate-950 font-extrabold' : 'text-slate-400'}`}>
                                 {st.badge}
                               </div>
                             </button>
@@ -398,17 +398,17 @@ export default function ServiceCostCalculator({ service }) {
                               onClick={() => setSelectedSpeed(spd.id)}
                               className={`p-3 rounded-2xl border text-left transition-all cursor-pointer ${
                                 isSelected
-                                  ? 'bg-slate-950 text-white border-slate-950 shadow-md ring-2 ring-emerald-500/30'
+                                  ? 'bg-slate-950 text-white border-slate-950 shadow-md ring-2 ring-[#AFF94F]/40'
                                   : 'bg-slate-50/70 text-slate-700 border-slate-200/90 hover:bg-slate-100'
                               }`}
                             >
                               <div className="flex items-center justify-between">
                                 <span className="text-xs font-bold font-heading">{spd.label}</span>
-                                <span className={`text-[9px] font-mono px-2 py-0.5 rounded-full ${isSelected ? 'bg-emerald-500/20 text-emerald-300' : 'bg-slate-200 text-slate-600'}`}>
+                                <span className={`text-[9px] font-mono px-2 py-0.5 rounded-full font-bold ${isSelected ? 'bg-[#AFF94F]/20 text-[#AFF94F]' : 'bg-slate-200 text-slate-600'}`}>
                                   {spd.badge}
                                 </span>
                               </div>
-                              <div className={`text-[11px] font-mono mt-1 ${isSelected ? 'text-emerald-400' : 'text-emerald-700'}`}>
+                              <div className={`text-[11px] font-mono mt-1 ${isSelected ? 'text-[#AFF94F]' : 'text-slate-950 font-bold'}`}>
                                 {spd.time}
                               </div>
                             </button>
@@ -436,13 +436,13 @@ export default function ServiceCostCalculator({ service }) {
                                   : 'bg-slate-50/70 text-slate-700 border-slate-200/90 hover:bg-slate-100'
                               }`}
                             >
-                              <div className={`p-2 rounded-xl shrink-0 mt-0.5 ${isSelected ? 'bg-white/10 text-emerald-400' : 'bg-white border border-slate-200 text-slate-600'}`}>
+                              <div className={`p-2 rounded-xl shrink-0 mt-0.5 ${isSelected ? 'bg-white/10 text-[#AFF94F]' : 'bg-white border border-slate-200 text-slate-600'}`}>
                                 <MapPin size={16} />
                               </div>
                               <div className="flex-1">
                                 <div className="flex items-center justify-between">
                                   <span className="text-xs font-bold font-heading">{dm.label}</span>
-                                  <span className="text-[11px] font-mono font-bold text-emerald-400">
+                                  <span className="text-[11px] font-mono font-bold text-[#AFF94F]">
                                     {dm.fee === 0 ? 'Sin Costo' : `+$${dm.fee} MXN`}
                                   </span>
                                 </div>
@@ -465,7 +465,7 @@ export default function ServiceCostCalculator({ service }) {
                         <label 
                           onClick={() => setNeedsBaja(!needsBaja)}
                           className={`flex items-center justify-between p-3 rounded-2xl border cursor-pointer transition-all ${
-                            needsBaja ? 'bg-emerald-50/50 border-emerald-300' : 'bg-slate-50/70 border-slate-200/90 hover:bg-slate-100'
+                            needsBaja ? 'bg-[#AFF94F]/15 border-[#AFF94F]/60' : 'bg-slate-50/70 border-slate-200/90 hover:bg-slate-100'
                           }`}
                         >
                           <div className="flex items-center gap-2.5 text-xs text-slate-800 font-medium">
@@ -473,17 +473,17 @@ export default function ServiceCostCalculator({ service }) {
                               type="checkbox" 
                               checked={needsBaja} 
                               onChange={() => {}} 
-                              className="accent-emerald-600 rounded cursor-pointer"
+                              className="accent-[#AFF94F] rounded cursor-pointer"
                             />
                             <span>Gestión de Baja Vehicular Foránea previa</span>
                           </div>
-                          <span className="text-xs font-mono font-bold text-emerald-700">+$550 MXN</span>
+                          <span className="text-xs font-mono font-bold text-slate-950">+$550 MXN</span>
                         </label>
 
                         <label 
                           onClick={() => setNeedsInvoice(!needsInvoice)}
                           className={`flex items-center justify-between p-3 rounded-2xl border cursor-pointer transition-all ${
-                            needsInvoice ? 'bg-emerald-50/50 border-emerald-300' : 'bg-slate-50/70 border-slate-200/90 hover:bg-slate-100'
+                            needsInvoice ? 'bg-[#AFF94F]/15 border-[#AFF94F]/60' : 'bg-slate-50/70 border-slate-200/90 hover:bg-slate-100'
                           }`}
                         >
                           <div className="flex items-center gap-2.5 text-xs text-slate-800 font-medium">
@@ -491,7 +491,7 @@ export default function ServiceCostCalculator({ service }) {
                               type="checkbox" 
                               checked={needsInvoice} 
                               onChange={() => {}} 
-                              className="accent-emerald-600 rounded cursor-pointer"
+                              className="accent-[#AFF94F] rounded cursor-pointer"
                             />
                             <span>Requiero Factura Fiscal SAT CFDI 4.0</span>
                           </div>
@@ -591,8 +591,8 @@ export default function ServiceCostCalculator({ service }) {
                       </div>
                     </div>
 
-                    <div className="p-3.5 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 flex items-start gap-2.5 text-xs text-emerald-900">
-                      <ShieldCheck size={16} className="text-emerald-600 shrink-0 mt-0.5" />
+                    <div className="p-3.5 rounded-2xl bg-[#AFF94F]/15 border border-[#AFF94F]/50 flex items-start gap-2.5 text-xs text-slate-950 font-medium">
+                      <ShieldCheck size={16} className="text-slate-950 shrink-0 mt-0.5" />
                       <span>Tus datos están protegidos bajo estricto secreto notarial. Sólo los usamos para foliar tu cotización y verificar citas.</span>
                     </div>
                   </motion.div>
@@ -610,15 +610,15 @@ export default function ServiceCostCalculator({ service }) {
                     transition={{ duration: 0.25 }}
                     className="space-y-4"
                   >
-                    <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-900 flex items-center justify-between">
+                    <div className="p-4 rounded-2xl bg-[#AFF94F]/20 border border-[#AFF94F]/70 text-slate-950 flex items-center justify-between">
                       <div className="flex items-center gap-2.5">
-                        <CheckCircle2 size={18} className="text-emerald-600" />
+                        <CheckCircle2 size={18} className="text-slate-950" />
                         <div>
-                          <div className="text-xs font-heading font-bold">¡Cotización Oficial Lista!</div>
-                          <div className="text-[11px] text-emerald-700">Folio reservado durante 24 horas</div>
+                          <div className="text-xs font-heading font-black">¡Cotización Oficial Lista!</div>
+                          <div className="text-[11px] text-slate-700">Folio reservado durante 24 horas</div>
                         </div>
                       </div>
-                      <span className="font-mono font-bold text-xs bg-white px-2.5 py-1 rounded-md border border-emerald-200">
+                      <span className="font-mono font-black text-xs bg-white px-2.5 py-1 rounded-md border border-[#AFF94F]">
                         #{folio}
                       </span>
                     </div>
@@ -639,7 +639,7 @@ export default function ServiceCostCalculator({ service }) {
                       </div>
                       <div className="flex justify-between py-1 border-b border-slate-200/60">
                         <span className="text-slate-500">Jurisdicción:</span>
-                        <span className="font-semibold text-emerald-700 uppercase">{selectedState}</span>
+                        <span className="font-bold text-slate-950 uppercase">{selectedState}</span>
                       </div>
                       <div className="flex justify-between py-1">
                         <span className="text-slate-500">Entrega y Plazo:</span>
@@ -696,7 +696,7 @@ export default function ServiceCostCalculator({ service }) {
           {/* RIGHT COLUMN: Live Itemized Cost Breakdown & WhatsApp CTA */}
           <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 text-white p-6 sm:p-8 flex flex-col justify-between">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono font-bold uppercase tracking-wider mb-4">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#AFF94F]/20 border border-[#AFF94F]/40 text-[#AFF94F] text-[10px] font-mono font-bold uppercase tracking-wider mb-4">
                 <Sparkles size={11} />
                 <span>Desglose en Tiempo Real</span>
               </div>
@@ -744,7 +744,7 @@ export default function ServiceCostCalculator({ service }) {
 
                 <div className="flex items-center justify-between text-slate-300 pt-1">
                   <span>Plazo de Entrega Garantizado:</span>
-                  <span className="font-mono font-semibold text-emerald-400 flex items-center gap-1">
+                  <span className="font-mono font-bold text-[#AFF94F] flex items-center gap-1">
                     <Clock size={12} />
                     {speedObj.time}
                   </span>
@@ -755,7 +755,7 @@ export default function ServiceCostCalculator({ service }) {
               <div className="py-4">
                 <div className="text-[11px] uppercase tracking-wider text-slate-400 font-mono flex items-center justify-between">
                   <span>Inversión Total Estimada:</span>
-                  <span className="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                  <span className="text-[10px] text-slate-950 font-black bg-[#AFF94F] px-2 py-0.5 rounded shadow-2xs">
                     Garantía SAT
                   </span>
                 </div>
@@ -763,7 +763,7 @@ export default function ServiceCostCalculator({ service }) {
                   ${grandTotal.toLocaleString('es-MX')}{' '}
                   <span className="text-sm font-normal text-slate-400">MXN</span>
                 </div>
-                <div className="text-[11px] text-emerald-400 font-medium mt-1">
+                <div className="text-[11px] text-[#AFF94F] font-bold mt-1">
                   {basePricing.savings}
                 </div>
               </div>
@@ -774,7 +774,7 @@ export default function ServiceCostCalculator({ service }) {
               <button
                 type="button"
                 onClick={handleWhatsAppBooking}
-                className="w-full inline-flex items-center justify-center gap-2.5 py-3.5 px-5 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-heading font-black text-xs sm:text-sm tracking-wide shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:scale-102 active:scale-98 cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-2.5 py-3.5 px-5 rounded-2xl bg-[#AFF94F] hover:bg-[#9ee83e] text-slate-950 font-heading font-black text-xs sm:text-sm tracking-wide shadow-lg shadow-[#AFF94F]/25 transition-all duration-300 hover:scale-102 active:scale-98 cursor-pointer"
               >
                 <MessageSquare size={16} />
                 <span>{step === 4 ? 'Confirmar y Enviar por WhatsApp' : 'Cotizar Directo por WhatsApp'}</span>
