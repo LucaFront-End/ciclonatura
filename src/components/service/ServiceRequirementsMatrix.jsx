@@ -227,7 +227,7 @@ export default function ServiceRequirementsMatrix({ service }) {
             </motion.div>
           </AnimatePresence>
 
-          {/* Anti-fraud Notary Advice Alert */}
+          {/* Anti-fraud Security Advice Alert */}
           <div className="mt-8 p-4 rounded-2xl bg-amber-50/70 border border-amber-200/90 flex items-start gap-3 text-xs text-amber-900">
             <AlertCircle size={16} className="text-amber-600 shrink-0 mt-0.5" />
             <div className="leading-relaxed">

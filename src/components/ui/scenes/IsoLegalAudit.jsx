@@ -248,7 +248,7 @@ export default function IsoLegalAudit() {
           fill="#64748B"
         />
 
-        {/* Golden Embossed Mexican Notary Seal */}
+        {/* Golden Embossed Official Security Seal */}
         <circle
           cx={iso.p(docX + 0.3, docY + 1.05, docZ + 0.09)[0]}
           cy={iso.p(docX + 0.3, docY + 1.05, docZ + 0.09)[1]}

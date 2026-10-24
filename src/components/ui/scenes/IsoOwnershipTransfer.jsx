@@ -215,11 +215,11 @@ export default function IsoOwnershipTransfer() {
     ),
   });
 
-  // --- 5. Automatic Notarial Embossing Stamp (Right Side) ---
+  // --- 5. Automatic Official Embossing Stamp (Right Side) ---
   elements.push({
     k: 15,
     el: (
-      <g key="notarial-stamp">
+      <g key="official-stamp">
         {/* Stamp Body Column */}
         <IsoBlock
           iso={iso}

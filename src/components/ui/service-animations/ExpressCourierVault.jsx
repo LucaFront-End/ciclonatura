@@ -13,7 +13,7 @@ export default function ExpressCourierVault() {
         {/* Soft Drop Shadow */}
         <div className="absolute -bottom-3 inset-x-6 h-4 bg-slate-900/10 rounded-full blur-md" />
 
-        {/* Sealed Notarial Delivery Case */}
+        {/* Sealed Official Delivery Case */}
         <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 p-[2.5px] shadow-xl border border-lime-500/40 overflow-hidden">
           
           <div className="relative w-full h-full rounded-[13px] bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 p-3 sm:p-3.5 flex flex-col justify-between overflow-hidden">

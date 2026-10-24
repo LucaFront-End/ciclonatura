@@ -372,7 +372,7 @@ export default function ServiceCostCalculator({ service }) {
                 )}
 
                 {/* -------------------------------------------------- */}
-                {/* STEP 2: SPEED, DELIVERY & NOTARY EXTRAS             */}
+                {/* STEP 2: SPEED, DELIVERY & OFFICIAL EXTRAS           */}
                 {/* -------------------------------------------------- */}
                 {step === 2 && (
                   <motion.div

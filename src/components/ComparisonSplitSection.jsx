@@ -252,18 +252,18 @@ export default function ComparisonSplitSection() {
       >
         
         {/* Minimalist Clean Header */}
-        <div className="shrink-0 text-center max-w-2xl mx-auto">
+        <div className="shrink-0 text-center max-w-4xl mx-auto">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold font-heading mb-2">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span>Comparativa Oficial • Trámites Vehiculares</span>
           </div>
 
-          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-tight">
+          <h2 className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-black text-slate-900 tracking-tight leading-tight sm:whitespace-nowrap">
             El riesgo informal <span className="text-slate-400 font-normal">vs.</span>{" "}
             <span className="text-emerald-600">La certeza Ciclonatura</span>
           </h2>
 
-          <p className="text-slate-500 text-xs sm:text-sm mt-1 max-w-lg mx-auto">
+          <p className="text-slate-500 text-xs sm:text-sm mt-1 max-w-xl mx-auto">
             Descubre por qué miles de conductores evitan coyotes y eligen garantía legal por escrito.
           </p>
 

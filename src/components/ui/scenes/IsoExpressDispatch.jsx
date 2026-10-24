@@ -94,7 +94,7 @@ export default function IsoExpressDispatch() {
     });
   });
 
-  // --- 3. Heavy-Duty Sealed Notarial Briefcase (Moving on Conveyor) ---
+  // --- 3. Heavy-Duty Sealed Security Briefcase (Moving on Conveyor) ---
   const bx = caseSlide;
   elements.push({
     k: 5,

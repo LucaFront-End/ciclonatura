@@ -1,8 +1,8 @@
 import morelosPlateImg from '@/assets/services/morelos_plate_official.jpg';
 import tarjetaChipImg from '@/assets/services/tarjeta_circulacion_chip.jpg';
-import contratoNotarialImg from '@/assets/services/contrato_notarial_endoso.jpg';
+import contratoLegalImg from '@/assets/services/contrato_legal_endoso.jpg';
 import tesoreriaReceiptImg from '@/assets/services/tesoreria_linea_captura.jpg';
-import valijaSeguraImg from '@/assets/services/valija_seguridad_notarial.jpg';
+import valijaSeguraImg from '@/assets/services/valija_seguridad_oficial.jpg';
 import flotillaPatioImg from '@/assets/services/flotilla_corporativa_patio.jpg';
 import repuveScannerImg from '@/assets/services/inspeccion_repuve_oficial.jpg';
 import troqueladoSedenaImg from '@/assets/services/troquelado_placas_sedena.jpg';
@@ -38,7 +38,7 @@ export const SERVICES_DATA = {
       { src: valijaSeguraImg, alt: "Valija de seguridad foliada para entrega en CDMX" },
       { src: repuveScannerImg, alt: "Arco de verificación vehicular satelital REPUVE" },
       { src: tesoreriaReceiptImg, alt: "Línea de captura bancaria con exención oficial de tenencia" },
-      { src: contratoNotarialImg, alt: "Cotejo documental de factura y expediente vehicular" },
+      { src: contratoLegalImg, alt: "Cotejo documental de factura y expediente vehicular" },
       { src: flotillaPatioImg, alt: "Patio de entrega y verificación en Calzada de Tlalpan" },
     ],
 
@@ -148,7 +148,7 @@ export const SERVICES_DATA = {
         category: 'Persona Moral / Empresa',
         items: [
           'Acta constitutiva con inscripción en el Registro Público',
-          'Poder notarial del representante legal e INE vigente',
+          'Poder legal del representante o apoderado e INE vigente',
           'Constancia de Situación Fiscal (CSF) emitida por el SAT no mayor a 30 días',
           'Factura electrónica XML y PDF a nombre de la empresa'
         ]
@@ -183,7 +183,7 @@ export const SERVICES_DATA = {
     heroTitle: 'Cambio de\nPropietario Legal.',
     heroSubtitle: 'Blindaje jurídico total entre comprador y vendedor. Nueva tarjeta de circulación con chip y registro limpio en REPUVE.',
     heroImages: [
-      { src: contratoNotarialImg, alt: "Contrato formal de compraventa y endoso de factura con llaves" },
+      { src: contratoLegalImg, alt: "Contrato formal de compraventa y endoso de factura con llaves" },
       { src: tarjetaChipImg, alt: "Tarjeta de circulación emitida a nombre del nuevo titular con chip RFID" },
       { src: repuveScannerImg, alt: "Auditoría en arco carretero REPUVE y cotejo federal" },
       { src: tesoreriaReceiptImg, alt: "Línea de captura bancaria con liquidación de adeudos y multas anteriores" },
@@ -243,7 +243,7 @@ export const SERVICES_DATA = {
           'Revisión en el Buró Vehicular Nacional y Registro de Garantías',
           'Contrato de compraventa redactado por abogados mercantiles'
         ],
-        imageUrl: contratoNotarialImg,
+        imageUrl: contratoLegalImg,
         imageCaption: 'Revisión jurídica minuciosa de cada endoso y contrato de compraventa'
       },
       {
@@ -336,7 +336,7 @@ export const SERVICES_DATA = {
       { src: repuveScannerImg, alt: "Inspección y certificación digital en arco de control vehicular" },
       { src: tarjetaChipImg, alt: "Reposición de tarjeta de circulación con chip criptográfico" },
       { src: tesoreriaReceiptImg, alt: "Constancia de baja vehicular sellada ante tesorería" },
-      { src: contratoNotarialImg, alt: "Acta de hechos ministerial por robo o extravío" },
+      { src: contratoLegalImg, alt: "Acta de hechos ministerial por robo o extravío" },
       { src: flotillaPatioImg, alt: "Logística y entrega express en CDMX y Edomex" },
     ],
 
@@ -479,7 +479,7 @@ export const SERVICES_DATA = {
     heroImages: [
       { src: tesoreriaReceiptImg, alt: "Líneas de captura bancarias oficiales con sello de tesorería" },
       { src: repuveScannerImg, alt: "Auditoría vehicular y verificación de no adeudos" },
-      { src: contratoNotarialImg, alt: "Dictamen fiscal vehicular y resolución de prescripción" },
+      { src: contratoLegalImg, alt: "Dictamen fiscal vehicular y resolución de prescripción" },
       { src: tarjetaChipImg, alt: "Liberación de tarjeta de circulación en padrón estatal" },
       { src: valijaSeguraImg, alt: "Entrega de comprobantes fiscales sellados en valija segura" },
       { src: morelosPlateImg, alt: "Placas regularizadas al 100% ante finanzas" },
@@ -554,7 +554,7 @@ export const SERVICES_DATA = {
           'Eliminación de multas generadas por autos con placas clonadas',
           'Acreditación de verificación vehicular extemporánea justificada'
         ],
-        imageUrl: contratoNotarialImg,
+        imageUrl: contratoLegalImg,
         imageCaption: 'Dictamen legal de prescripción y amnistía fiscal'
       },
       {
@@ -629,7 +629,7 @@ export const SERVICES_DATA = {
       { src: troqueladoSedenaImg, alt: "Troquelado de láminas en bloque para parques vehiculares" },
       { src: tarjetaChipImg, alt: "Tarjetas de circulación corporativas con chip inteligente" },
       { src: repuveScannerImg, alt: "Arco de control y auditoría masiva de flotas" },
-      { src: contratoNotarialImg, alt: "Convenio B2B y contrato de prestación corporativa" },
+      { src: contratoLegalImg, alt: "Convenio B2B y contrato de prestación corporativa" },
       { src: morelosPlateImg, alt: "Placas oficiales Morelos y CDMX para flotillas comerciales" },
     ],
 
@@ -727,7 +727,7 @@ export const SERVICES_DATA = {
         category: 'Para Apertura de Cuenta Corporativa',
         items: [
           'Constancia de Situación Fiscal (CSF) de la Persona Moral',
-          'Acta constitutiva y poder notarial del apoderado legal',
+          'Acta constitutiva y poder legal del apoderado',
           'Comprobante de domicilio fiscal de la empresa',
           'Matriz vehicular en formato digital con números de serie y placas'
         ]

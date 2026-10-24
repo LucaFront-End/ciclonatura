@@ -433,7 +433,7 @@ export function CinematicFooter() {
               © {new Date().getFullYear()} CICLONATURA · Trámites 100% Legales y Verificables
             </div>
 
-            {/* "Certificación Notarial" Badge */}
+            {/* "Certificación Oficial" Badge */}
             <div className="footer-glass-pill px-5 py-2.5 rounded-full flex items-center gap-2 order-1 md:order-2 cursor-default border-white/10">
               <ShieldCheck size={14} className="text-emerald-400" />
               <span className="text-slate-400 text-[10px] sm:text-xs font-bold uppercase tracking-wider font-heading">

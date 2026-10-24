@@ -23,7 +23,7 @@ import {
 import Navbar from './Navbar';
 import CinematicFooter from './ui/motion-footer';
 import headquartersImg from '../assets/ciclonatura_headquarters.jpg';
-import valijaImg from '../assets/services/valija_seguridad_notarial.jpg';
+import valijaImg from '../assets/services/valija_seguridad_oficial.jpg';
 
 // Safe confetti trigger
 const triggerConfetti = async () => {
@@ -227,7 +227,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
               </div>
             </a>
 
-            {/* 4. Correo Notarial y CFDI */}
+            {/* 4. Correo Oficial y CFDI */}
             <a
               href="mailto:contacto@ciclonatura.com.mx"
               className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#AFF94F] transition-all duration-300 group cursor-pointer flex flex-col justify-between"

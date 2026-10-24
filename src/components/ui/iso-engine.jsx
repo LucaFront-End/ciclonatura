@@ -219,7 +219,7 @@ export function IsoDefs() {
         <stop offset="100%" stopColor="#A855F7" stopOpacity="0.9" />
       </linearGradient>
 
-      {/* Official Gold Notary Seal */}
+      {/* Official Gold Security Seal */}
       <linearGradient id="iso-gold" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#FDE68A" />
         <stop offset="30%" stopColor="#D97706" />

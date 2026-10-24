@@ -269,7 +269,7 @@ export default function IsoSecurityVault() {
     ),
   });
 
-  // --- 3. Notarized Contract & SAT CFDI Documents (Foreground Right) ---
+  // --- 3. Legal Contract & SAT CFDI Documents (Foreground Right) ---
   const docX = 0.9;
   const docY = 0.6;
   const docZ = 0.32;
@@ -277,7 +277,7 @@ export default function IsoSecurityVault() {
   elements.push({
     k: docX + docY,
     el: (
-      <g key="notary-sat-docs">
+      <g key="legal-sat-docs">
         {/* Document Shadow */}
         <polygon
           points={topFace(iso, docX - 0.75, docY - 0.9, docX + 0.75, docY + 0.9, 0.3)}
@@ -285,7 +285,7 @@ export default function IsoSecurityVault() {
           filter="url(#iso-shadow)"
         />
 
-        {/* Notarized Legal Contract Plaque */}
+        {/* Legal Contract Plaque */}
         <IsoBlock
           iso={iso}
           x={docX - 0.65}
@@ -302,7 +302,7 @@ export default function IsoSecurityVault() {
           sw={0.8}
         />
 
-        {/* Emerald Notary Header Strip */}
+        {/* Emerald Header Strip */}
         <polygon
           points={topFace(iso, docX - 0.6, docY - 0.75, docX + 0.6, docY - 0.55, docZ + 0.075)}
           fill="#065F46"
@@ -314,7 +314,7 @@ export default function IsoSecurityVault() {
           fill="#0F172A"
         />
 
-        {/* Golden Notary Wax Ribbon Seal */}
+        {/* Golden Security Wax Ribbon Seal */}
         <circle
           cx={iso.p(docX + 0.35, docY + 0.5, docZ + 0.09)[0]}
           cy={iso.p(docX + 0.35, docY + 0.5, docZ + 0.09)[1]}
