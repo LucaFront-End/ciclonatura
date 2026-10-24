@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  ShieldCheck, 
   MapPin, 
-  Phone, 
-  MessageSquare, 
-  ArrowRight, 
-  Sparkles, 
   Menu, 
   X,
   ChevronDown,
-  Radio
+  ArrowRight
 } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 
@@ -65,25 +60,6 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
     } else {
       window.history.pushState(null, '', '/nosotros');
       window.dispatchEvent(new PopStateEvent('popstate'));
-    }
-  };
-
-  const handleFlotillasClick = (e) => {
-    e.preventDefault();
-    setMobileMenuOpen(false);
-    const el = document.getElementById('flotillas');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      if (onNavigateHome) {
-        onNavigateHome();
-        setTimeout(() => {
-          const target = document.getElementById('flotillas');
-          if (target) target.scrollIntoView({ behavior: 'smooth' });
-        }, 150);
-      } else {
-        window.location.href = '/#flotillas';
-      }
     }
   };
 
@@ -176,22 +152,6 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
             <span>Ciudades</span>
           </a>
 
-          <a 
-            href="/#flotillas" 
-            onClick={handleFlotillasClick}
-            className="text-slate-700 hover:text-slate-950 font-heading font-medium text-sm px-3.5 py-1.5 rounded-full transition-colors cursor-pointer"
-          >
-            Flotillas B2B
-          </a>
-
-          <a 
-            href="/#seguridad" 
-            className="text-slate-700 hover:text-slate-950 font-heading font-medium text-sm px-3.5 py-1.5 rounded-full flex items-center gap-1.5 transition-colors"
-          >
-            <ShieldCheck size={14} className="text-slate-900" />
-            <span>Cero Fraudes</span>
-          </a>
-
           <button 
             type="button"
             onClick={handleNosotrosClick}
@@ -199,14 +159,6 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
           >
             <span>Nosotros</span>
           </button>
-
-          <a 
-            href="/#rastreo" 
-            className="text-slate-700 hover:text-slate-950 font-heading font-medium text-sm px-3.5 py-1.5 rounded-full flex items-center gap-1.5 transition-colors"
-          >
-            <Radio size={14} className="text-slate-950" />
-            <span>Rastreo en Vivo</span>
-          </a>
 
           <button 
             type="button"
@@ -277,13 +229,6 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
             >
               Ciudades (CDMX, Edomex, Morelos)
             </a>
-            <a 
-              href="/#flotillas" 
-              onClick={handleFlotillasClick}
-              className="text-slate-800 font-semibold text-base py-1"
-            >
-              Flotillas B2B
-            </a>
             <button 
               type="button"
               onClick={handleNosotrosClick}
@@ -291,21 +236,6 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
             >
               Nosotros (Quiénes Somos)
             </button>
-            <a 
-              href="/#seguridad" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-slate-800 font-semibold text-base py-1"
-            >
-              Protección Anti-Fraude
-            </a>
-            <a 
-              href="/#rastreo" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-slate-800 font-semibold text-base py-1 flex items-center justify-between"
-            >
-              <span>Mesa de Rastreo en Vivo</span>
-              <span className="w-2 h-2 rounded-full bg-[#AFF94F] shadow-[0_0_6px_#AFF94F] animate-pulse" />
-            </a>
             <button 
               type="button"
               onClick={handleContactClick}
