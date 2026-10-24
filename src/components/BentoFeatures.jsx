@@ -67,22 +67,22 @@ export default function BentoFeatures({ onSelectService }) {
               <div>
                 <span className="inline-flex items-center gap-1.5 text-[10px] font-bold tracking-wider uppercase text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full font-heading mb-2.5 shadow-2xs">
                   <BadgeCheck size={12} className="text-emerald-600" />
-                  Servicio Estrella · Ahorro en Tenencia
+                  Alta Oficial · CDMX · Edomex · Morelos
                 </span>
 
                 <h3 className="font-heading text-xl sm:text-2xl font-black text-slate-900 leading-snug tracking-tight">
-                  Emplacamiento en Morelos
+                  Emplacamiento CDMX, Edomex & Morelos
                 </h3>
                 <p className="text-emerald-700 text-xs font-heading font-bold mt-0.5">
-                  Ahorro legal del 100% en tenencia anual de por vida
+                  Alta y canje oficial según tu conveniencia fiscal y de circulación
                 </p>
 
                 <p className="text-slate-600 text-xs sm:text-[13px] mt-2 leading-relaxed">
-                  Evita pagar decenas de miles de pesos cada año. Tramitamos tus láminas oficiales troqueladas bajo norma SEDENA, tarjeta con chip RFID inteligente y entrega a domicilio con factura deducible.
+                  Emplacamos tu auto en la entidad óptima para ti: exención de tenencia en Morelos para autos de alto valor, placas oficiales CDMX con tarjeta inteligente chip, o reemplacamiento del Estado de México. Láminas troqueladas bajo norma SEDENA y entrega a domicilio con factura SAT.
                 </p>
 
                 <div className="flex flex-wrap gap-1.5 mt-3.5">
-                  {["Cero Tenencia", "Troquelado SEDENA", "Entrega a Domicilio"].map((tag, i) => (
+                  {["Placas CDMX", "Placas Morelos 0% Tenencia", "Placas Edomex", "Entrega a Domicilio"].map((tag, i) => (
                     <span key={i} className="inline-flex items-center gap-1 text-[10px] font-semibold text-slate-700 bg-slate-50 border border-slate-200 px-2 py-0.5 rounded-md">
                       <CheckCircle2 size={11} className="text-emerald-600" />
                       {tag}

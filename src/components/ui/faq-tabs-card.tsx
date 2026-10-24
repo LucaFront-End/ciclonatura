@@ -29,8 +29,18 @@ export interface FAQTabsCardProps {
 
 const CICLONATURA_FAQS: FaqTab[] = [
   {
-    label: "Legalidad & Morelos",
+    label: "Placas CDMX, Edomex & Morelos",
     faqs: [
+      {
+        question: "¿En qué entidades tramitan placas y trámites vehiculares?",
+        answer:
+          "Tramitamos altas, bajas, reemplacamiento y regularización de placas oficiales en Ciudad de México (CDMX), Estado de México (Edomex) y Morelos. Analizamos el valor de tu auto, tu residencia y tus necesidades operativas para recomendarte la opción fiscal y legalmente más favorable.",
+      },
+      {
+        question: "¿Cómo elijo entre tramitar placas de CDMX, Edomex o Morelos?",
+        answer:
+          "Morelos es la alternativa más elegida para autos nuevos o con valor superior a $250,000 MXN porque exenta legalmente el 100% de tenencia anual de por vida. CDMX es la opción preferida para quienes buscan verificación local ordinaria y tarjeta inteligente chip capitalina. Edomex es indispensable para reemplacamiento y regularización de padrón mexiquense.",
+      },
       {
         question: "¿Es 100% legal circular en CDMX o Edomex con placas de Morelos?",
         answer:
@@ -39,17 +49,12 @@ const CICLONATURA_FAQS: FaqTab[] = [
       {
         question: "¿Cómo compruebo que las placas y engomados no son falsos?",
         answer:
-          "Cada juego de láminas gestionado por Ciclonatura proviene de troquelado oficial de la SEDENA con microtexto de seguridad y código QR verificable ante la Secretaría de Hacienda. Además, realizamos el cotejo en vivo en el portal del REPUVE antes de que firmes el acta de entrega.",
+          "Cada juego de láminas gestionado por Ciclonatura proviene de troquelado oficial de la SEDENA con microtexto de seguridad y código QR verificable ante la Secretaría de Hacienda y tesorería. Además, realizamos el cotejo en vivo en el portal del REPUVE antes de que firmes el acta de entrega.",
       },
       {
         question: "¿Entregan factura fiscal deducible ante el SAT?",
         answer:
           "Sí. Emitimos factura electrónica con CFDI deducible al 100%, desglosando los derechos gubernamentales pagados a tesorería y los honorarios de gestión corporativa. Ideal para personas físicas con actividad empresarial y flotillas corporativas.",
-      },
-      {
-        question: "¿Qué pasa si me detiene un oficial de tránsito en CDMX?",
-        answer:
-          "Mientras tu vehículo cuente con tarjeta de circulación vigente, placas visibles y verificación al corriente, ningún oficial puede retener tu unidad por portar placas foráneas. Tu expediente cuenta con línea de captura de tesorería que acredita su legal procedencia.",
       },
     ],
   },

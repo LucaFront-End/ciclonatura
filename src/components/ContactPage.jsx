@@ -43,7 +43,7 @@ const triggerConfetti = async () => {
 };
 
 const SERVICE_OPTIONS = [
-  'Emplacamiento en Morelos (Cero Tenencia)',
+  'Emplacamiento CDMX, Edomex & Morelos',
   'Cambio de Propietario Digital (SEMOVI / Edomex)',
   'Altas, Bajas & Reposición Urgente',
   'Auditoría de Tenencias & Adeudos Fiscales',
@@ -51,7 +51,7 @@ const SERVICE_OPTIONS = [
   'Consulta General o Cotejo Documental'
 ];
 
-export default function ContactPage({ onNavigateHome, onSelectService }) {
+export default function ContactPage({ onNavigateHome, onSelectService, onNavigateNosotros }) {
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -110,6 +110,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
         onNavigateHome={onNavigateHome} 
         onSelectService={onSelectService} 
         onNavigateContact={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        onNavigateNosotros={onNavigateNosotros}
       />
 
       <main className="flex-1 pt-28 sm:pt-36 pb-20 relative overflow-hidden">

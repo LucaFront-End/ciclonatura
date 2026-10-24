@@ -12,6 +12,8 @@ import LiveTrackingSection from './components/LiveTrackingSection';
 import CinematicFooter from '@/components/ui/motion-footer';
 import ServicePage from './components/ServicePage';
 import ContactPage from './components/ContactPage';
+import NosotrosPage from './components/NosotrosPage';
+import FlotillasSection from './components/FlotillasSection';
 import { SERVICES_DATA } from '@/data/servicesData';
 
 class SectionErrorBoundary extends React.Component {
@@ -33,6 +35,11 @@ export default function App() {
     // Check contact page
     if (path === '/contacto' || path === '/contacto/' || hash === '#contacto') {
       return { page: 'contact' };
+    }
+
+    // Check nosotros page
+    if (path === '/nosotros' || path === '/nosotros/' || hash === '#nosotros') {
+      return { page: 'nosotros' };
     }
 
     // Check path /servicios/:slug
@@ -80,12 +87,31 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const navigateToNosotros = () => {
+    setRoute({ page: 'nosotros' });
+    window.history.pushState(null, '', '/nosotros');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   // Dedicated Contact Page View
   if (route.page === 'contact') {
     return (
       <ContactPage
         onNavigateHome={navigateToHome}
         onSelectService={navigateToService}
+        onNavigateNosotros={navigateToNosotros}
+      />
+    );
+  }
+
+  // Dedicated Nosotros Page View
+  if (route.page === 'nosotros') {
+    return (
+      <NosotrosPage
+        onNavigateHome={navigateToHome}
+        onSelectService={navigateToService}
+        onNavigateContact={navigateToContact}
+        onNavigateNosotros={navigateToNosotros}
       />
     );
   }
@@ -98,6 +124,7 @@ export default function App() {
         onNavigateHome={navigateToHome}
         onSelectService={navigateToService}
         onNavigateContact={navigateToContact}
+        onNavigateNosotros={navigateToNosotros}
       />
     );
   }
@@ -110,6 +137,7 @@ export default function App() {
         onNavigateHome={navigateToHome} 
         onSelectService={navigateToService} 
         onNavigateContact={navigateToContact}
+        onNavigateNosotros={navigateToNosotros}
       />
 
       {/* 3D Model Perspective Tunnel Hero (21st.dev with GLTFs) */}
@@ -125,6 +153,11 @@ export default function App() {
         {/* Scroll-Driven Split-Screen Contrast: El Coyote vs Ciclonatura */}
         <SectionErrorBoundary>
           <ComparisonSplitSection />
+        </SectionErrorBoundary>
+
+        {/* Dedicated B2B Fleet Section for Uber, Constructoras, Corporativos & Arrendadoras */}
+        <SectionErrorBoundary>
+          <FlotillasSection onSelectService={navigateToService} />
         </SectionErrorBoundary>
 
         {/* Real-Time Live Tracking Panel Section */}

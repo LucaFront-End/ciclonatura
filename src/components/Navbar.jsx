@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 
-export default function Navbar({ onNavigateHome, onSelectService, onNavigateContact }) {
+export default function Navbar({ onNavigateHome, onSelectService, onNavigateContact, onNavigateNosotros }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [tramitesDropdown, setTramitesDropdown] = useState(false);
@@ -57,8 +57,38 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
     }
   };
 
+  const handleNosotrosClick = (e) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    if (onNavigateNosotros) {
+      onNavigateNosotros();
+    } else {
+      window.history.pushState(null, '', '/nosotros');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+  };
+
+  const handleFlotillasClick = (e) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    const el = document.getElementById('flotillas');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      if (onNavigateHome) {
+        onNavigateHome();
+        setTimeout(() => {
+          const target = document.getElementById('flotillas');
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+      } else {
+        window.location.href = '/#flotillas';
+      }
+    }
+  };
+
   const serviceNavItems = [
-    { label: 'Emplacamiento en Morelos', slug: 'emplacamiento-morelos', time: '48-72 hrs' },
+    { label: 'Emplacamiento CDMX, Edomex & Morelos', slug: 'emplacamiento-morelos', time: '48-72 hrs' },
     { label: 'Cambio de Propietario', slug: 'cambio-de-propietario', time: 'Cotejo' },
     { label: 'Altas, Bajas & Reposición', slug: 'alta-baja-placas', time: '24-48 hrs' },
     { label: 'Auditoría de Tenencias', slug: 'regularizacion-tenencias', time: 'Tesorería' },
@@ -148,7 +178,8 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
 
           <a 
             href="/#flotillas" 
-            className="text-slate-700 hover:text-slate-950 font-heading font-medium text-sm px-3.5 py-1.5 rounded-full transition-colors"
+            onClick={handleFlotillasClick}
+            className="text-slate-700 hover:text-slate-950 font-heading font-medium text-sm px-3.5 py-1.5 rounded-full transition-colors cursor-pointer"
           >
             Flotillas B2B
           </a>
@@ -160,6 +191,14 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
             <ShieldCheck size={14} className="text-slate-900" />
             <span>Cero Fraudes</span>
           </a>
+
+          <button 
+            type="button"
+            onClick={handleNosotrosClick}
+            className="text-slate-700 hover:text-slate-950 font-heading font-medium text-sm px-3.5 py-1.5 rounded-full flex items-center gap-1.5 transition-colors cursor-pointer"
+          >
+            <span>Nosotros</span>
+          </button>
 
           <a 
             href="/#rastreo" 
@@ -240,11 +279,18 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
             </a>
             <a 
               href="/#flotillas" 
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={handleFlotillasClick}
               className="text-slate-800 font-semibold text-base py-1"
             >
               Flotillas B2B
             </a>
+            <button 
+              type="button"
+              onClick={handleNosotrosClick}
+              className="text-slate-800 font-semibold text-base py-1 text-left cursor-pointer"
+            >
+              Nosotros (Quiénes Somos)
+            </button>
             <a 
               href="/#seguridad" 
               onClick={() => setMobileMenuOpen(false)}

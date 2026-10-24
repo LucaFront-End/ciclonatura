@@ -232,7 +232,7 @@ MagneticButton.displayName = "MagneticButton";
 const MarqueeItem = () => (
   <div className="flex items-center space-x-12 px-6">
     <span>Validez Oficial SEMOVI</span> <span className="text-emerald-400">✦</span>
-    <span>Ahorro en Tenencia Morelos</span> <span className="text-sky-400">✦</span>
+    <span>Placas CDMX, Edomex & Morelos</span> <span className="text-sky-400">✦</span>
     <span>Sin Filas Ni Coyotes</span> <span className="text-emerald-400">✦</span>
     <span>Facturación SAT CFDI 4.0</span> <span className="text-sky-400">✦</span>
     <span>Entrega Directa en Valija Foliada</span> <span className="text-emerald-400">✦</span>
@@ -404,11 +404,12 @@ export function CinematicFooter() {
               {/* Secondary Service Quick Links */}
               <div className="flex flex-wrap justify-center gap-2 sm:gap-3 w-full mt-2 max-w-3xl">
                 {[
-                  { label: "Emplacamiento Morelos", href: "/servicios/emplacamiento-morelos" },
+                  { label: "Placas CDMX, Edomex & Morelos", href: "/servicios/emplacamiento-morelos" },
                   { label: "Cambio de Propietario", href: "/servicios/cambio-de-propietario" },
                   { label: "Altas & Bajas", href: "/servicios/alta-baja-placas" },
                   { label: "Auditoría de Tenencias", href: "/servicios/regularizacion-tenencias" },
-                  { label: "Flotillas B2B", href: "/servicios/flotillas-corporativas" },
+                  { label: "Flotillas B2B", href: "/#flotillas" },
+                  { label: "Nosotros", href: "/nosotros" },
                   { label: "Contacto Directo", href: "/contacto" }
                 ].map((item, idx) => (
                   <MagneticButton 

@@ -9,7 +9,7 @@ import Navbar from './Navbar';
 import { SERVICES_DATA } from '@/data/servicesData';
 import { ArrowRight } from 'lucide-react';
 
-export default function ServicePage({ serviceSlug, onNavigateHome, onSelectService, onNavigateContact }) {
+export default function ServicePage({ serviceSlug, onNavigateHome, onSelectService, onNavigateContact, onNavigateNosotros }) {
   const service = SERVICES_DATA[serviceSlug] || SERVICES_DATA['emplacamiento-morelos'];
 
   // Scroll to top whenever service changes
@@ -34,6 +34,7 @@ export default function ServicePage({ serviceSlug, onNavigateHome, onSelectServi
         onNavigateHome={onNavigateHome} 
         onSelectService={onSelectService} 
         onNavigateContact={onNavigateContact} 
+        onNavigateNosotros={onNavigateNosotros}
       />
 
       <main className="flex-1 relative z-10 bg-slate-50 shadow-2xl border-b border-slate-200/80">
