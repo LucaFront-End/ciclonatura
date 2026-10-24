@@ -154,8 +154,8 @@ export function SingleWorldZoomLimit() {
 export function FlightRoute({
   from,
   to,
-  color = "#AFF94F",
-  width = 2,
+  color = "#84cc16",
+  width = 2.8,
   lineStyle = "solid",
   showAirports = true,
 }: {
@@ -167,29 +167,35 @@ export function FlightRoute({
   showAirports?: boolean;
 }) {
   const route = getRouteCurve(from, to);
-  const strokeDash = lineStyle === "dash" ? "4,4" : undefined;
+  const strokeDash = lineStyle === "dash" ? "5,4" : undefined;
 
   return (
     <g className="transition-all duration-300">
-      {/* Route Path */}
+      {/* Background shadow glow line */}
       <path
         d={route.path}
         fill="none"
-        stroke={color}
+        stroke="#AFF94F"
+        strokeWidth={width + 3}
+        strokeLinecap="round"
+        opacity={0.65}
+      />
+      {/* Main Route Path */}
+      <path
+        d={route.path}
+        fill="none"
+        stroke={color === "#AFF94F" ? "#0f172a" : color}
         strokeWidth={width}
         strokeDasharray={strokeDash}
         strokeLinecap="round"
-        style={{
-          filter: color === "#AFF94F" ? "drop-shadow(0 0 6px rgba(175, 249, 79, 0.7))" : undefined,
-        }}
       />
 
       {showAirports && (
         <>
           {/* Origin Hub */}
-          <circle cx={route.p1[0]} cy={route.p1[1]} r={3.5} fill="#ffffff" stroke={color} strokeWidth={1.5} />
+          <circle cx={route.p1[0]} cy={route.p1[1]} r={5} fill="#ffffff" stroke="#0f172a" strokeWidth={2} />
           {/* Destination Hub */}
-          <circle cx={route.p2[0]} cy={route.p2[1]} r={3.5} fill={color} stroke="#ffffff" strokeWidth={1.5} />
+          <circle cx={route.p2[0]} cy={route.p2[1]} r={5} fill="#AFF94F" stroke="#0f172a" strokeWidth={2} />
         </>
       )}
     </g>
@@ -199,8 +205,8 @@ export function FlightRoute({
 export function FlightRoutes({
   routes,
   color = "#94a3b8",
-  width = 1.2,
-  opacity = 0.35,
+  width = 1.6,
+  opacity = 0.65,
 }: {
   routes: Array<{ from: string; to: string }>;
   color?: string;
@@ -218,7 +224,7 @@ export function FlightRoutes({
             fill="none"
             stroke={color}
             strokeWidth={width}
-            strokeDasharray="3,3"
+            strokeDasharray="4,4"
             strokeLinecap="round"
           />
         );
@@ -232,7 +238,7 @@ export function FlightTracker({
   to,
   progress = 0,
   completedColor = "#AFF94F",
-  remainingColor = "#64748b",
+  remainingColor = "#94a3b8",
   children,
 }: {
   from: string;
@@ -247,45 +253,53 @@ export function FlightTracker({
 
   return (
     <g className="transition-all duration-300">
-      {/* Background Track */}
+      {/* Background Track with soft glow */}
       <path
         d={route.path}
         fill="none"
-        stroke={remainingColor}
-        strokeWidth={1.5}
-        strokeDasharray="3,3"
-        opacity={0.4}
+        stroke="#AFF94F"
+        strokeWidth={5}
+        opacity={0.5}
+        strokeLinecap="round"
+      />
+      <path
+        d={route.path}
+        fill="none"
+        stroke="#0f172a"
+        strokeWidth={2.4}
+        strokeDasharray="5,4"
+        strokeLinecap="round"
       />
 
       {/* Origin Point */}
-      <circle cx={route.p1[0]} cy={route.p1[1]} r={4} fill="#ffffff" stroke={completedColor} strokeWidth={2} />
+      <circle cx={route.p1[0]} cy={route.p1[1]} r={5} fill="#ffffff" stroke="#0f172a" strokeWidth={2} />
       {/* Destination Point with beacon */}
-      <circle cx={route.p2[0]} cy={route.p2[1]} r={4} fill={completedColor} stroke="#0f172a" strokeWidth={2} />
+      <circle cx={route.p2[0]} cy={route.p2[1]} r={6} fill="#AFF94F" stroke="#0f172a" strokeWidth={2.2} />
       <circle
         cx={route.p2[0]}
         cy={route.p2[1]}
-        r={9}
+        r={14}
         fill="none"
-        stroke={completedColor}
-        strokeWidth={1}
-        opacity={0.6}
+        stroke="#65a30d"
+        strokeWidth={1.5}
+        opacity={0.65}
         className="animate-ping origin-center"
       />
 
       {/* Moving Courier / Transit Vehicle Pin */}
       <g transform={`translate(${currentPos.x}, ${currentPos.y})`}>
         {/* Glow Halo */}
-        <circle r={12} fill={completedColor} opacity={0.25} className="animate-pulse" />
+        <circle r={18} fill="#AFF94F" opacity={0.4} className="animate-pulse" />
         
         {/* Center Marker */}
-        <circle r={6} fill={completedColor} stroke="#0f172a" strokeWidth={2} />
-        <circle r={2} fill="#0f172a" />
+        <circle r={9} fill="#0f172a" stroke="#AFF94F" strokeWidth={2.8} />
+        <circle r={3.5} fill="#AFF94F" />
 
         {/* Floating Tooltip Label */}
         {children && (
-          <foreignObject x={-45} y={-32} width={90} height={26} className="overflow-visible pointer-events-none">
-            <div className="bg-slate-950/90 text-white px-2 py-0.5 rounded-full border border-[#AFF94F]/60 text-[10px] font-mono font-bold shadow-md shadow-black/40 flex items-center justify-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#AFF94F] animate-pulse" />
+          <foreignObject x={-60} y={-38} width={120} height={32} className="overflow-visible pointer-events-none">
+            <div className="bg-slate-950 text-white px-3 py-1 rounded-full border border-[#AFF94F] text-[11px] font-mono font-black shadow-xl shadow-slate-900/30 flex items-center justify-center gap-1.5 whitespace-nowrap">
+              <span className="w-2 h-2 rounded-full bg-[#AFF94F] animate-pulse" />
               <span>{children}</span>
             </div>
           </foreignObject>

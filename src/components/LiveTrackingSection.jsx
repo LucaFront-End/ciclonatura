@@ -350,7 +350,7 @@ export default function LiveTrackingSection() {
       {/* Subtle Dot Grid Background */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#94a3b8_1px,transparent_1px)] [background-size:24px_24px] opacity-25" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl xl:max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* ======================================================== */}
         {/* SECTION HEADER                                           */}

@@ -199,7 +199,7 @@ export default function DeparturesBoard() {
       {/* ======================================================== */}
       {/* MAIN BENTO GRID: SIDEBAR BOARD (LEFT) + MEXICO MAP (RIGHT)*/}
       {/* ======================================================== */}
-      <div className="grid grid-cols-1 min-h-[540px] w-full min-w-0 lg:grid-cols-[380px_1fr]">
+      <div className="grid grid-cols-1 min-h-[660px] lg:min-h-[740px] w-full min-w-0 lg:grid-cols-[390px_1fr]">
         
         {/* ASIDE: DISPATCHES BOARD */}
         <aside className="flex min-h-0 flex-col border-b border-slate-200/90 lg:border-r lg:border-b-0 bg-white">
@@ -210,9 +210,9 @@ export default function DeparturesBoard() {
               <TowerControl size={14} className="text-[#AFF94F]" aria-hidden="true" />
               <span>TORRE DE CONTROL • MÉXICO</span>
             </p>
-            <span className="flex items-center gap-1.5 text-[10px] font-mono text-[#AFF94F] bg-[#AFF94F]/15 border border-[#AFF94F]/40 px-2 py-0.5 rounded-full">
+            <span className="flex items-center gap-1.5 text-[10px] font-mono text-[#AFF94F] bg-[#AFF94F]/15 border border-[#AFF94F]/40 px-2.5 py-0.5 rounded-full font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-[#AFF94F] animate-ping" />
-              <span>LIVE</span>
+              <span>EN VIVO</span>
             </span>
           </div>
 
@@ -245,7 +245,7 @@ export default function DeparturesBoard() {
           {/* Dispatches List Scrollable */}
           <ul
             aria-label="Ciclonatura departure board"
-            className="max-h-72 min-h-0 flex-1 overflow-y-auto p-2.5 lg:max-h-[460px] divide-y divide-slate-100"
+            className="max-h-80 min-h-0 flex-1 overflow-y-auto p-2.5 lg:max-h-[540px] divide-y divide-slate-100"
           >
             {visibleDispatches.map((dispatch) => {
               const isActive = selectedDispatch?.number === dispatch.number;
@@ -260,7 +260,7 @@ export default function DeparturesBoard() {
                     aria-pressed={isActive}
                     className={`flex w-full items-center gap-3 rounded-xl p-3 text-left transition-all cursor-pointer ${
                       isActive
-                        ? "bg-[#AFF94F]/15 border border-[#AFF94F]/70 shadow-xs"
+                        ? "bg-[#AFF94F]/20 border border-[#84cc16]/70 shadow-xs"
                         : "hover:bg-slate-50 border border-transparent"
                     }`}
                   >
@@ -284,12 +284,12 @@ export default function DeparturesBoard() {
                         >
                           #{dispatch.number}
                         </span>
-                        <span className="text-[10px] font-mono bg-white px-1.5 py-0.2 rounded border border-slate-200 text-slate-600 truncate max-w-[120px]">
+                        <span className="text-[10px] font-mono bg-slate-100 px-1.5 py-0.2 rounded border border-slate-200 text-slate-700 truncate max-w-[120px]">
                           {dispatch.from} → {dispatch.to}
                         </span>
                       </div>
                       
-                      <span className="block truncate text-xs text-slate-700 font-medium mt-0.5">
+                      <span className="block truncate text-xs text-slate-800 font-semibold mt-0.5">
                         {dispatch.vehicle}
                       </span>
                       
@@ -339,10 +339,10 @@ export default function DeparturesBoard() {
         </aside>
 
         {/* MAP PANEL (RIGHT) */}
-        <div className="relative min-h-[360px] lg:min-h-[500px] flex flex-col bg-[#0b101b]">
+        <div className="relative min-h-[520px] lg:min-h-[660px] flex flex-col bg-slate-50 border-t lg:border-t-0 border-slate-200">
           <Map
-            theme="dark"
-            className="flex-1 w-full h-full min-h-[360px]"
+            theme="light"
+            className="flex-1 w-full h-full min-h-[440px]"
           >
             <SingleWorldZoomLimit />
 
@@ -352,9 +352,9 @@ export default function DeparturesBoard() {
                 from: d.from,
                 to: d.to,
               }))}
-              color="#64748b"
-              width={1.2}
-              opacity={0.3}
+              color="#94a3b8"
+              width={1.6}
+              opacity={0.65}
             />
 
             {/* Selected Active Route & Tracker */}
@@ -365,7 +365,7 @@ export default function DeparturesBoard() {
                   to={selectedDispatch.to}
                   progress={selectedDispatch.progress ?? 0.5}
                   completedColor="#AFF94F"
-                  remainingColor="#475569"
+                  remainingColor="#94a3b8"
                 >
                   <span className="font-mono text-[9px] text-[#AFF94F]">
                     {selectedDispatch.number}
@@ -376,7 +376,7 @@ export default function DeparturesBoard() {
                   from={selectedDispatch.from}
                   to={selectedDispatch.to}
                   color={STATUSES[selectedDispatch.status].color}
-                  width={2.2}
+                  width={2.8}
                   lineStyle={STATUSES[selectedDispatch.status].lineStyle}
                   showAirports
                 />
@@ -384,40 +384,40 @@ export default function DeparturesBoard() {
             ) : null}
           </Map>
 
-          {/* Telemetry Detail Strip at bottom of map */}
+          {/* Telemetry Detail Strip at bottom of map in Light Mode */}
           {selectedDispatch && (
-            <div className="bg-slate-950/95 border-t border-slate-800 p-4 sm:p-5 text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="bg-white/95 backdrop-blur-md border-t border-slate-200 p-4 sm:p-5 text-slate-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-[#AFF94F] shrink-0">
+                <div className="w-10 h-10 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-900 shrink-0">
                   <Truck size={18} />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono font-black text-sm text-[#AFF94F]">
+                    <span className="font-mono font-black text-sm text-slate-950">
                       #{selectedDispatch.number}
                     </span>
                     <button
                       type="button"
                       onClick={() => handleCopy(selectedDispatch.number)}
                       title="Copiar folio"
-                      className="text-slate-400 hover:text-white transition-colors cursor-pointer"
+                      className="text-slate-400 hover:text-slate-900 transition-colors cursor-pointer"
                     >
-                      {copied ? <Check size={12} className="text-[#AFF94F]" /> : <Copy size={12} />}
+                      {copied ? <Check size={13} className="text-[#65a30d]" /> : <Copy size={13} />}
                     </button>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-slate-300">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#AFF94F]/30 text-slate-950 font-bold border border-[#AFF94F]/70">
                       Precinto: #{selectedDispatch.seal}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-300 font-medium mt-0.5">
-                    {selectedDispatch.vehicle} • <span className="text-slate-400">{selectedDispatch.courier}</span>
+                  <p className="text-xs text-slate-600 font-medium mt-0.5">
+                    <strong className="text-slate-900">{selectedDispatch.vehicle}</strong> • <span>{selectedDispatch.courier}</span>
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+              <div className="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
                 <div className="text-right hidden md:block">
-                  <span className="block text-[10px] font-mono text-slate-400">ETA ESTIMADA:</span>
-                  <span className="block text-xs font-mono font-bold text-white">
+                  <span className="block text-[10px] font-mono text-slate-400 font-bold">ETA ESTIMADA:</span>
+                  <span className="block text-xs font-mono font-black text-slate-950">
                     {selectedDispatch.eta}
                   </span>
                 </div>
@@ -425,7 +425,7 @@ export default function DeparturesBoard() {
                 <button
                   type="button"
                   onClick={() => handleWhatsApp(selectedDispatch)}
-                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#AFF94F] hover:bg-[#9ee83e] text-slate-950 text-xs font-heading font-black transition-all cursor-pointer shadow-md shadow-[#AFF94F]/20"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-950 hover:bg-[#AFF94F] text-white hover:text-slate-950 text-xs font-heading font-black transition-all cursor-pointer shadow-md"
                 >
                   <MessageSquare size={13} />
                   <span>Reporte WhatsApp</span>
