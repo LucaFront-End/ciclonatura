@@ -6,7 +6,7 @@ export const MEXICO_CITIES = {
     "id": "cdmx",
     "name": "Ciudad de México",
     "state": "CDMX",
-    "role": "Sede Notarial Central Tlalpan",
+    "role": "Sede Central Tlalpan",
     "xy": [
       599.6,
       456.4

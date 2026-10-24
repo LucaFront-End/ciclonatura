@@ -265,7 +265,7 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
               onClick={handleContactClick}
               className="text-slate-800 font-semibold text-base py-1 text-left cursor-pointer"
             >
-              Contacto Notarial
+              Contacto Directo
             </button>
           </motion.div>
         )}

@@ -159,7 +159,7 @@ export default function IsoOwnershipTransfer() {
             REPUVE: #MX-2026-ACTIVO
           </text>
           <text x="0" y="14" fill="#34D399" fontFamily="monospace" fontSize="4.4" fontWeight="bold">
-            ✓ ENDOSO NOTARIAL COTEJADO
+            ✓ ENDOSO OFICIAL COTEJADO
           </text>
         </g>
       </g>

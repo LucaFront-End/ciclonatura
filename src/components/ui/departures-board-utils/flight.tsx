@@ -23,7 +23,7 @@ export const HUBS: Record<string, HubInfo> = {
   },
   MEX: {
     code: "MEX",
-    name: "Sede Notarial Tlalpan",
+    name: "Sede Central Tlalpan",
     city: "Ciudad de México",
     state: "CDMX",
     role: "Matriz Central & Bóveda de Seguridad",

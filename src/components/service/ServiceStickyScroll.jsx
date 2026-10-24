@@ -207,7 +207,7 @@ export default function ServiceStickyScroll({ service }) {
         <div className="shrink-0 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
           <div className="flex items-center gap-2">
             <ShieldCheck size={14} className="text-slate-900" />
-            <span>Garantía notarial por escrito y factura SAT CFDI en cada etapa.</span>
+            <span>Garantía oficial por escrito y factura SAT CFDI en cada etapa.</span>
           </div>
 
           <div className="hidden sm:flex items-center gap-1.5 text-[11px] font-mono font-medium text-slate-400">

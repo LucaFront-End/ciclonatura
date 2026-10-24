@@ -69,7 +69,7 @@ export default function OwnershipTransferCard() {
 
               <div className="flex items-center justify-between text-[8px] font-mono text-slate-400">
                 <span>AUDITORÍA LEGAL:</span>
-                <span className="text-slate-200 font-medium">ENDOSO NOTARIAL VÁLIDO</span>
+                <span className="text-slate-200 font-medium">ENDOSO OFICIAL VÁLIDO</span>
               </div>
             </div>
 

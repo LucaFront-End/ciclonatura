@@ -235,7 +235,7 @@ const MarqueeItem = () => (
     <span>Ahorro en Tenencia Morelos</span> <span className="text-sky-400">✦</span>
     <span>Sin Filas Ni Coyotes</span> <span className="text-emerald-400">✦</span>
     <span>Facturación SAT CFDI 4.0</span> <span className="text-sky-400">✦</span>
-    <span>Despacho Notarial en Valija</span> <span className="text-emerald-400">✦</span>
+    <span>Entrega Directa en Valija Foliada</span> <span className="text-emerald-400">✦</span>
     <span>Auditoría REPUVE en Vivo</span> <span className="text-sky-400">✦</span>
   </div>
 );
@@ -358,7 +358,7 @@ export function CinematicFooter() {
             
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-bold uppercase tracking-wider font-heading mb-4 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Gestoría Notarial Digital de Próxima Generación</span>
+              <span>Gestoría Vehicular Digital de Próxima Generación</span>
             </div>
 
             <h2
@@ -369,7 +369,7 @@ export function CinematicFooter() {
             </h2>
 
             <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-8 sm:mb-10 font-normal leading-relaxed">
-              Trámites oficiales en CDMX, Morelos y Edomex. Valija notarial sellada en tu puerta, exención de tenencia y asesoría sin intermediarios.
+              Trámites vehiculares oficiales en CDMX, Morelos y Edomex. Valija de seguridad sellada en tu puerta, exención de tenencia y asesoría sin intermediarios.
             </p>
 
             {/* Interactive Magnetic Pills Layout */}
@@ -385,7 +385,7 @@ export function CinematicFooter() {
                   <span className="w-8 h-8 rounded-full bg-emerald-500/20 group-hover:bg-emerald-500 text-emerald-400 group-hover:text-white flex items-center justify-center transition-colors">
                     <MessageCircle size={17} />
                   </span>
-                  <span>Hablar con un Gestor Notarial</span>
+                  <span>Hablar con un Gestor Vehicular</span>
                 </MagneticButton>
                 
                 <MagneticButton 
@@ -409,7 +409,7 @@ export function CinematicFooter() {
                   { label: "Altas & Bajas", href: "/servicios/alta-baja-placas" },
                   { label: "Auditoría de Tenencias", href: "/servicios/regularizacion-tenencias" },
                   { label: "Flotillas B2B", href: "/servicios/flotillas-corporativas" },
-                  { label: "Contacto Notarial", href: "/contacto" }
+                  { label: "Contacto Directo", href: "/contacto" }
                 ].map((item, idx) => (
                   <MagneticButton 
                     key={idx}

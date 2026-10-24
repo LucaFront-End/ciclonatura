@@ -35,7 +35,7 @@ export default function FAQSection() {
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.08]">
               Resolvemos tus dudas con <br />
               <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 bg-clip-text text-transparent">
-                respaldo notarial.
+                respaldo institucional.
               </span>
             </h2>
           </div>
@@ -108,7 +108,7 @@ export default function FAQSection() {
                 </div>
                 <div className="min-w-0">
                   <h4 className="font-heading font-bold text-sm text-slate-900 flex items-center gap-1.5 truncate">
-                    <span>Atención Notarial Directa</span>
+                    <span>Atención Vehicular Directa</span>
                     <ShieldCheck size={14} className="text-emerald-600 shrink-0" />
                   </h4>
                   <p className="text-[11px] text-slate-500 leading-tight truncate">
@@ -139,10 +139,10 @@ export default function FAQSection() {
                   </div>
                   <div>
                     <strong className="text-xs text-slate-900 block font-heading font-bold">
-                      Valija notarial sellada
+                      Valija foliada sellada
                     </strong>
                     <span className="text-[11px] text-slate-500 leading-snug block">
-                      Entrega en mano con folio único y acuse notarial.
+                      Entrega en mano con folio único y acuse firmado.
                     </span>
                   </div>
                 </div>
@@ -165,7 +165,7 @@ export default function FAQSection() {
               {/* Direct Action WhatsApp CTA */}
               <div className="pt-4 space-y-2.5">
                 <a
-                  href="https://wa.me/525547021799?text=Hola,%20tengo%20un%20caso%20específico%20y%20quisiera%20asesoría%20notarial%20con%20Ciclonatura"
+                  href="https://wa.me/525547021799?text=Hola,%20tengo%20un%20caso%20específico%20y%20quisiera%20asesoría%20vehicular%20con%20Ciclonatura"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-2xl bg-slate-950 hover:bg-slate-800 text-white font-heading font-bold text-xs sm:text-sm shadow-md shadow-slate-950/15 transition-all group cursor-pointer"

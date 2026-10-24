@@ -49,7 +49,7 @@ const VEHICLE_TYPES = [
 
 const DELIVERY_MODES = [
   { id: 'valija', label: 'Valija Foliada a Domicilio', fee: 180, desc: 'Mensajería propia en CDMX y Edomex con sello inviolable' },
-  { id: 'sede', label: 'Recolección en Sede Notarial', fee: 0, desc: 'Entrega directa en nuestras oficinas de Calzada de Tlalpan' }
+  { id: 'sede', label: 'Recolección en Sede Central Tlalpan', fee: 0, desc: 'Entrega directa en nuestras oficinas de Calzada de Tlalpan' }
 ];
 
 const SPEED_OPTIONS = [
@@ -96,7 +96,7 @@ export default function ServiceCostCalculator({ service }) {
   const [formErrors, setFormErrors] = useState({});
 
   // Calculation Engine
-  const basePricing = SERVICE_BASE_PRICES[service.slug] || { gov: 1500, gestoria: 1500, savings: 'Garantía notarial 100%' };
+  const basePricing = SERVICE_BASE_PRICES[service.slug] || { gov: 1500, gestoria: 1500, savings: 'Garantía oficial 100%' };
   const vehicleObj = VEHICLE_TYPES.find(v => v.id === selectedVehicle) || VEHICLE_TYPES[0];
   const speedObj = SPEED_OPTIONS.find(s => s.id === selectedSpeed) || SPEED_OPTIONS[0];
   const deliveryObj = DELIVERY_MODES.find(d => d.id === selectedDelivery) || DELIVERY_MODES[0];
@@ -182,7 +182,7 @@ export default function ServiceCostCalculator({ service }) {
           </h2>
 
           <p className="text-slate-500 text-xs sm:text-sm mt-2 max-w-md mx-auto leading-relaxed">
-            Sin costos ocultos ni sorpresas. Configura tu trámite paso a paso con desglose oficial en vivo y folio notarial reservado.
+            Sin costos ocultos ni sorpresas. Configura tu trámite paso a paso con desglose oficial en vivo y folio oficial reservado.
           </p>
 
           {/* ======================================================== */}
@@ -459,7 +459,7 @@ export default function ServiceCostCalculator({ service }) {
                     {/* Extras Opcionales */}
                     <div>
                       <label className="text-xs font-heading font-black text-slate-900 uppercase tracking-wider block mb-2">
-                        3. Complementos Notariales
+                        3. Complementos & Gestiones Previas
                       </label>
                       <div className="space-y-2">
                         <label 
@@ -593,7 +593,7 @@ export default function ServiceCostCalculator({ service }) {
 
                     <div className="p-3.5 rounded-2xl bg-[#AFF94F]/15 border border-[#AFF94F]/50 flex items-start gap-2.5 text-xs text-slate-950 font-medium">
                       <ShieldCheck size={16} className="text-slate-950 shrink-0 mt-0.5" />
-                      <span>Tus datos están protegidos bajo estricto secreto notarial. Sólo los usamos para foliar tu cotización y verificar citas.</span>
+                      <span>Tus datos están protegidos bajo estricto secreto profesional. Sólo los usamos para foliar tu cotización y verificar citas.</span>
                     </div>
                   </motion.div>
                 )}

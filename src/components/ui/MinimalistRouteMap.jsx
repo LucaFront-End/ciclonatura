@@ -54,7 +54,7 @@ const ROUTE_DATA = {
       { name: "Toluca Movilidad", coords: [19.2826, -99.6557], type: "start", label: "Origen" },
       { name: "Caseta La Marquesa", coords: [19.3100, -99.3700], type: "checkpoint", label: "Peaje" },
       { name: "SEMOVI Insurgentes", coords: [19.3734, -99.1765], type: "courier", label: "En Módulo" },
-      { name: "Sede Notarial Tlalpan", coords: [19.3498, -99.1432], type: "end", label: "Destino" }
+      { name: "Sede Central Tlalpan", coords: [19.3498, -99.1432], type: "end", label: "Destino" }
     ],
     path: [
       [19.2826, -99.6557],

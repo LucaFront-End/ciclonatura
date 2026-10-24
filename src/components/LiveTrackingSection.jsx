@@ -30,7 +30,7 @@ const TRACKING_DATA = {
     origin: 'SMyT Gobierno de Morelos (Cuernavaca)',
     destination: 'Polanco V Sección, Miguel Hidalgo, CDMX',
     courier: 'Lic. Javier Ramos • Unidad Express #04',
-    seal: 'PC-8891-NOTARIAL',
+    seal: 'PC-8891-OFICIAL',
     currentStep: 4,
     steps: [
       { id: 1, label: 'Auditoría REPUVE', sub: 'Factura y antecedentes limpios', done: true },
@@ -55,11 +55,11 @@ const TRACKING_DATA = {
     seal: 'PC-4102-SEMOVI',
     currentStep: 3,
     steps: [
-      { id: 1, label: 'Auditoría Notarial', sub: 'Secuencia de facturas cotejada', done: true },
+      { id: 1, label: 'Auditoría Legal', sub: 'Secuencia de facturas cotejada', done: true },
       { id: 2, label: 'Baja de Infracciones', sub: 'Historial de adeudos depurado', done: true },
       { id: 3, label: 'Emisión Tarjeta Chip', sub: 'Plastificado oficial a nuevo titular', active: true },
-      { id: 4, label: 'Valija Notarial', sub: 'Embalaje de seguridad', pending: true },
-      { id: 5, label: 'Entrega Notarial', sub: 'Recepción en sede o domicilio', pending: true }
+      { id: 4, label: 'Valija de Seguridad', sub: 'Embalaje protegido', pending: true },
+      { id: 5, label: 'Entrega en Mano', sub: 'Recepción en sede o domicilio', pending: true }
     ]
   },
   'CN-604812': {
@@ -71,7 +71,7 @@ const TRACKING_DATA = {
     status: 'Listo para Entrega en Patio',
     statusColor: '#AFF94F',
     eta: 'Hoy a las 18:00 hrs',
-    origin: 'Sede Notarial Calzada de Tlalpan #1820',
+    origin: 'Sede Central Calzada de Tlalpan #1820',
     destination: 'Parque Industrial Naucalpan, EdoMéx',
     courier: 'Unidad Blindada Ciclonatura B2B #02',
     seal: 'PC-0042-CORPORATE',
@@ -80,7 +80,7 @@ const TRACKING_DATA = {
       { id: 1, label: 'Cotejo VIN Masivo', sub: '12 unidades validadas ante SAT', done: true },
       { id: 2, label: 'Ingreso Corporativo', sub: 'Emisión en bloque sin filas', done: true },
       { id: 3, label: 'Troquelado Metálico', sub: '12 pares de láminas selladas', done: true },
-      { id: 4, label: 'Cierre de Valija', sub: 'Precinto notarial numerado', done: true },
+      { id: 4, label: 'Cierre de Valija', sub: 'Precinto oficial numerado', done: true },
       { id: 5, label: 'Entrega a Apoderado', sub: 'Acuse y factura electrónica 100%', active: true }
     ]
   }
@@ -117,7 +117,7 @@ export default function LiveTrackingSection() {
       `*Trámite:* ${activeCase.service}\n` +
       `*Estatus Actual:* ${activeCase.status}\n` +
       `*ETA:* ${activeCase.eta}\n\n` +
-      `Hola Ciclonatura, deseo recibir copia digital del acuse notarial y reporte de mi trámite #${activeCase.folio}.`
+      `Hola Ciclonatura, deseo recibir copia digital del acuse oficial y reporte de mi trámite #${activeCase.folio}.`
     );
     window.open(`https://wa.me/525547021799?text=${text}`, '_blank');
   };
@@ -140,7 +140,7 @@ export default function LiveTrackingSection() {
             Rastreo en Tiempo Real
           </h2>
           <p className="text-slate-500 text-xs sm:text-sm mt-1.5">
-            Monitoreo satelital y estatus de entrega de la valija notarial.
+            Monitoreo satelital y estatus de entrega de tu trámite vehicular.
           </p>
 
           {/* Minimal Folio Selector Pills */}

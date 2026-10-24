@@ -38,18 +38,18 @@ export default function BentoFeatures({ onSelectService }) {
         <div className="text-center max-w-3xl mx-auto shrink-0">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-900 text-xs font-bold uppercase tracking-wider font-heading mb-3 shadow-2xs">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>Portafolio de los 5 Servicios Oficiales</span>
+            <span>Portafolio de Trámites Vehiculares Oficiales</span>
           </div>
 
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.15]">
-            Nuestros Servicios Notariales{' '}
+            Nuestros Trámites{' '}
             <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 bg-clip-text text-transparent">
-              y Vehiculares.
+              Vehiculares.
             </span>
           </h2>
 
           <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto mt-3 leading-relaxed font-normal">
-            Trámites vehiculares transparentes y sin intermediarios en CDMX, Morelos y Edomex. Valija notarial sellada a domicilio, auditoría REPUVE en vivo y factura SAT deducible.
+            Soluciones ágiles, legales y sin coyotes en CDMX, Morelos y Estado de México. Ahorra en tenencia, transfiere con certeza jurídica o gestiona tu flotilla con entrega a domicilio y factura SAT.
           </p>
         </div>
 
@@ -71,18 +71,18 @@ export default function BentoFeatures({ onSelectService }) {
                 </span>
 
                 <h3 className="font-heading text-xl sm:text-2xl font-black text-slate-900 leading-snug tracking-tight">
-                  Emplacamiento Morelos
+                  Emplacamiento en Morelos
                 </h3>
                 <p className="text-emerald-700 text-xs font-heading font-bold mt-0.5">
-                  Ahorro legal de hasta $45,000 en tenencia
+                  Ahorro legal del 100% en tenencia anual de por vida
                 </p>
 
                 <p className="text-slate-600 text-xs sm:text-[13px] mt-2 leading-relaxed">
-                  Exenta la tenencia anual de forma 100% legal con base en el Art. 11 Constitucional. Incluye láminas troqueladas SEDENA, holograma oficial y entrega express en tu puerta.
+                  Evita pagar decenas de miles de pesos cada año. Tramitamos tus láminas oficiales troqueladas bajo norma SEDENA, tarjeta con chip RFID inteligente y entrega a domicilio con factura deducible.
                 </p>
 
                 <div className="flex flex-wrap gap-1.5 mt-3.5">
-                  {["Exención Legal", "Troquelado SEDENA", "Valija Foliada"].map((tag, i) => (
+                  {["Cero Tenencia", "Troquelado SEDENA", "Entrega a Domicilio"].map((tag, i) => (
                     <span key={i} className="inline-flex items-center gap-1 text-[10px] font-semibold text-slate-700 bg-slate-50 border border-slate-200 px-2 py-0.5 rounded-md">
                       <CheckCircle2 size={11} className="text-emerald-600" />
                       {tag}
@@ -137,10 +137,10 @@ export default function BentoFeatures({ onSelectService }) {
                 Cambio de Propietario
               </h3>
               <p className="text-sky-700 text-xs font-heading font-bold mt-0.5">
-                Cotejo de endosos & tarjeta con chip oficial
+                Cotejo ante SAT y tarjeta de circulación a tu nombre
               </p>
               <p className="text-slate-600 text-xs sm:text-[13px] mt-2 leading-relaxed">
-                Compra o vende entre particulares con total certidumbre. Auditamos la cadena de facturas, cotejamos REPUVE en vivo y emitimos tu tarjeta de circulación a tu nombre.
+                Blindaje legal absoluto al comprar o vender un auto seminuevo. Auditamos facturas de origen, verificamos REPUVE sin reporte de robo ni adeudos y emitimos tu tarjeta con chip oficial.
               </p>
             </div>
 
@@ -181,7 +181,7 @@ export default function BentoFeatures({ onSelectService }) {
                   SEMOVI & Edomex
                 </span>
                 <span className="text-[10px] font-bold text-lime-800 bg-lime-100 px-2 py-0.5 rounded-full">
-                  Sin Filas
+                  Sin Citas Saturadas
                 </span>
               </div>
 
@@ -189,10 +189,10 @@ export default function BentoFeatures({ onSelectService }) {
                 Altas, Bajas & Reposición
               </h3>
               <p className="text-lime-800 text-xs font-heading font-bold mt-0.5">
-                Reposición urgente por robo o extravío
+                Trámites express para agencia, venta o robo
               </p>
               <p className="text-slate-600 text-xs mt-2 leading-relaxed">
-                Olvídate de las citas saturadas. Tramitamos altas iniciales de agencia, bajas foráneas y reposición express de láminas con reporte notarial.
+                Deshazte de responsabilidades legales al vender con una baja oficial inmediata, o emplaca tu auto nuevo y repón placas por extravío o robo sin perder un solo día en filas.
               </p>
             </div>
 
@@ -221,7 +221,7 @@ export default function BentoFeatures({ onSelectService }) {
           </div>
 
           {/* ======================================================== */}
-          {/* SERVICE 4: Auditoría de Tenencias & Adeudos (Span 4)     */}
+          {/* SERVICE 4: Regularización de Tenencias & Adeudos (Span 4)  */}
           {/* ======================================================== */}
           <div className="md:col-span-12 lg:col-span-4 bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xl shadow-slate-900/5 hover:border-emerald-400 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden relative group min-h-[380px]">
             <div className="absolute -top-10 -right-10 w-48 h-48 bg-emerald-100/40 rounded-full blur-3xl pointer-events-none" />
@@ -233,18 +233,18 @@ export default function BentoFeatures({ onSelectService }) {
                   Tesorería Oficial
                 </span>
                 <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">
-                  Cero Fantasmas
+                  Cero Adeudos Fantasma
                 </span>
               </div>
 
               <h3 className="font-heading text-lg sm:text-xl font-black text-slate-900 leading-snug tracking-tight">
-                Auditoría de Tenencias & Adeudos
+                Regularización de Adeudos
               </h3>
               <p className="text-emerald-700 text-xs font-heading font-bold mt-0.5">
-                Liquidación transparente en tesorería
+                Liquidación transparente y liberación para verificar
               </p>
               <p className="text-slate-600 text-xs mt-2 leading-relaxed">
-                Desglose exacto de adeudos ante finanzas estatales. Cancelación de multas improcedentes y liquidación oficial con líneas de captura bancarias selladas.
+                Pon al corriente tu auto para circular y verificar sin riesgo de corralón. Diagnosticamos adeudos reales en el padrón de finanzas, cancelamos recargos improcedentes y pagamos con líneas oficiales.
               </p>
             </div>
 
@@ -290,13 +290,13 @@ export default function BentoFeatures({ onSelectService }) {
               </div>
 
               <h3 className="font-heading text-lg sm:text-xl font-black text-slate-900 leading-snug tracking-tight">
-                Flotillas Corporativas
+                Flotillas Corporativas B2B
               </h3>
               <p className="text-indigo-700 text-xs font-heading font-bold mt-0.5">
-                Facturación 100% deducible de impuestos
+                Facturación 100% deducible y gestión masiva en bloque
               </p>
               <p className="text-slate-600 text-xs mt-2 leading-relaxed">
-                Gestión vehicular integral para empresas, arrendadoras y logística. Gestor de cuenta corporativo asignado, valija foliada y comprobantes deducibles.
+                Emplacamiento y regularización en bloque para empresas, arrendadoras y logística. Gestor corporativo dedicado, alta simultánea sin frenar tu operación y entrega de placas directamente en tu patio.
               </p>
             </div>
 

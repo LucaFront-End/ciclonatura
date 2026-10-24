@@ -176,7 +176,7 @@ export default function IsoExpressDispatch() {
             fontSize="4.8"
             letterSpacing="0.8"
           >
-            FOLIO NOTARIAL #CN-88492
+            FOLIO OFICIAL #CN-88492
           </text>
         </g>
       </g>

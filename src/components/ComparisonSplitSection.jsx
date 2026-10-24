@@ -121,7 +121,7 @@ const STAGES = [
       lottie: lockAnim,
       fallbackIcon: Lock,
       tag: "Ciclonatura Oficial",
-      title: "Auditoría REPUVE y Custodia Notarial",
+      title: "Auditoría REPUVE y Custodia Blindada",
       desc: "Auditoría satelital de antecedentes penales, reporte de robo y valija de seguridad sellada.",
       points: [
         "Cotejo en vivo con SEMOVI, REPUVE y SAT",

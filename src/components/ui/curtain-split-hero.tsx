@@ -26,7 +26,7 @@ const DEFAULT_IMAGES = [
     { src: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=600&q=80", alt: "Vehículo de lujo oficial" },
     { src: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80", alt: "Placas y trámite vehicular" },
     { src: "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=600&q=80", alt: "Cotejo documental en CDMX" },
-    { src: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80", alt: "Certidumbre jurídica notarial" },
+    { src: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80", alt: "Certidumbre jurídica oficial" },
     { src: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80", alt: "Inspección técnica oficial" },
     { src: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=600&q=80", alt: "Emplacamiento legal Morelos" },
     { src: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=600&q=80", alt: "Entrega express con folio SAT" },
@@ -419,7 +419,7 @@ export default function CurtainSplitHero({
 
                     <div className="flex items-center gap-1.5">
                         <ShieldCheck size={13} className="text-slate-900 shrink-0" />
-                        <span>Garantía <strong>Notarial Escrita</strong></span>
+                        <span>Garantía <strong>Legal Escrita</strong></span>
                     </div>
 
                     <div className="hidden sm:flex items-center gap-1.5">

@@ -60,7 +60,7 @@ export const DISPATCHES: readonly BoardDispatch[] = [
     vehicle: "BMW M340i xDrive 2024",
     service: "Emplacamiento en Morelos Oficial (Cero Tenencia)",
     courier: "Lic. Javier Ramos • Unidad Express #04",
-    seal: "PC-8891-NOTARIAL",
+    seal: "PC-8891-OFICIAL",
     progress: 0.72,
   },
   {
@@ -110,7 +110,7 @@ export const DISPATCHES: readonly BoardDispatch[] = [
     status: "Custodia",
     vehicle: "Ford Mustang Dark Horse 2024",
     service: "Custodia Valija Aérea Monterrey ➔ CDMX",
-    courier: "Envío Notarial Certificado #VAL-99",
+    courier: "Envío Vehicular Certificado #VAL-99",
     seal: "PC-9912-AEREO",
     progress: 0.35,
   },
@@ -147,7 +147,7 @@ export const DISPATCHES: readonly BoardDispatch[] = [
     eta: "Entregado con Éxito",
     status: "Entregado",
     vehicle: "Corvette Stingray 2023",
-    service: "Auditoría Notarial de Facturas & Láminas CDMX",
+    service: "Auditoría Legal de Facturas & Láminas CDMX",
     courier: "Acuse en Mano y Factura CFDI 4.0 Entregada",
     seal: "PC-1102-FINAL",
     progress: 1.0,
@@ -189,7 +189,7 @@ export default function DeparturesBoard() {
       `*Ruta:* ${item.from} → ${item.to}\n` +
       `*Estatus:* ${item.status}\n` +
       `*ETA:* ${item.eta}\n` +
-      `\nHola, solicito el estatus legal y copia del acuse notarial de mi trámite #${item.number}.`
+      `\nHola, solicito el estatus legal y copia del acuse oficial de mi trámite #${item.number}.`
     );
     window.open(`https://wa.me/525547021799?text=${text}`, "_blank");
   };

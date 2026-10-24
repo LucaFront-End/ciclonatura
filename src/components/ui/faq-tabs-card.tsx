@@ -67,7 +67,7 @@ const CICLONATURA_FAQS: FaqTab[] = [
           "Los trámites ordinarios de alta y cambio de propietario toman de 48 a 72 horas hábiles una vez validada la documentación. También contamos con despacho express con entrega prioritaria de 24 a 48 horas.",
       },
       {
-        question: "¿Cómo funciona la entrega con valija notarial a domicilio?",
+        question: "¿Cómo funciona la entrega con valija de seguridad a domicilio?",
         answer:
           "Tus documentos originales, tarjeta de circulación plastificada con chip, engomado y láminas metálicas viajan en una valija de seguridad sellada con folio único. El mensajero solo la abre en tu presencia una vez cotejada tu identificación.",
       },

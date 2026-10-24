@@ -83,7 +83,7 @@ export default function ServicePage({ serviceSlug, onNavigateHome, onSelectServi
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-xl mx-auto mb-10">
               <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest block mb-1">
-                Catálogo Notarial
+                Catálogo de Trámites Vehiculares
               </span>
               <h3 className="font-heading text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
                 Explora Otros Servicios Oficiales

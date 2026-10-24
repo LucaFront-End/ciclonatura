@@ -69,7 +69,7 @@ const defaultTopJourneyData: JourneyItem[] = [
     year: "2023",
     month: "April",
     phase: "Fase 05 · Auditoría REPUVE",
-    content: "Auditoría REPUVE en vivo y valijas de custodia blindada para resguardo notarial.",
+    content: "Auditoría REPUVE en vivo y valijas de custodia blindada para resguardo seguro.",
   },
   {
     id: "2026-may",
@@ -279,7 +279,7 @@ export default function Timeline({
                   Sede Central · Calzada de Tlalpan
                 </span>
                 <span className="text-slate-200 text-[11px] font-medium leading-snug">
-                  Operaciones oficiales, cotejo notarial y entrega express en CDMX.
+                  Operaciones oficiales, cotejo legal y entrega express en CDMX.
                 </span>
               </div>
             </div>

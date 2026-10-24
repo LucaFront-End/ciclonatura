@@ -72,7 +72,7 @@ export default function ExpressCourierVault() {
             <div className="flex items-center justify-between pt-1 border-t border-slate-800 text-[7.5px] font-mono text-slate-400 z-10">
               <span className="flex items-center gap-1">
                 <ShieldCheck size={10} className="text-lime-400" />
-                Acuse de entrega notarial
+                Acuse de entrega oficial
               </span>
               <span className="text-slate-300 font-bold">CDMX / Edomex</span>
             </div>

@@ -20,7 +20,7 @@ const column1Reviews = [
     name: 'Lic. Mariana Valenzuela',
     role: 'Mazda CX-30 2021 · Cambio de Propietario',
     location: 'Colonia Del Valle, CDMX',
-    badge: 'Cotejo Notarial Exitoso',
+    badge: 'Cotejo Legal Exitoso',
     badgeColor: 'bg-sky-50 text-sky-800 border-sky-200',
     avatarBg: 'bg-gradient-to-br from-sky-500 to-blue-700 text-white',
     initials: 'MV',
@@ -52,7 +52,7 @@ const column1Reviews = [
     initials: 'SC',
     time: 'Hace 1 semana',
     content:
-      'Perdí mi tarjeta de circulación y me urgía viajar en carretera el fin de semana. En 48 horas ya tenía la nueva tarjeta con chip en la puerta de mi casa con sello notarial. Honestos y transparentes con los costos desde el primer mensaje.',
+      'Perdí mi tarjeta de circulación y me urgía viajar en carretera el fin de semana. En 48 horas ya tenía la nueva tarjeta con chip en la puerta de mi casa con sello oficial. Honestos y transparentes con los costos desde el primer mensaje.',
   },
   {
     id: 'rev-5',
@@ -249,7 +249,7 @@ export default function TestimonialsMarqueeSection() {
 
             {/* Narrative Excerpt */}
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
-              Desde ejecutivos en Polanco y flotillas corporativas hasta conductores particulares que evitaron estafas de coyotes en redes sociales. Cada expediente en Ciclonatura cuenta con <strong className="text-slate-900 font-semibold">valija notarial, cotejo REPUVE en tiempo real y factura fiscal deducible</strong>.
+              Desde ejecutivos en Polanco y flotillas corporativas hasta conductores particulares que evitaron estafas de coyotes en redes sociales. Cada expediente en Ciclonatura cuenta con <strong className="text-slate-900 font-semibold">valija de seguridad foliada, cotejo REPUVE en tiempo real y factura fiscal deducible</strong>.
             </p>
 
             {/* Proof Metrics Grid */}

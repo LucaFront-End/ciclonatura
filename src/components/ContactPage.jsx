@@ -48,7 +48,7 @@ const SERVICE_OPTIONS = [
   'Altas, Bajas & Reposición Urgente',
   'Auditoría de Tenencias & Adeudos Fiscales',
   'Gestoría de Flotillas Corporativas B2B',
-  'Consulta General o Cotejo Notarial'
+  'Consulta General o Cotejo Documental'
 ];
 
 export default function ContactPage({ onNavigateHome, onSelectService }) {
@@ -93,7 +93,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
       `*Trámite:* ${formData.serviceInterest}\n` +
       `*Contacto preferido:* ${formData.preferredContact.toUpperCase()}\n` +
       (formData.message ? `*Mensaje:* ${formData.message}\n` : '') +
-      `\nHola Ciclonatura, he registrado mi mensaje en la página de contacto. Solicito asesoría notarial y tiempos de atención.`
+      `\nHola Ciclonatura, he registrado mi mensaje en la página de contacto. Solicito asesoría vehicular y tiempos de atención.`
     );
 
     // Open WhatsApp in new tab after tiny delay so user sees confirmation card
@@ -128,14 +128,14 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
               Inicio
             </button>
             <ChevronRight size={12} className="text-slate-400" />
-            <span className="font-semibold text-slate-900">Contacto Notarial</span>
+            <span className="font-semibold text-slate-900">Contacto Directo</span>
           </div>
 
           {/* Page Hero Header */}
           <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#AFF94F]/20 border border-[#AFF94F]/60 text-slate-950 text-xs font-heading font-black mb-4 shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-[#AFF94F] shadow-[0_0_8px_#AFF94F] animate-pulse" />
-              <span>Mesa de Control & Atención Notarial</span>
+              <span>Mesa de Control & Atención Vehicular</span>
             </div>
 
             <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.1]">
@@ -144,7 +144,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
             </h1>
 
             <p className="text-slate-600 text-sm sm:text-base mt-3 max-w-xl mx-auto leading-relaxed">
-              Sin coyotes ni intermediarios. Asesoría directa por abogados y gestores vehiculares con cotejo notarial y factura fiscal SAT.
+              Sin coyotes ni intermediarios. Asesoría directa por abogados y gestores vehiculares con cotejo legal y factura fiscal SAT.
             </p>
           </div>
 
@@ -155,7 +155,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
             
             {/* 1. WhatsApp Oficial */}
             <a
-              href="https://wa.me/525547021799?text=Hola%20Ciclonatura,%20deseo%20asesoria%20notarial%20para%20un%20tramite"
+              href="https://wa.me/525547021799?text=Hola%20Ciclonatura,%20deseo%20asesoria%20vehicular%20para%20un%20tramite"
               target="_blank"
               rel="noreferrer"
               className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#AFF94F] transition-all duration-300 group cursor-pointer flex flex-col justify-between"
@@ -168,7 +168,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
                   Respuesta en &lt;15 min
                 </span>
                 <h3 className="font-heading font-bold text-base text-slate-900 mt-2.5">
-                  WhatsApp Notarial
+                  WhatsApp Oficial
                 </h3>
                 <p className="text-xs text-slate-500 mt-1">
                   Atención prioritaria y pre-revisión de fotos de tu factura o placas en vivo.
@@ -187,7 +187,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
                   <Building2 size={20} />
                 </div>
                 <span className="text-[10px] font-mono font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded border border-sky-200">
-                  Sede Notarial CDMX
+                  Sede Central CDMX
                 </span>
                 <h3 className="font-heading font-bold text-base text-slate-900 mt-2.5">
                   Calzada de Tlalpan
@@ -289,7 +289,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
                     ¡Mensaje Registrado con Éxito!
                   </h3>
                   <div className="inline-block bg-slate-100 px-4 py-2 rounded-xl border border-slate-200 font-mono text-sm font-bold text-slate-800">
-                    Folio Notarial: #{folio}
+                    Folio Oficial: #{folio}
                   </div>
                   <p className="text-slate-600 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
                     Hemos abierto la ventana de WhatsApp oficial con tu mensaje estructurado. Si no se abrió automáticamente, haz clic abajo:
@@ -432,7 +432,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
 
                   <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400 text-center pt-1">
                     <Lock size={12} className="text-slate-900" />
-                    <span>Tus datos están protegidos bajo secreto notarial y privacidad CFDI 4.0.</span>
+                    <span>Tus datos están protegidos bajo secreto profesional y privacidad CFDI 4.0.</span>
                   </div>
 
                 </form>
@@ -454,7 +454,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-5">
                     <div className="text-white">
                       <span className="text-[10px] font-mono font-black bg-[#AFF94F] text-slate-950 px-2 py-0.5 rounded shadow-2xs">
-                        Sede Notarial Propia
+                        Sede Central Propia
                       </span>
                       <h4 className="font-heading font-black text-base mt-1">
                         Calzada de Tlalpan 1820
@@ -490,7 +490,7 @@ export default function ContactPage({ onNavigateHome, onSelectService }) {
                     <div className="leading-snug">
                       <strong>Custodia Segura:</strong>
                       <div className="text-slate-500 mt-0.5">
-                        Bóveda de expedientes físicos y entrega en valijas selladas con precinto notarial numerado.
+                        Bóveda de expedientes físicos y entrega en valijas selladas con precinto de seguridad numerado.
                       </div>
                     </div>
                   </div>

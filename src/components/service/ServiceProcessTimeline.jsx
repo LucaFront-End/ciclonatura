@@ -68,7 +68,7 @@ export default function ServiceProcessTimeline({ service }) {
           </h2>
 
           <p className="text-slate-600 text-xs sm:text-sm mt-2 max-w-lg mx-auto leading-relaxed">
-            Cada etapa cuenta con folio notarial y trazabilidad en tiempo real. Sabes exactamente dónde están tus documentos en cada minuto.
+            Cada etapa cuenta con folio oficial y trazabilidad en tiempo real. Sabes exactamente dónde están tus documentos en cada minuto.
           </p>
         </div>
 

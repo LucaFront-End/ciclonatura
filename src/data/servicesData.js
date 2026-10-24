@@ -9,7 +9,7 @@ import troqueladoSedenaImg from '@/assets/services/troquelado_placas_sedena.jpg'
 
 // =========================================================================
 // CICLONATURA - MASTER SERVICES DATA REPOSITORY
-// Complete specifications for the 5 official vehicular & notary services
+// Complete specifications for the 5 official vehicular services
 // =========================================================================
 
 export const SERVICES_DATA = {
@@ -21,8 +21,8 @@ export const SERVICES_DATA = {
     shortName: 'Placas Morelos',
     category: 'Alta Oficial & Reemplacamiento',
     badge: '100% Exento de Tenencia • Troquelado SEDENA',
-    tagline: 'Ahorro fiscal legítimo y placas troqueladas en 48–72 hrs',
-    description: 'Gestión oficial de alta de láminas en el Estado de Morelos con entrega a domicilio en CDMX. Sin filas, con valija foliada, cotejo de autenticidad en portal oficial y factura SAT deducible.',
+    tagline: 'Ahorro legal del 100% en tenencia anual de por vida',
+    description: 'Evita pagar decenas de miles de pesos cada año. Tramitamos tus láminas oficiales troqueladas bajo norma SEDENA, tarjeta con chip RFID inteligente y entrega a domicilio con factura deducible.',
     turnaround: '48 a 72 hrs',
     officialAuthority: 'Secretaría de Movilidad y Transporte de Morelos (SMyT)',
     accentColor: '#AFF94F',
@@ -30,7 +30,7 @@ export const SERVICES_DATA = {
     accentBorder: 'rgba(175, 249, 79, 0.4)',
     heroMonograph: 'Monografía No. 01 • Morelos 2026',
     heroTitle: 'Emplacamiento\nMorelos Oficial.',
-    heroSubtitle: 'La vía legal para autos particulares, deportivos y camionetas. Cero tenencia estatal con entrega notarial en mano.',
+    heroSubtitle: 'La vía legal para autos particulares, deportivos y camionetas. Cero tenencia estatal con entrega directa en tus manos.',
     heroImages: [
       { src: morelosPlateImg, alt: "Placa oficial de Morelos troquelada con sello holográfico" },
       { src: troqueladoSedenaImg, alt: "Troquelado de láminas metálicas bajo norma SEDENA" },
@@ -38,7 +38,7 @@ export const SERVICES_DATA = {
       { src: valijaSeguraImg, alt: "Valija de seguridad foliada para entrega en CDMX" },
       { src: repuveScannerImg, alt: "Arco de verificación vehicular satelital REPUVE" },
       { src: tesoreriaReceiptImg, alt: "Línea de captura bancaria con exención oficial de tenencia" },
-      { src: contratoNotarialImg, alt: "Cotejo notarial de factura y expediente vehicular" },
+      { src: contratoNotarialImg, alt: "Cotejo documental de factura y expediente vehicular" },
       { src: flotillaPatioImg, alt: "Patio de entrega y verificación en Calzada de Tlalpan" },
     ],
 
@@ -57,7 +57,7 @@ export const SERVICES_DATA = {
         timeframe: 'Día 1 (Mañana)',
         title: 'Ingreso en Ventanilla Gubernamental',
         desc: 'Nuestro gestor certificado ingresa tu expediente directamente en la SMyT con línea de captura bancaria oficial pagada y foliada ante Hacienda estatal.',
-        tag: 'Gestor Notarial Titular',
+        tag: 'Gestor Vehicular Certificado',
         icon: 'Building'
       },
       {
@@ -71,7 +71,7 @@ export const SERVICES_DATA = {
       {
         step: '04',
         timeframe: 'Día 3 (Tarde)',
-        title: 'Entrega en Valija Notarial Sellada',
+        title: 'Entrega en Valija de Seguridad Sellada',
         desc: 'Recibe tus láminas, tarjeta y comprobante de pago bancario en tu domicilio en CDMX/Edomex o recógelas en nuestra sede en Calzada de Tlalpan.',
         tag: 'Valija Foliada Puerta a Puerta',
         icon: 'PackageCheck'
@@ -85,7 +85,7 @@ export const SERVICES_DATA = {
         step: '01',
         title: 'Ahorro Legal sin Riesgos',
         subtitle: 'El régimen de Morelos elimina el impuesto sobre tenencia estatal para particulares y empresas.',
-        desc: 'No es evasión: es una exención formal sustentada en la Ley de Ingresos del Estado de Morelos. Tramitamos tu alta con comprobante de domicilio verificado y cotejo notarial.',
+        desc: 'No es evasión: es una exención formal sustentada en la Ley de Ingresos del Estado de Morelos. Tramitamos tu alta con comprobante de domicilio verificado y cotejo legal.',
         badge: 'Cero Tenencia Anual',
         metric: '100%',
         metricLabel: 'Certidumbre fiscal',
@@ -117,10 +117,10 @@ export const SERVICES_DATA = {
       {
         id: 'entrega-blindada',
         step: '03',
-        title: 'Valija Notarial Foliada',
+        title: 'Valija de Seguridad Foliada',
         subtitle: 'Seguridad máxima desde la ventanilla gubernamental hasta tus manos.',
         desc: 'Tus documentos viajan en valijas herméticas foliadas con sellos inviolables. Si el sello está alterado, no recibes el paquete. Garantía absoluta de privacidad y custodia documental.',
-        badge: 'Custodia Notarial',
+        badge: 'Custodia Blindada',
         metric: '48–72h',
         metricLabel: 'Plazo garantizado',
         points: [
@@ -170,10 +170,10 @@ export const SERVICES_DATA = {
     code: 'SRV-02',
     name: 'Cambio de Propietario Digital',
     shortName: 'Cambio de Propietario',
-    category: 'Transmisión Notarial & Registro',
+    category: 'Transmisión Legal & Padrón Oficial',
     badge: 'Cotejo de Endosos • Tarjeta con Chip Nuevo Titular',
-    tagline: 'Compra o vende entre particulares con certeza jurídica absoluta',
-    description: 'Actualiza la titularidad oficial de tu auto ante SEMOVI o Edomex. Auditamos la cadena ininterrumpida de facturas, cotejamos firmas en endoso, cancelamos multas del anterior dueño y emitimos tu tarjeta de circulación a tu nombre.',
+    tagline: 'Cotejo ante SAT y tarjeta de circulación a tu nombre',
+    description: 'Blindaje legal absoluto al comprar o vender un auto seminuevo. Auditamos facturas de origen, verificamos REPUVE sin reporte de robo ni adeudos y emitimos tu tarjeta con chip oficial.',
     turnaround: '48 a 72 hrs',
     officialAuthority: 'Secretaría de Movilidad CDMX / Secretaría de Finanzas Edomex',
     accentColor: '#0284c7',
@@ -183,11 +183,11 @@ export const SERVICES_DATA = {
     heroTitle: 'Cambio de\nPropietario Legal.',
     heroSubtitle: 'Blindaje jurídico total entre comprador y vendedor. Nueva tarjeta de circulación con chip y registro limpio en REPUVE.',
     heroImages: [
-      { src: contratoNotarialImg, alt: "Contrato notarial de compraventa y endoso de factura con llaves" },
+      { src: contratoNotarialImg, alt: "Contrato formal de compraventa y endoso de factura con llaves" },
       { src: tarjetaChipImg, alt: "Tarjeta de circulación emitida a nombre del nuevo titular con chip RFID" },
       { src: repuveScannerImg, alt: "Auditoría en arco carretero REPUVE y cotejo federal" },
       { src: tesoreriaReceiptImg, alt: "Línea de captura bancaria con liquidación de adeudos y multas anteriores" },
-      { src: valijaSeguraImg, alt: "Entrega notarial de expediente vehicular en valija foliada" },
+      { src: valijaSeguraImg, alt: "Entrega de expediente vehicular en valija foliada" },
       { src: morelosPlateImg, alt: "Placas oficiales registradas a nombre del nuevo propietario" },
       { src: flotillaPatioImg, alt: "Sede de verificación física y documental Ciclonatura" },
       { src: troqueladoSedenaImg, alt: "Validación de autenticidad de láminas troqueladas" },
@@ -197,7 +197,7 @@ export const SERVICES_DATA = {
       {
         step: '01',
         timeframe: 'Minuto 0 – 45',
-        title: 'Cotejo Notarial de Factura & Endosos',
+        title: 'Cotejo Jurídico de Factura & Endosos',
         desc: 'Revisión exhaustiva de la secuencia ininterrumpida de endosos mercantiles. Verificamos que no existan firmas apócrifas o saltos de propietario.',
         tag: 'Auditoría Mercantil',
         icon: 'FileCheck'
@@ -222,7 +222,7 @@ export const SERVICES_DATA = {
         step: '04',
         timeframe: 'Día 3 (Mañana)',
         title: 'Entrega de Tarjeta con Chip Nuevo Titular',
-        desc: 'Te entregamos tu nueva tarjeta de circulación plastificada con chip criptográfico y tu contrato de compraventa con sellos de cotejo notarial.',
+        desc: 'Te entregamos tu nueva tarjeta de circulación plastificada con chip criptográfico y tu contrato de compraventa con sellos de cotejo legal.',
         tag: 'Tarjeta Oficial en Mano',
         icon: 'CreditCard'
       }
@@ -244,7 +244,7 @@ export const SERVICES_DATA = {
           'Contrato de compraventa redactado por abogados mercantiles'
         ],
         imageUrl: contratoNotarialImg,
-        imageCaption: 'Revisión notarial minuciosa de cada endoso y contrato de compraventa'
+        imageCaption: 'Revisión jurídica minuciosa de cada endoso y contrato de compraventa'
       },
       {
         id: 'tarjeta-chip',
@@ -266,7 +266,7 @@ export const SERVICES_DATA = {
       {
         id: 'deslinde-fiscal',
         step: '03',
-        title: 'Deslinde Notarial de Responsabilidades',
+        title: 'Deslinde Legal de Responsabilidades',
         subtitle: 'Si vendiste, te protegemos de fotomultas y delitos cometidos por el comprador.',
         desc: 'Emitimos el aviso oficial de enajenación ante SEMOVI. A partir del minuto de ingreso, cualquier incidente vial o penal deja de estar vinculado a tu nombre de forma definitiva.',
         badge: 'Deslinde Inmediato',
@@ -278,7 +278,7 @@ export const SERVICES_DATA = {
           'Comprobante fiscal deducible para tu contabilidad'
         ],
         imageUrl: valijaSeguraImg,
-        imageCaption: 'Firma de deslinde notarial y custodia en valija sellada'
+        imageCaption: 'Firma de deslinde legal y custodia en valija sellada'
       }
     ],
 
@@ -319,8 +319,8 @@ export const SERVICES_DATA = {
     shortName: 'Altas y Bajas',
     category: 'Movimientos Registrales & Reposiciones',
     badge: 'Baja Foránea • Reposición por Robo / Extravío en 24h',
-    tagline: 'Trámites ágiles sin citas saturadas en CDMX y Estado de México',
-    description: 'Gestión prioritaria de alta inicial de agencia, baja general voluntaria para cambio de estado y reposición exprés de placas o tarjeta por robo o extravío con acta ministerial oficial.',
+    tagline: 'Trámites express para agencia, venta o robo',
+    description: 'Deshazte de responsabilidades legales al vender con una baja oficial inmediata, o emplaca tu auto nuevo y repón placas por extravío o robo sin perder un solo día en filas.',
     turnaround: '24 a 48 hrs',
     officialAuthority: 'Módulos de Control Vehicular CDMX / Edomex',
     accentColor: '#10b981',
@@ -336,7 +336,7 @@ export const SERVICES_DATA = {
       { src: repuveScannerImg, alt: "Inspección y certificación digital en arco de control vehicular" },
       { src: tarjetaChipImg, alt: "Reposición de tarjeta de circulación con chip criptográfico" },
       { src: tesoreriaReceiptImg, alt: "Constancia de baja vehicular sellada ante tesorería" },
-      { src: contratoNotarialImg, alt: "Acta de hechos notarial por robo o extravío" },
+      { src: contratoNotarialImg, alt: "Acta de hechos ministerial por robo o extravío" },
       { src: flotillaPatioImg, alt: "Logística y entrega express en CDMX y Edomex" },
     ],
 
@@ -466,8 +466,8 @@ export const SERVICES_DATA = {
     shortName: 'Regularización Fiscal',
     category: 'Diagnóstico Tributario & Descuentos',
     badge: 'Tesorería Oficial • Cero Adeudos Fantasma',
-    tagline: 'Desglose exacto de adeudos ante finanzas estatales y cancelación de multas',
-    description: 'Diagnóstico fiscal integral de tu vehículo ante las tesorerías de CDMX, Edomex y Morelos. Desglosamos tenencias pendientes, aplicamos subsidios y descuentos por pronto pago vigentes y liquidamos directamente con líneas de captura oficiales bancarias.',
+    tagline: 'Liquidación transparente y liberación para verificar',
+    description: 'Pon al corriente tu auto para circular y verificar sin riesgo de corralón. Diagnosticamos adeudos reales en el padrón de finanzas, cancelamos recargos improcedentes y pagamos con líneas oficiales.',
     turnaround: '24 a 48 hrs',
     officialAuthority: 'Secretaría de Finanzas CDMX / Finanzas Edomex / Hacienda Morelos',
     accentColor: '#AFF94F',
@@ -555,7 +555,7 @@ export const SERVICES_DATA = {
           'Acreditación de verificación vehicular extemporánea justificada'
         ],
         imageUrl: contratoNotarialImg,
-        imageCaption: 'Dictamen notarial de prescripción y amnistía fiscal'
+        imageCaption: 'Dictamen legal de prescripción y amnistía fiscal'
       },
       {
         id: 'liberacion-verificacion',
@@ -591,7 +591,7 @@ export const SERVICES_DATA = {
         items: [
           'Historial de pagos de tenencias anteriores conservadas',
           'Copia de identificación oficial del titular registral',
-          'Poder notarial simple para representación en ventanilla de finanzas'
+          'Carta poder o representación autorizada en ventanilla de finanzas'
         ]
       }
     ],
@@ -612,8 +612,8 @@ export const SERVICES_DATA = {
     shortName: 'Flotillas Corporativas',
     category: 'Soluciones B2B & Arrendadoras',
     badge: 'Ejecutivo Dedicado • Facturación SAT CFDI 4.0 Deducible',
-    tagline: 'Gestión vehicular masiva para empresas, arrendadoras y logística',
-    description: 'Servicio B2B diseñado para directores de flota, despachos contables y empresas de logística. Altas masivas, bajas programadas, reemplacamiento de flotillas completas, valijas foliadas y factura deducible al 100%.',
+    tagline: 'Facturación 100% deducible y gestión masiva en bloque',
+    description: 'Emplacamiento y regularización en bloque para empresas, arrendadoras y logística. Gestor corporativo dedicado, alta simultánea sin frenar tu operación y entrega de placas directamente en tu patio.',
     turnaround: 'SLA de 3 a 5 días hábiles',
     officialAuthority: 'Ventanilla Única Corporativa SEMOVI / SMyT',
     accentColor: '#4f46e5',
