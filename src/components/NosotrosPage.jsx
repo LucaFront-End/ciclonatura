@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { 
   Building2, 
   ShieldCheck, 
@@ -17,14 +17,78 @@ import {
   Lock,
   BadgeCheck,
   ChevronRight,
-  ExternalLink
+  ExternalLink,
+  Shield,
+  Calendar
 } from 'lucide-react';
 import Navbar from './Navbar';
 import CinematicFooter from './ui/motion-footer';
 import headquartersImg from '../assets/ciclonatura_headquarters.jpg';
 import flotillaPatioImg from '../assets/services/flotilla_corporativa_patio.jpg';
 
+// Lottie JSON icon animations
+import shieldAnim from '../assets/lottie/shield.json';
+import checkCircleAnim from '../assets/lottie/check-circle.json';
+import lockAnim from '../assets/lottie/lock.json';
+import checkmarkAnim from '../assets/lottie/checkmark.json';
+
+import lottie from 'lottie-web/build/player/esm/lottie_svg.min.js';
+
+// Direct Lottie Player with native SVG injection and cleanup
+function LottiePlayer({ animationData, fallback: FallbackIcon, className = "w-12 h-12", fallbackClassName = "w-7 h-7 text-emerald-600" }) {
+  const containerRef = useRef(null);
+  const [loadError, setLoadError] = useState(false);
+
+  useEffect(() => {
+    if (!containerRef.current || !animationData) return;
+
+    let anim = null;
+    const container = containerRef.current;
+    container.innerHTML = "";
+
+    try {
+      if (lottie && typeof lottie.loadAnimation === "function") {
+        anim = lottie.loadAnimation({
+          container,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          animationData: JSON.parse(JSON.stringify(animationData)),
+        });
+      }
+    } catch (e) {
+      console.warn("Lottie error:", e);
+      setLoadError(true);
+    }
+
+    return () => {
+      if (anim && typeof anim.destroy === "function") {
+        anim.destroy();
+      }
+    };
+  }, [animationData]);
+
+  if (loadError && FallbackIcon) {
+    return <FallbackIcon className={fallbackClassName} />;
+  }
+
+  return (
+    <div
+      ref={containerRef}
+      className={className}
+      style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+    />
+  );
+}
+
 export default function NosotrosPage({ onNavigateHome, onSelectService, onNavigateContact, onNavigateNosotros, onNavigateFlotillas }) {
+  const timelineRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 80%", "end 60%"]
+  });
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
@@ -135,78 +199,86 @@ export default function NosotrosPage({ onNavigateHome, onSelectService, onNaviga
         </section>
 
         {/* ========================================================== */}
-        {/* 2. SEDE FÍSICA & TRANSPARENCIA TOTAL                      */}
+        {/* 2. SEDE FÍSICA & ATENCIÓN PRESENCIAL (MINIMALISTA)         */}
         {/* ========================================================== */}
-        <section className="py-16 sm:py-24 bg-white border-b border-slate-200/80">
+        <section className="py-20 sm:py-28 bg-white border-b border-slate-200/80">
           <div className="container max-w-6xl">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
               
-              {/* Left Column: Image of HQ */}
-              <div className="lg:col-span-6 relative">
-                <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-2xl group">
+              {/* Left Column: Clean Architectural Photo */}
+              <div className="lg:col-span-6">
+                <div className="relative rounded-3xl overflow-hidden border border-slate-200/90 shadow-xl shadow-slate-200/50 bg-slate-100 group">
                   <img 
                     src={headquartersImg} 
                     alt="Sede Central de Ciclonatura en Calzada de Tlalpan CDMX" 
-                    className="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-80 sm:h-[420px] object-cover group-hover:scale-102 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
                   
-                  <div className="absolute bottom-5 left-5 right-5 text-white">
-                    <span className="bg-[#AFF94F] text-slate-950 text-[10px] font-mono font-black px-2.5 py-1 rounded-md uppercase tracking-wider inline-block mb-2">
-                      Sede Central CDMX
+                  {/* Clean, integrated frosted glass info pill */}
+                  <div className="absolute bottom-4 left-4 right-4 bg-slate-950/80 backdrop-blur-md text-white p-3.5 sm:p-4 rounded-2xl border border-white/10 flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#AFF94F] animate-pulse shrink-0" />
+                      <div className="min-w-0">
+                        <div className="text-xs sm:text-sm font-heading font-black text-white truncate">
+                          Calzada de Tlalpan #2144
+                        </div>
+                        <div className="text-[11px] text-slate-300 font-mono truncate">
+                          Sede Central Operativa · Corredor Sur, CDMX
+                        </div>
+                      </div>
+                    </div>
+                    <span className="text-[10px] font-mono text-[#AFF94F] bg-[#AFF94F]/10 px-2.5 py-1 rounded-md border border-[#AFF94F]/30 shrink-0 hidden sm:inline-block">
+                      Atención con Cita
                     </span>
-                    <h4 className="font-heading text-lg font-bold">
-                      Calzada de Tlalpan #2144, Ciudad de México
-                    </h4>
-                    <p className="text-xs text-slate-200 mt-0.5">
-                      Oficinas corporativas propias y recepción para cotejo de expedientes.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="absolute -bottom-4 -right-4 bg-slate-900 text-white p-4 rounded-2xl shadow-xl border border-slate-800 hidden sm:flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#AFF94F]/20 text-[#AFF94F] flex items-center justify-center">
-                    <Building2 size={18} />
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold font-heading">Atención con Cita Previa</div>
-                    <div className="text-[10px] text-slate-400">Lunes a Sábado de 9:00 a 19:00 hrs</div>
                   </div>
                 </div>
               </div>
 
-              {/* Right Column: Copy & Transparency */}
+              {/* Right Column: Minimalist Typography & Micro-cards */}
               <div className="lg:col-span-6">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold mb-3">
-                  <MapPin size={12} className="text-red-500" />
-                  <span>Ubicación Estratégica en el Corredor Sur</span>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-mono font-medium mb-4">
+                  <MapPin size={12} className="text-emerald-700" />
+                  <span>Presencia Física Registrada</span>
                 </div>
 
-                <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 leading-tight">
-                  Oficinas Reales. Personas Reales. Certeza Jurídica Inquebrantable.
+                <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight leading-[1.18]">
+                  Oficinas Reales. <br className="hidden sm:block" />
+                  <span className="text-emerald-800">Certeza Jurídica Inquebrantable.</span>
                 </h2>
 
                 <p className="text-slate-600 text-sm sm:text-base mt-4 leading-relaxed font-normal">
-                  A diferencia de los intermediarios anónimos de redes sociales o los tramitadores de banqueta que desaparecen con tus documentos, en Ciclonatura operamos desde una sede corporativa registrada, con razón social visible y cuentas bancarias empresariales.
+                  A diferencia de intermediarios anónimos en redes sociales o gestores de banqueta, operamos desde una sede corporativa registrada en el sur de la Ciudad de México. Cuentas bancarias empresariales, contratos formales y puertas abiertas para cotejar tu expediente antes de solicitar un solo anticipo.
                 </p>
 
-                <p className="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed font-normal">
-                  Nuestros clientes particulares y directores de flotilla son siempre bienvenidos a nuestras oficinas para entregar sus carpetas, revisar estados de cuenta o simplemente tomar un café mientras nuestros gestores auditan su expediente ante el REPUVE.
-                </p>
+                {/* 3 Minimalist Guarantee Stat Cards */}
+                <div className="grid grid-cols-3 gap-3 pt-6 mt-6 border-t border-slate-100">
+                  <div className="bg-slate-50 rounded-2xl p-3.5 border border-slate-200/70 text-center">
+                    <div className="text-slate-900 font-heading font-black text-xs sm:text-sm">Razón Social</div>
+                    <div className="text-[11px] text-slate-500 font-mono mt-0.5">Empresa formal</div>
+                  </div>
+                  <div className="bg-slate-50 rounded-2xl p-3.5 border border-slate-200/70 text-center">
+                    <div className="text-slate-900 font-heading font-black text-xs sm:text-sm">Cotejo Físico</div>
+                    <div className="text-[11px] text-slate-500 font-mono mt-0.5">Atención en sala</div>
+                  </div>
+                  <div className="bg-slate-50 rounded-2xl p-3.5 border border-slate-200/70 text-center">
+                    <div className="text-slate-900 font-heading font-black text-xs sm:text-sm">CFDI 4.0</div>
+                    <div className="text-[11px] text-slate-500 font-mono mt-0.5">SAT 100%</div>
+                  </div>
+                </div>
 
-                <div className="pt-6 mt-6 border-t border-slate-100 flex flex-wrap gap-4 text-xs font-semibold text-slate-700">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 size={15} className="text-emerald-600" />
-                    <span>Razón social mexicana formal</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 size={15} className="text-emerald-600" />
-                    <span>Contratos por escrito</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 size={15} className="text-emerald-600" />
-                    <span>CFDI 4.0 con validez SAT</span>
-                  </div>
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <button
+                    onClick={handleWhatsAppContact}
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-heading font-black text-slate-950 bg-[#AFF94F] hover:bg-[#9de441] px-5 py-3 rounded-full transition-all shadow-md shadow-[#AFF94F]/20 cursor-pointer"
+                  >
+                    <Calendar size={14} />
+                    <span>Agendar Cita en Sede Central</span>
+                    <ArrowRight size={14} />
+                  </button>
+                  <span className="text-[11px] text-slate-500 font-mono">
+                    Lunes a Sábado · 9:00 a 19:00 hrs
+                  </span>
                 </div>
               </div>
 
@@ -215,66 +287,160 @@ export default function NosotrosPage({ onNavigateHome, onSelectService, onNaviga
         </section>
 
         {/* ========================================================== */}
-        {/* 3. LOS 4 PILARES INQUEBRANTABLES DE NUESTRO SERVICIO        */}
+        {/* 3. TIMELINE BASADO EN SCROLL & CARDS CON LOTTIES           */}
         {/* ========================================================== */}
-        <section className="py-16 sm:py-24 bg-slate-50 border-b border-slate-200/80">
-          <div className="container max-w-6xl">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-widest block mb-1">
-                Nuestros Principios Operativos
-              </span>
+        <section className="py-20 sm:py-32 bg-slate-50/70 border-b border-slate-200/80 relative overflow-hidden">
+          <div className="container max-w-5xl relative z-10">
+            
+            {/* Section Header */}
+            <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200/90 text-slate-700 text-[11px] font-mono font-semibold mb-3 shadow-sm">
+                <Sparkles size={12} className="text-emerald-600" />
+                <span className="uppercase tracking-wider">Principios Operativos</span>
+              </div>
               <h2 className="font-heading text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
                 El Estándar que Exige tu Patrimonio
               </h2>
-              <p className="text-slate-600 text-xs sm:text-sm mt-2">
-                Cada procedimiento vehicular está blindado bajo cuatro garantías fundamentales.
+              <p className="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed">
+                Cada procedimiento vehicular avanza a través de una línea de custodia blindada con 4 garantías inquebrantables.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                {
-                  icon: Scale,
-                  title: '1. Cero Coyotes, Cero Atajos Ilegales',
-                  desc: 'Cada juego de placas, tarjeta con chip y trámite vehicular ingresa formalmente en las ventanillas de SEMOVI CDMX, SMyT Morelos o Movilidad Edomex. Nunca compramos láminas de dudosa procedencia ni utilizamos intermediarios sin acreditar.'
-                },
-                {
-                  icon: FileText,
-                  title: '2. Auditoría Preventiva sin Costo',
-                  desc: 'Antes de solicitar un solo anticipo, cotejamos tu factura en bases de datos federales del REPUVE y tesorerías estatales. Si detectamos anomalías, reporte de adeudo oculto o inconsistencias de serie, te alertamos de inmediato sin costo.'
-                },
-                {
-                  icon: Lock,
-                  title: '3. Trazabilidad con Valija Sellada',
-                  desc: 'Tus documentos originales y placas troqueladas bajo norma SEDENA viajan en valijas de seguridad con precinto foliado único. El mensajero solo abre el precinto en tu presencia contra firma de acuse de entrega.'
-                },
-                {
-                  icon: Award,
-                  title: '4. Facturación SAT CFDI 4.0 al 100%',
-                  desc: 'Emitimos factura fiscal desglosando los derechos gubernamentales pagados a tesorería y nuestros honorarios de gestión. 100% deducible para personas físicas con actividad empresarial y personas morales.'
-                }
-              ].map((pilar, idx) => {
-                const Icon = pilar.icon;
-                return (
-                  <div 
-                    key={idx} 
-                    className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between"
-                  >
-                    <div>
-                      <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200/60 text-emerald-700 flex items-center justify-center mb-4">
-                        <Icon size={22} />
+            {/* Scroll Timeline Container */}
+            <div ref={timelineRef} className="relative max-w-4xl mx-auto">
+              
+              {/* Background Guide Line */}
+              <div className="absolute left-6 sm:left-8 md:left-10 top-8 bottom-8 w-1 bg-slate-200 rounded-full" />
+              
+              {/* Animated Progress Line based on Scroll */}
+              <motion.div 
+                style={{ scaleY: smoothProgress, transformOrigin: 'top' }}
+                className="absolute left-6 sm:left-8 md:left-10 top-8 bottom-8 w-1 bg-gradient-to-b from-emerald-500 via-teal-500 to-[#AFF94F] rounded-full z-0 shadow-sm shadow-emerald-500/30"
+              />
+
+              {/* Timeline Steps / Cards */}
+              <div className="space-y-8 sm:space-y-12">
+                {[
+                  {
+                    step: '01',
+                    phase: 'Fase 01 · Legalidad Directa',
+                    tag: 'Cero Coyotes',
+                    title: 'Cero Coyotes, Cero Atajos Ilegales',
+                    desc: 'Cada juego de placas, tarjeta con chip y trámite vehicular ingresa formalmente en las ventanillas de SEMOVI CDMX, SMyT Morelos o Movilidad Edomex. Nunca compramos láminas de dudosa procedencia ni utilizamos intermediarios sin acreditar.',
+                    lottie: shieldAnim,
+                    fallbackIcon: Shield,
+                    badges: ['Ventanillas Oficiales SEMOVI / SMyT', 'CDMX · Edomex · Morelos', '100% Auditable']
+                  },
+                  {
+                    step: '02',
+                    phase: 'Fase 02 · Filtro Técnico',
+                    tag: 'Auditoría Previa',
+                    title: 'Auditoría Preventiva sin Costo',
+                    desc: 'Antes de solicitar un solo anticipo, cotejamos tu factura en bases de datos federales del REPUVE y tesorerías estatales. Si detectamos anomalías, reporte de adeudo oculto o inconsistencias de serie, te alertamos de inmediato sin costo.',
+                    lottie: checkCircleAnim,
+                    fallbackIcon: CheckCircle2,
+                    badges: ['Cruce Federal REPUVE', 'Validación de Adeudos', 'Alerta Inmediata Gratuita']
+                  },
+                  {
+                    step: '03',
+                    phase: 'Fase 03 · Custodia Blindada',
+                    tag: 'Valija Foliada',
+                    title: 'Trazabilidad con Valija Sellada',
+                    desc: 'Tus documentos originales y placas troqueladas bajo norma SEDENA viajan en valijas de seguridad con precinto foliado único. El mensajero solo abre el precinto en tu presencia contra firma de acuse de entrega.',
+                    lottie: lockAnim,
+                    fallbackIcon: Lock,
+                    badges: ['Precinto Foliado Inviolable', 'Apertura Presencial', 'Norma Oficial SEDENA']
+                  },
+                  {
+                    step: '04',
+                    phase: 'Fase 04 · Cumplimiento Fiscal',
+                    tag: 'SAT CFDI 4.0',
+                    title: 'Facturación SAT CFDI 4.0 al 100%',
+                    desc: 'Emitimos factura fiscal desglosando los derechos gubernamentales pagados a tesorería y nuestros honorarios de gestión. 100% deducible para personas físicas con actividad empresarial y personas morales.',
+                    lottie: checkmarkAnim,
+                    fallbackIcon: Award,
+                    badges: ['Desglose Oficial Derechos', '100% Deducible Fiscal', 'CFDI 4.0 con XML/PDF']
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="relative flex items-start gap-4 sm:gap-8">
+                    
+                    {/* Glowing Timeline Node */}
+                    <div className="relative z-10 flex-shrink-0 mt-3 sm:mt-4">
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-white border-2 border-slate-200/90 shadow-md flex flex-col items-center justify-center transition-all duration-300 hover:border-emerald-500 hover:shadow-emerald-500/10">
+                        <span className="text-[9px] font-mono font-bold text-slate-400 uppercase leading-none">Paso</span>
+                        <span className="font-mono font-black text-sm sm:text-lg text-slate-900 leading-none mt-0.5">{item.step}</span>
                       </div>
-                      <h3 className="font-heading text-lg sm:text-xl font-black text-slate-900 mb-2">
-                        {pilar.title}
-                      </h3>
-                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
-                        {pilar.desc}
-                      </p>
                     </div>
+
+                    {/* Timeline Card */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 35 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-40px" }}
+                      transition={{ duration: 0.5, delay: idx * 0.08 }}
+                      className="flex-1 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-emerald-200/90 transition-all duration-300 group"
+                    >
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-6">
+                        
+                        {/* Lottie Visual Container */}
+                        <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-emerald-50/80 via-white to-slate-50 border border-emerald-100/80 shadow-inner flex items-center justify-center shrink-0 p-3 group-hover:scale-105 transition-transform duration-300">
+                          <LottiePlayer 
+                            animationData={item.lottie} 
+                            fallback={item.fallbackIcon}
+                            className="w-14 h-14 sm:w-16 sm:h-16"
+                          />
+                        </div>
+
+                        {/* Card Content */}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                            <span className="text-[10px] sm:text-[11px] font-mono font-bold text-emerald-800 bg-emerald-50 border border-emerald-200/60 px-2.5 py-0.5 rounded-full">
+                              {item.phase}
+                            </span>
+                            <span className="text-[10px] font-mono text-slate-400">
+                              {item.tag}
+                            </span>
+                          </div>
+
+                          <h3 className="font-heading text-lg sm:text-xl font-black text-slate-900 leading-snug">
+                            {item.title}
+                          </h3>
+
+                          <p className="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed">
+                            {item.desc}
+                          </p>
+
+                          {/* Chips */}
+                          <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-slate-100">
+                            {item.badges.map((b, bIdx) => (
+                              <span 
+                                key={bIdx} 
+                                className="inline-flex items-center gap-1.5 text-[11px] font-medium text-slate-700 bg-slate-50 border border-slate-200/70 px-2.5 py-1 rounded-lg"
+                              >
+                                <CheckCircle2 size={12} className="text-emerald-600 shrink-0" />
+                                <span>{b}</span>
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                      </div>
+                    </motion.div>
+
                   </div>
-                );
-              })}
+                ))}
+              </div>
+
+              {/* Bottom Assurance Badge */}
+              <div className="mt-12 text-center">
+                <div className="inline-flex items-center gap-2.5 text-xs font-mono text-slate-600 bg-white px-5 py-2.5 rounded-full border border-slate-200/90 shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                  <span>Protocolo de custodia 100% auditable y monitoreado</span>
+                </div>
+              </div>
+
             </div>
+
           </div>
         </section>
 
