@@ -21,8 +21,10 @@ import {
   Compass,
   Cpu,
   RefreshCw,
-  Lock
+  Lock,
+  TowerControl
 } from 'lucide-react';
+import DeparturesBoard from '@/components/ui/departures-board';
 
 const TRACKING_CASES = {
   'CN-849201': {
@@ -280,6 +282,7 @@ const TRACKING_CASES = {
 };
 
 export default function LiveTrackingSection() {
+  const [activeView, setActiveView] = useState('board'); // 'board' (Torre & Mapa México) | 'dossier' (Expediente Notarial)
   const [selectedFolio, setSelectedFolio] = useState('CN-849201');
   const [searchInput, setSearchInput] = useState('');
   const [copied, setCopied] = useState(false);
@@ -370,60 +373,110 @@ export default function LiveTrackingSection() {
             Sin coyotes ni incertidumbre. Conoce segundo a segundo en qué etapa legal está tu vehículo, quién custodia tus documentos y la hora exacta de entrega.
           </p>
 
-          {/* Quick Interactive Search & Folio Switcher */}
-          <div className="mt-7 max-w-md mx-auto">
-            <form onSubmit={handleSearchSubmit} className="relative flex items-center">
-              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
-                <Search size={15} />
-              </div>
-              <input
-                type="text"
-                placeholder="Ingresa tu folio (ej. CN-849201)"
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-                className="w-full pl-10 pr-24 py-2.5 rounded-full border border-slate-200 bg-white/90 backdrop-blur-md text-xs sm:text-sm font-mono font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#AFF94F] focus:ring-2 focus:ring-[#AFF94F]/30 shadow-sm"
-              />
-              <button
-                type="submit"
-                className="absolute right-1.5 px-4 py-1.5 rounded-full bg-slate-950 hover:bg-[#AFF94F] text-white hover:text-slate-950 text-xs font-heading font-black transition-all cursor-pointer shadow-xs"
-              >
-                Buscar
-              </button>
-            </form>
-          </div>
+          {/* View Switcher Pills */}
+          <div className="flex items-center justify-center gap-2 mt-7">
+            <button
+              type="button"
+              onClick={() => setActiveView('board')}
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-heading font-black transition-all cursor-pointer ${
+                activeView === 'board'
+                  ? 'bg-slate-950 text-white shadow-md ring-2 ring-[#AFF94F]/50 scale-102'
+                  : 'bg-white/90 hover:bg-slate-100 text-slate-600 border border-slate-200'
+              }`}
+            >
+              <TowerControl size={14} className={activeView === 'board' ? 'text-[#AFF94F]' : 'text-slate-400'} />
+              <span>Torre de Salidas & Mapa México</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#AFF94F] animate-pulse" />
+            </button>
 
-          {/* Preset Demo Pills Switcher */}
-          <div className="flex items-center justify-center gap-1.5 flex-wrap mt-4">
-            <span className="text-[11px] font-mono font-bold text-slate-400 mr-1">
-              Trámites en Vivo:
-            </span>
-            {Object.keys(TRACKING_CASES).map((folioKey) => {
-              const item = TRACKING_CASES[folioKey];
-              const isSelected = selectedFolio === folioKey;
-              return (
-                <button
-                  key={folioKey}
-                  type="button"
-                  onClick={() => setSelectedFolio(folioKey)}
-                  className={`px-3 py-1 rounded-full text-[11px] font-mono transition-all cursor-pointer flex items-center gap-1.5 ${
-                    isSelected
-                      ? 'bg-slate-950 text-white font-bold shadow-sm scale-102 ring-2 ring-[#AFF94F]/50'
-                      : 'bg-white/80 hover:bg-slate-100 text-slate-600 border border-slate-200'
-                  }`}
-                >
-                  <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-[#AFF94F] animate-pulse' : 'bg-slate-300'}`} />
-                  <span>#{folioKey}</span>
-                  <span className="hidden sm:inline text-[9px] opacity-75 font-sans">• {item.plateTarget}</span>
-                </button>
-              );
-            })}
+            <button
+              type="button"
+              onClick={() => setActiveView('dossier')}
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-heading font-black transition-all cursor-pointer ${
+                activeView === 'dossier'
+                  ? 'bg-slate-950 text-white shadow-md ring-2 ring-[#AFF94F]/50 scale-102'
+                  : 'bg-white/90 hover:bg-slate-100 text-slate-600 border border-slate-200'
+              }`}
+            >
+              <FileCheck2 size={14} className={activeView === 'dossier' ? 'text-[#AFF94F]' : 'text-slate-400'} />
+              <span>Auditoría Legal por Folio</span>
+            </button>
           </div>
         </div>
 
         {/* ======================================================== */}
-        {/* MAIN CONSOLE CARD (BENTO HIGH-TECH NOTARIAL PANEL)       */}
+        {/* VIEW 1: DEPARTURES BOARD WITH INTERACTIVE MEXICO MAP     */}
         {/* ======================================================== */}
-        <div className="bg-white rounded-3xl border border-slate-200/90 shadow-2xl shadow-slate-900/5 overflow-hidden">
+        {activeView === 'board' ? (
+          <motion.div
+            key="departures-board-view"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <DeparturesBoard />
+          </motion.div>
+        ) : (
+          /* ======================================================== */
+          /* VIEW 2: INDIVIDUAL FOLIO SEARCH & 5-STAGE DOSSIER        */
+          /* ======================================================== */
+          <motion.div
+            key="dossier-view"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Quick Interactive Search & Folio Switcher */}
+            <div className="mb-6 max-w-md mx-auto">
+              <form onSubmit={handleSearchSubmit} className="relative flex items-center">
+                <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
+                  <Search size={15} />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Ingresa tu folio (ej. CN-849201)"
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  className="w-full pl-10 pr-24 py-2.5 rounded-full border border-slate-200 bg-white/90 backdrop-blur-md text-xs sm:text-sm font-mono font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#AFF94F] focus:ring-2 focus:ring-[#AFF94F]/30 shadow-sm"
+                />
+                <button
+                  type="submit"
+                  className="absolute right-1.5 px-4 py-1.5 rounded-full bg-slate-950 hover:bg-[#AFF94F] text-white hover:text-slate-950 text-xs font-heading font-black transition-all cursor-pointer shadow-xs"
+                >
+                  Buscar
+                </button>
+              </form>
+
+              {/* Preset Demo Pills Switcher */}
+              <div className="flex items-center justify-center gap-1.5 flex-wrap mt-3.5">
+                <span className="text-[11px] font-mono font-bold text-slate-400 mr-1">
+                  Trámites en Vivo:
+                </span>
+                {Object.keys(TRACKING_CASES).map((folioKey) => {
+                  const item = TRACKING_CASES[folioKey];
+                  const isSelected = selectedFolio === folioKey;
+                  return (
+                    <button
+                      key={folioKey}
+                      type="button"
+                      onClick={() => setSelectedFolio(folioKey)}
+                      className={`px-3 py-1 rounded-full text-[11px] font-mono transition-all cursor-pointer flex items-center gap-1.5 ${
+                        isSelected
+                          ? 'bg-slate-950 text-white font-bold shadow-sm scale-102 ring-2 ring-[#AFF94F]/50'
+                          : 'bg-white/80 hover:bg-slate-100 text-slate-600 border border-slate-200'
+                      }`}
+                    >
+                      <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-[#AFF94F] animate-pulse' : 'bg-slate-300'}`} />
+                      <span>#{folioKey}</span>
+                      <span className="hidden sm:inline text-[9px] opacity-75 font-sans">• {item.plateTarget}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* MAIN CONSOLE CARD (BENTO HIGH-TECH NOTARIAL PANEL) */}
+            <div className="bg-white rounded-3xl border border-slate-200/90 shadow-2xl shadow-slate-900/5 overflow-hidden">
           
           {/* ------------------------------------------------------ */}
           {/* PANEL TOP BAR: Status, Folio, Live Satellite Connection */}
@@ -757,10 +810,12 @@ export default function LiveTrackingSection() {
               </span>
             </div>
           </div>
-
         </div>
+      </motion.div>
+    )}
 
-      </div>
-    </section>
-  );
+    </div>
+  </section>
+);
 }
+
