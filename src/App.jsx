@@ -13,7 +13,7 @@ import CinematicFooter from '@/components/ui/motion-footer';
 import ServicePage from './components/ServicePage';
 import ContactPage from './components/ContactPage';
 import NosotrosPage from './components/NosotrosPage';
-import FlotillasSection from './components/FlotillasSection';
+import FlotillasPage from './components/FlotillasPage';
 import { SERVICES_DATA } from '@/data/servicesData';
 
 class SectionErrorBoundary extends React.Component {
@@ -40,6 +40,11 @@ export default function App() {
     // Check nosotros page
     if (path === '/nosotros' || path === '/nosotros/' || hash === '#nosotros') {
       return { page: 'nosotros' };
+    }
+
+    // Check flotillas page
+    if (path === '/flotillas' || path === '/flotillas/' || hash === '#flotillas') {
+      return { page: 'flotillas' };
     }
 
     // Check path /servicios/:slug
@@ -93,6 +98,12 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const navigateToFlotillas = () => {
+    setRoute({ page: 'flotillas' });
+    window.history.pushState(null, '', '/flotillas');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   // Dedicated Contact Page View
   if (route.page === 'contact') {
     return (
@@ -100,6 +111,7 @@ export default function App() {
         onNavigateHome={navigateToHome}
         onSelectService={navigateToService}
         onNavigateNosotros={navigateToNosotros}
+        onNavigateFlotillas={navigateToFlotillas}
       />
     );
   }
@@ -112,6 +124,20 @@ export default function App() {
         onSelectService={navigateToService}
         onNavigateContact={navigateToContact}
         onNavigateNosotros={navigateToNosotros}
+        onNavigateFlotillas={navigateToFlotillas}
+      />
+    );
+  }
+
+  // Dedicated Flotillas Page View
+  if (route.page === 'flotillas') {
+    return (
+      <FlotillasPage
+        onNavigateHome={navigateToHome}
+        onSelectService={navigateToService}
+        onNavigateContact={navigateToContact}
+        onNavigateNosotros={navigateToNosotros}
+        onNavigateFlotillas={navigateToFlotillas}
       />
     );
   }
@@ -125,6 +151,7 @@ export default function App() {
         onSelectService={navigateToService}
         onNavigateContact={navigateToContact}
         onNavigateNosotros={navigateToNosotros}
+        onNavigateFlotillas={navigateToFlotillas}
       />
     );
   }
@@ -138,6 +165,7 @@ export default function App() {
         onSelectService={navigateToService} 
         onNavigateContact={navigateToContact}
         onNavigateNosotros={navigateToNosotros}
+        onNavigateFlotillas={navigateToFlotillas}
       />
 
       {/* 3D Model Perspective Tunnel Hero (21st.dev with GLTFs) */}
@@ -153,11 +181,6 @@ export default function App() {
         {/* Scroll-Driven Split-Screen Contrast: El Coyote vs Ciclonatura */}
         <SectionErrorBoundary>
           <ComparisonSplitSection />
-        </SectionErrorBoundary>
-
-        {/* Dedicated B2B Fleet Section for Uber, Constructoras, Corporativos & Arrendadoras */}
-        <SectionErrorBoundary>
-          <FlotillasSection onSelectService={navigateToService} />
         </SectionErrorBoundary>
 
         {/* Real-Time Live Tracking Panel Section */}

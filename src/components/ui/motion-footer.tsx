@@ -408,7 +408,7 @@ export function CinematicFooter() {
                   { label: "Cambio de Propietario", href: "/servicios/cambio-de-propietario" },
                   { label: "Altas & Bajas", href: "/servicios/alta-baja-placas" },
                   { label: "Auditoría de Tenencias", href: "/servicios/regularizacion-tenencias" },
-                  { label: "Flotillas B2B", href: "/#flotillas" },
+                  { label: "Flotillas B2B", href: "/flotillas" },
                   { label: "Nosotros", href: "/nosotros" },
                   { label: "Contacto Directo", href: "/contacto" }
                 ].map((item, idx) => (

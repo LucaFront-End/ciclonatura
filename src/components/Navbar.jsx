@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import logoImg from '../assets/logo.png';
 
-export default function Navbar({ onNavigateHome, onSelectService, onNavigateContact, onNavigateNosotros }) {
+export default function Navbar({ onNavigateHome, onSelectService, onNavigateContact, onNavigateNosotros, onNavigateFlotillas }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [tramitesDropdown, setTramitesDropdown] = useState(false);
@@ -66,19 +66,11 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
   const handleFlotillasClick = (e) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    const el = document.getElementById('flotillas');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+    if (onNavigateFlotillas) {
+      onNavigateFlotillas();
     } else {
-      if (onNavigateHome) {
-        onNavigateHome();
-        setTimeout(() => {
-          const target = document.getElementById('flotillas');
-          if (target) target.scrollIntoView({ behavior: 'smooth' });
-        }, 150);
-      } else {
-        window.location.href = '/#flotillas';
-      }
+      window.history.pushState(null, '', '/flotillas');
+      window.dispatchEvent(new PopStateEvent('popstate'));
     }
   };
 
@@ -172,7 +164,7 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
           </a>
 
           <a 
-            href="/#flotillas" 
+            href="/flotillas" 
             onClick={handleFlotillasClick}
             className="text-slate-700 hover:text-slate-950 font-heading font-medium text-sm px-3.5 py-1.5 rounded-full transition-colors cursor-pointer"
           >
@@ -257,7 +249,7 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
               Ciudades (CDMX, Edomex, Morelos)
             </a>
             <a 
-              href="/#flotillas" 
+              href="/flotillas" 
               onClick={handleFlotillasClick}
               className="text-slate-800 font-semibold text-base py-1 cursor-pointer"
             >

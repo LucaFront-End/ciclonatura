@@ -24,7 +24,7 @@ import CinematicFooter from './ui/motion-footer';
 import headquartersImg from '../assets/ciclonatura_headquarters.jpg';
 import flotillaPatioImg from '../assets/services/flotilla_corporativa_patio.jpg';
 
-export default function NosotrosPage({ onNavigateHome, onSelectService, onNavigateContact, onNavigateNosotros }) {
+export default function NosotrosPage({ onNavigateHome, onSelectService, onNavigateContact, onNavigateNosotros, onNavigateFlotillas }) {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
@@ -57,6 +57,7 @@ export default function NosotrosPage({ onNavigateHome, onSelectService, onNaviga
         onSelectService={onSelectService}
         onNavigateContact={onNavigateContact}
         onNavigateNosotros={onNavigateNosotros}
+        onNavigateFlotillas={onNavigateFlotillas}
       />
 
       <main className="flex-1 relative z-10 bg-slate-50 shadow-2xl border-b border-slate-200/80 pt-24 sm:pt-28">
