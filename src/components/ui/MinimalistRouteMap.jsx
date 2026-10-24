@@ -241,27 +241,30 @@ export default function MinimalistRouteMap({ folio = "CN-849201" }) {
     coreLine.addTo(layerGroup);
     dashLine.addTo(layerGroup);
 
-    // 2. Static Checkpoints (Origin, Peajes, and Destination)
+    // 2. Static Checkpoints (Origin & Destination)
+    const startCity = activeRoute.name.includes("Cuernavaca") ? "Cuernavaca" : activeRoute.name.includes("Toluca") ? "Toluca" : "Tlalpan";
+    const endCity = activeRoute.name.includes("Polanco") ? "Polanco (CDMX)" : activeRoute.name.includes("Naucalpan") ? "Naucalpan" : "CDMX";
+
     activeRoute.checkpoints
-      .filter((cp) => cp.type !== "courier") // The courier is handled by the animated live vehicle
+      .filter((cp) => cp.type === "start" || cp.type === "end")
       .forEach((cp) => {
         let iconHtml = "";
 
         if (cp.type === "start") {
           iconHtml = `
             <div class="relative cursor-pointer select-none" style="transform: translate(-50%, -50%);">
-              <div class="bg-white text-slate-900 border border-slate-900 px-2 py-0.5 rounded-full shadow-sm font-mono text-[10px] font-bold whitespace-nowrap flex items-center gap-1">
-                <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span>
-                <span>${cp.name.split(' ')[0]}</span>
+              <div class="bg-white text-slate-900 border border-slate-900/80 px-2.5 py-0.5 rounded-full shadow-sm font-mono text-[10px] font-bold whitespace-nowrap flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-950"></span>
+                <span>${startCity}</span>
               </div>
             </div>
           `;
         } else if (cp.type === "end") {
           iconHtml = `
             <div class="relative cursor-pointer select-none" style="transform: translate(-50%, -50%);">
-              <div class="bg-[#AFF94F] text-slate-950 border border-slate-950 px-2 py-0.5 rounded-full shadow-sm font-mono text-[10px] font-bold whitespace-nowrap flex items-center gap-1">
+              <div class="bg-[#AFF94F] text-slate-950 border border-slate-950/80 px-2.5 py-0.5 rounded-full shadow-sm font-mono text-[10px] font-bold whitespace-nowrap flex items-center gap-1.5">
                 <span class="w-1.5 h-1.5 rounded-full bg-slate-950"></span>
-                <span>${cp.name.split(' ')[0]}</span>
+                <span>${endCity}</span>
               </div>
             </div>
           `;
@@ -280,43 +283,33 @@ export default function MinimalistRouteMap({ folio = "CN-849201" }) {
         }
       });
 
-    // 3. Dedicated Minimalist Animated Vehicle ("El Camioncito")
+    // 3. Dedicated Minimalist Animated Vehicle ("El Camioncito" in SVG)
     const pathMetrics = getPathMetrics(activeRoute.path);
     let progress = 0.45;
     let isPaused = false;
 
     const initialPoint = getPointAtProgress(pathMetrics, progress);
 
-    // Pure Minimalist Delivery Transporter with Headlights and Soft Sonar Halo
+    // Pure SVG Transporter with zero string comment leaks
     const courierIconHtml = `
-      <div class="relative w-[48px] h-[48px] flex items-center justify-center select-none" style="pointer-events: auto;">
+      <div class="relative w-[32px] h-[32px] flex items-center justify-center select-none" style="pointer-events: auto;">
+        <div class="absolute w-7 h-7 rounded-full bg-[#AFF94F]/35 animate-ping pointer-events-none" style="animation-duration: 2.2s;"></div>
         
-        {/* Soft Sonar Pulse */}
-        <div class="absolute w-8 h-8 rounded-full bg-[#AFF94F]/30 animate-ping pointer-events-none" style="animation-duration: 2.5s;"></div>
-        
-        {/* Rotating Vehicle & Headlight Core */}
-        <div id="courier-heading-wrapper" class="relative w-6 h-10 flex items-center justify-center pointer-events-none" style="transform: rotate(${Math.round(initialPoint.bearing)}deg); transform-origin: center center; transition: transform 0.12s linear;">
+        <div id="courier-heading-wrapper" class="relative w-7 h-7 flex items-center justify-center pointer-events-none" style="transform: rotate(${Math.round(initialPoint.bearing)}deg); transform-origin: center center; transition: transform 0.12s linear;">
           
-          {/* Subtle Headlight Cone */}
-          <div class="absolute bottom-[16px] left-1/2 -translate-x-1/2 w-8 h-12 pointer-events-none"
-               style="background: linear-gradient(to top, rgba(175, 249, 79, 0.4) 0%, transparent 100%); clip-path: polygon(30% 100%, 70% 100%, 100% 0%, 0% 0%); filter: blur(1px);">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 pointer-events-none"
+               style="background: radial-gradient(ellipse at bottom, rgba(175, 249, 79, 0.45) 0%, transparent 75%); filter: blur(0.5px);">
           </div>
 
-          {/* Clean Vector Vehicle Silhouette */}
-          <div class="relative z-10 w-4.5 h-7.5 bg-slate-950 rounded-sm border border-[#AFF94F] shadow-md flex flex-col items-center justify-between p-0.5">
-            <div class="w-full flex justify-between px-0.5 -mt-0.5">
-              <span class="w-0.5 h-0.5 rounded-full bg-white"></span>
-              <span class="w-0.5 h-0.5 rounded-full bg-white"></span>
-            </div>
-            <div class="w-3 h-1.5 bg-[#AFF94F] rounded-t-xs opacity-90"></div>
-            <div class="w-full flex justify-between px-0.5">
-              <span class="w-0.5 h-0.5 bg-red-500 rounded-xs"></span>
-              <span class="w-0.5 h-0.5 bg-red-500 rounded-xs"></span>
-            </div>
-          </div>
-
+          <svg class="w-4 h-6 drop-shadow-[0_0_5px_rgba(175,249,79,0.8)]" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="12" height="20" rx="3" fill="#0f172a" stroke="#AFF94F" stroke-width="1.2"/>
+            <path d="M4 6H12V8.5C12 9 11.5 9.5 11 9.5H5C4.5 9.5 4 9 4 8.5V6Z" fill="#AFF94F"/>
+            <circle cx="4.5" cy="3" r="0.8" fill="#FFFFFF"/>
+            <circle cx="11.5" cy="3" r="0.8" fill="#FFFFFF"/>
+            <rect x="3.5" y="20.5" width="2" height="0.8" rx="0.3" fill="#EF4444"/>
+            <rect x="10.5" y="20.5" width="2" height="0.8" rx="0.3" fill="#EF4444"/>
+          </svg>
         </div>
-
       </div>
     `;
 
@@ -324,8 +317,8 @@ export default function MinimalistRouteMap({ folio = "CN-849201" }) {
       icon: L.divIcon({
         className: "custom-leaflet-courier",
         html: courierIconHtml,
-        iconSize: [48, 48],
-        iconAnchor: [24, 24],
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
       }),
       zIndexOffset: 1000,
     });
