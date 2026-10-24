@@ -199,13 +199,13 @@ export default function DeparturesBoard() {
       {/* ======================================================== */}
       {/* MAIN BENTO GRID: SIDEBAR BOARD (LEFT) + MEXICO MAP (RIGHT)*/}
       {/* ======================================================== */}
-      <div className="grid grid-cols-1 min-h-[660px] lg:min-h-[740px] w-full min-w-0 lg:grid-cols-[390px_1fr]">
+      <div className="grid grid-cols-1 min-h-[500px] lg:min-h-[560px] w-full min-w-0 lg:grid-cols-[380px_1fr]">
         
         {/* ASIDE: DISPATCHES BOARD */}
         <aside className="flex min-h-0 flex-col border-b border-slate-200/90 lg:border-r lg:border-b-0 bg-white">
           
           {/* Board Title Header */}
-          <div className="border-b border-slate-200/90 bg-slate-950 px-5 py-3.5 text-white flex items-center justify-between">
+          <div className="border-b border-slate-200/90 bg-slate-950 px-5 py-3 text-white flex items-center justify-between">
             <p className="flex items-center gap-2 font-mono text-[11px] font-bold tracking-widest text-slate-300">
               <TowerControl size={14} className="text-[#AFF94F]" aria-hidden="true" />
               <span>TORRE DE CONTROL • MÉXICO</span>
@@ -220,7 +220,7 @@ export default function DeparturesBoard() {
           <div
             role="group"
             aria-label="Filter by status"
-            className="flex flex-wrap gap-1.5 border-b border-slate-100 p-3 bg-slate-50/70"
+            className="flex flex-wrap gap-1.5 border-b border-slate-100 p-2.5 bg-slate-50/70"
           >
             {FILTERS.map((status) => {
               const isSelected = filter === status;
@@ -245,7 +245,7 @@ export default function DeparturesBoard() {
           {/* Dispatches List Scrollable */}
           <ul
             aria-label="Ciclonatura departure board"
-            className="max-h-80 min-h-0 flex-1 overflow-y-auto p-2.5 lg:max-h-[540px] divide-y divide-slate-100"
+            className="max-h-72 min-h-0 flex-1 overflow-y-auto p-2 lg:max-h-[380px] divide-y divide-slate-100"
           >
             {visibleDispatches.map((dispatch) => {
               const isActive = selectedDispatch?.number === dispatch.number;
@@ -339,10 +339,10 @@ export default function DeparturesBoard() {
         </aside>
 
         {/* MAP PANEL (RIGHT) */}
-        <div className="relative min-h-[520px] lg:min-h-[660px] flex flex-col bg-slate-50 border-t lg:border-t-0 border-slate-200">
+        <div className="relative min-h-[420px] lg:min-h-[560px] flex flex-col bg-slate-50 border-t lg:border-t-0 border-slate-200">
           <Map
             theme="light"
-            className="flex-1 w-full h-full min-h-[440px]"
+            className="flex-1 w-full h-full min-h-[360px]"
           >
             <SingleWorldZoomLimit />
 
