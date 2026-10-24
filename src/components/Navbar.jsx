@@ -63,6 +63,25 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
     }
   };
 
+  const handleFlotillasClick = (e) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    const el = document.getElementById('flotillas');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      if (onNavigateHome) {
+        onNavigateHome();
+        setTimeout(() => {
+          const target = document.getElementById('flotillas');
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+      } else {
+        window.location.href = '/#flotillas';
+      }
+    }
+  };
+
   const serviceNavItems = [
     { label: 'Emplacamiento CDMX, Edomex & Morelos', slug: 'emplacamiento-morelos', time: '48-72 hrs' },
     { label: 'Cambio de Propietario', slug: 'cambio-de-propietario', time: 'Cotejo' },
@@ -152,6 +171,14 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
             <span>Ciudades</span>
           </a>
 
+          <a 
+            href="/#flotillas" 
+            onClick={handleFlotillasClick}
+            className="text-slate-700 hover:text-slate-950 font-heading font-medium text-sm px-3.5 py-1.5 rounded-full transition-colors cursor-pointer"
+          >
+            Flotillas
+          </a>
+
           <button 
             type="button"
             onClick={handleNosotrosClick}
@@ -228,6 +255,13 @@ export default function Navbar({ onNavigateHome, onSelectService, onNavigateCont
               className="text-slate-800 font-semibold text-base py-1"
             >
               Ciudades (CDMX, Edomex, Morelos)
+            </a>
+            <a 
+              href="/#flotillas" 
+              onClick={handleFlotillasClick}
+              className="text-slate-800 font-semibold text-base py-1 cursor-pointer"
+            >
+              Flotillas B2B
             </a>
             <button 
               type="button"
