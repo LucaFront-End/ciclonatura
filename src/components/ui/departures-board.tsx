@@ -16,6 +16,7 @@ import {
   ExternalLink
 } from "lucide-react";
 import { Map } from "@/components/ui/departures-board-utils/map";
+import RealMexicoMap from "@/components/ui/departures-board-utils/RealMexicoMap";
 import {
   FlightRoute,
   FlightRoutes,
@@ -338,51 +339,9 @@ export default function DeparturesBoard() {
           </div>
         </aside>
 
-        {/* MAP PANEL (RIGHT) */}
-        <div className="relative min-h-[420px] lg:min-h-[560px] flex flex-col bg-slate-50 border-t lg:border-t-0 border-slate-200">
-          <Map
-            theme="light"
-            className="flex-1 w-full h-full min-h-[360px]"
-          >
-            <SingleWorldZoomLimit />
-
-            {/* Context Inactive/Other Routes */}
-            <FlightRoutes
-              routes={contextRoutes.map((d) => ({
-                from: d.from,
-                to: d.to,
-              }))}
-              color="#94a3b8"
-              width={1.6}
-              opacity={0.65}
-            />
-
-            {/* Selected Active Route & Tracker */}
-            {selectedDispatch ? (
-              selectedDispatch.status === "En Ruta" ? (
-                <FlightTracker
-                  from={selectedDispatch.from}
-                  to={selectedDispatch.to}
-                  progress={selectedDispatch.progress ?? 0.5}
-                  completedColor="#AFF94F"
-                  remainingColor="#94a3b8"
-                >
-                  <span className="font-mono text-[9px] text-[#AFF94F]">
-                    {selectedDispatch.number}
-                  </span>
-                </FlightTracker>
-              ) : (
-                <FlightRoute
-                  from={selectedDispatch.from}
-                  to={selectedDispatch.to}
-                  color={STATUSES[selectedDispatch.status].color}
-                  width={2.8}
-                  lineStyle={STATUSES[selectedDispatch.status].lineStyle}
-                  showAirports
-                />
-              )
-            ) : null}
-          </Map>
+        {/* MAP PANEL (RIGHT) WITH REAL LEAFLET CARTOGRAPHY & REAL HIGHWAYS */}
+        <div className="relative min-h-[460px] lg:min-h-[580px] flex flex-col bg-slate-100 border-t lg:border-t-0 border-slate-200 overflow-hidden">
+          <RealMexicoMap selectedDispatch={selectedDispatch} />
 
           {/* Telemetry Detail Strip at bottom of map in Light Mode */}
           {selectedDispatch && (
