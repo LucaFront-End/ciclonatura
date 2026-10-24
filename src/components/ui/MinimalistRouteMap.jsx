@@ -88,11 +88,62 @@ const ROUTE_DATA = {
   }
 };
 
+// Helper: compute segment lengths and total distance along coordinates
+function getPathMetrics(path) {
+  if (!path || path.length < 2) return { totalDist: 0, segments: [] };
+  const segments = [];
+  let totalDist = 0;
+  for (let i = 0; i < path.length - 1; i++) {
+    const [lat1, lon1] = path[i];
+    const [lat2, lon2] = path[i + 1];
+    const dLat = (lat2 - lat1);
+    const dLon = (lon2 - lon1) * Math.cos(((lat1 + lat2) * Math.PI) / 360);
+    const dist = Math.hypot(dLat, dLon);
+    segments.push({ dist, from: path[i], to: path[i + 1] });
+    totalDist += dist;
+  }
+  return { totalDist, segments };
+}
+
+// Helper: interpolate coordinates and calculate bearing in degrees
+function getPointAtProgress(pathMetrics, progress) {
+  const { totalDist, segments } = pathMetrics;
+  if (!segments.length) return { coords: [19.25, -99.2], bearing: 0, segmentIndex: 0 };
+
+  const targetDist = Math.max(0, Math.min(progress, 1)) * totalDist;
+  let accumulated = 0;
+
+  for (let i = 0; i < segments.length; i++) {
+    const { dist, from, to } = segments[i];
+    if (accumulated + dist >= targetDist || i === segments.length - 1) {
+      const segT = dist === 0 ? 0 : Math.min(Math.max((targetDist - accumulated) / dist, 0), 1);
+      const curLat = from[0] + (to[0] - from[0]) * segT;
+      const curLon = from[1] + (to[1] - from[1]) * segT;
+
+      // Calculate bearing (forward azimuth in degrees)
+      const dLon = ((to[1] - from[1]) * Math.PI) / 180;
+      const lat1Rad = (from[0] * Math.PI) / 180;
+      const lat2Rad = (to[0] * Math.PI) / 180;
+      const y = Math.sin(dLon) * Math.cos(lat2Rad);
+      const x = Math.cos(lat1Rad) * Math.sin(lat2Rad) - Math.sin(lat1Rad) * Math.cos(lat2Rad) * Math.cos(dLon);
+      const bearing = ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
+
+      return { coords: [curLat, curLon], bearing, segmentIndex: i };
+    }
+    accumulated += dist;
+  }
+
+  return { coords: segments[segments.length - 1].to, bearing: 0, segmentIndex: segments.length - 1 };
+}
+
 export default function MinimalistRouteMap({ folio = "CN-849201" }) {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const layerGroupRef = useRef(null);
+  const animationRef = useRef(null);
+  const pauseTimeoutRef = useRef(null);
   const [zoomLevel, setZoomLevel] = useState(10);
+  const [liveLocation, setLiveLocation] = useState("");
 
   const activeRoute = ROUTE_DATA[folio] || ROUTE_DATA["CN-849201"];
 
@@ -144,16 +195,21 @@ export default function MinimalistRouteMap({ folio = "CN-849201" }) {
     };
   }, []);
 
-  // Update Route and Markers when selected folio changes
+  // Update Route, Markers, and Driving Animation when selected folio changes
   useEffect(() => {
     const map = mapInstanceRef.current;
     const layerGroup = layerGroupRef.current;
     if (!map || !layerGroup || !activeRoute) return;
 
-    layerGroup.clearLayers();
+    // Stop any existing animation
+    if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
 
-    // 1. Draw Double-Layer Route Line
-    // Glow underline (Lime)
+    layerGroup.clearLayers();
+    setLiveLocation(activeRoute.currentLocation);
+
+    // 1. Double-Layer Route Line + Animated Neon Dash Layer
+    // Layer A: Soft Lime Underlay Glow
     const glowLine = L.polyline(activeRoute.path, {
       color: "#AFF94F",
       weight: 6,
@@ -162,79 +218,203 @@ export default function MinimalistRouteMap({ folio = "CN-849201" }) {
       lineJoin: "round",
     });
 
-    // Solid core line (Dark obsidian)
+    // Layer B: Obsidian Core Line
     const coreLine = L.polyline(activeRoute.path, {
       color: "#0f172a",
-      weight: 3,
+      weight: 3.5,
       opacity: 0.95,
       lineCap: "round",
       lineJoin: "round",
     });
 
-    glowLine.addTo(layerGroup);
-    coreLine.addTo(layerGroup);
-
-    // 2. Add Clean Minimalist Markers
-    activeRoute.checkpoints.forEach((cp) => {
-      let iconHtml = "";
-
-      if (cp.type === "start") {
-        iconHtml = `
-          <div class="relative group cursor-pointer" style="transform: translate(-50%, -50%);">
-            <div class="bg-white text-slate-900 border-2 border-slate-900 px-2 py-0.5 rounded-full shadow-md font-mono text-[10px] font-black whitespace-nowrap flex items-center gap-1">
-              <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span>
-              <span>${cp.name}</span>
-            </div>
-          </div>
-        `;
-      } else if (cp.type === "end") {
-        iconHtml = `
-          <div class="relative group cursor-pointer" style="transform: translate(-50%, -50%);">
-            <div class="bg-[#AFF94F] text-slate-950 border-2 border-slate-950 px-2.5 py-0.5 rounded-full shadow-md font-mono text-[10px] font-black whitespace-nowrap flex items-center gap-1">
-              <span>📍 ${cp.name}</span>
-            </div>
-          </div>
-        `;
-      } else if (cp.type === "courier") {
-        iconHtml = `
-          <div class="relative cursor-pointer" style="transform: translate(-50%, -50%);">
-            <div class="absolute -inset-2 rounded-full bg-[#AFF94F] animate-ping opacity-75"></div>
-            <div class="relative bg-slate-950 text-[#AFF94F] border-2 border-[#AFF94F] px-2.5 py-1 rounded-full shadow-lg font-mono text-[11px] font-black whitespace-nowrap flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-[#AFF94F] animate-pulse"></span>
-              <span>🚚 En Tránsito</span>
-            </div>
-          </div>
-        `;
-      } else {
-        iconHtml = `
-          <div class="relative group cursor-pointer" style="transform: translate(-50%, -50%);">
-            <div class="w-3.5 h-3.5 rounded-full bg-white border-2 border-slate-800 shadow-xs"></div>
-            <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-0.5 rounded bg-slate-900 text-white text-[9px] font-mono whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-              ${cp.name}
-            </div>
-          </div>
-        `;
-      }
-
-      const marker = L.marker(cp.coords, {
-        icon: L.divIcon({
-          className: "custom-leaflet-marker",
-          html: iconHtml,
-          iconSize: [24, 24],
-          iconAnchor: [12, 12],
-        }),
-      });
-
-      marker.addTo(layerGroup);
+    // Layer C: Dynamic Flow Dash Animation
+    const dashLine = L.polyline(activeRoute.path, {
+      color: "#AFF94F",
+      weight: 2,
+      opacity: 0.9,
+      dashArray: "6, 14",
+      className: "animated-highway-dash",
+      lineCap: "round",
     });
 
-    // 3. Smooth Camera Fly-To bounds of path
+    glowLine.addTo(layerGroup);
+    coreLine.addTo(layerGroup);
+    dashLine.addTo(layerGroup);
+
+    // 2. Static Checkpoints (Origin, Peajes, and Destination)
+    activeRoute.checkpoints
+      .filter((cp) => cp.type !== "courier") // The courier is handled by the animated live vehicle
+      .forEach((cp) => {
+        let iconHtml = "";
+
+        if (cp.type === "start") {
+          iconHtml = `
+            <div class="relative cursor-pointer select-none" style="transform: translate(-50%, -50%);">
+              <div class="bg-white text-slate-900 border-2 border-slate-900 px-2.5 py-1 rounded-full shadow-lg font-mono text-[10px] font-black whitespace-nowrap flex items-center gap-1.5 transition-transform hover:scale-105">
+                <span class="w-2 h-2 rounded-full bg-slate-900"></span>
+                <span>🏛️ ${cp.name}</span>
+                <span class="text-[9px] text-slate-500 font-bold uppercase tracking-wider">(${cp.label})</span>
+              </div>
+            </div>
+          `;
+        } else if (cp.type === "end") {
+          iconHtml = `
+            <div class="relative cursor-pointer select-none" style="transform: translate(-50%, -50%);">
+              <div class="bg-[#AFF94F] text-slate-950 border-2 border-slate-950 px-2.5 py-1 rounded-full shadow-xl font-mono text-[10px] font-black whitespace-nowrap flex items-center gap-1.5 transition-transform hover:scale-105">
+                <span>📍 ${cp.name}</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-950 animate-pulse"></span>
+              </div>
+            </div>
+          `;
+        } else {
+          iconHtml = `
+            <div class="relative group cursor-pointer select-none" style="transform: translate(-50%, -50%);">
+              <div class="bg-white/95 backdrop-blur-md text-slate-800 border border-slate-300 px-2 py-0.5 rounded-full shadow-md font-mono text-[9px] font-bold whitespace-nowrap flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                <span>💳 ${cp.name}</span>
+              </div>
+            </div>
+          `;
+        }
+
+        const marker = L.marker(cp.coords, {
+          icon: L.divIcon({
+            className: "custom-leaflet-marker",
+            html: iconHtml,
+            iconSize: [24, 24],
+            iconAnchor: [12, 12],
+          }),
+        });
+
+        marker.addTo(layerGroup);
+      });
+
+    // 3. Dedicated Live Animated Courier Vehicle ("El Camioncito")
+    const pathMetrics = getPathMetrics(activeRoute.path);
+    let progress = 0.45; // Starts in active transit along the highway
+    let isPaused = false;
+
+    const initialPoint = getPointAtProgress(pathMetrics, progress);
+
+    // Custom High-End Delivery Transporter SVG Icon with Headlight Projection & Sonar Radar
+    const courierIconHtml = `
+      <div class="courier-vehicle-wrapper relative w-[60px] h-[60px] flex items-center justify-center select-none" style="pointer-events: auto;">
+        
+        <!-- Expanding Sonar Radar Wave 1 -->
+        <div class="absolute w-10 h-10 rounded-full bg-[#AFF94F]/35 animate-ping pointer-events-none" style="animation-duration: 2.2s;"></div>
+        
+        <!-- Expanding Sonar Radar Wave 2 -->
+        <div class="absolute w-12 h-12 rounded-full border border-[#AFF94F]/50 animate-pulse pointer-events-none"></div>
+
+        <!-- Rotating Vehicle Core (Follows road heading angle) -->
+        <div id="courier-heading-wrapper" class="relative w-8 h-12 flex items-center justify-center pointer-events-none" style="transform: rotate(${Math.round(initialPoint.bearing)}deg); transform-origin: center center; transition: transform 0.12s linear;">
+          
+          <!-- Forward Headlight Cones (Shines ahead along the highway) -->
+          <div class="absolute bottom-[22px] left-1/2 -translate-x-1/2 w-12 h-16 pointer-events-none"
+               style="background: linear-gradient(to top, rgba(175, 249, 79, 0.45) 0%, rgba(175, 249, 79, 0.15) 60%, transparent 100%); clip-path: polygon(30% 100%, 70% 100%, 100% 0%, 0% 0%); filter: blur(1.5px);">
+          </div>
+
+          <!-- Executive Courier Transporter Body -->
+          <div class="relative z-10 w-6 h-10 bg-slate-950 rounded-md border-2 border-[#AFF94F] shadow-[0_0_14px_rgba(175,249,79,0.7)] flex flex-col items-center justify-between p-0.5">
+            
+            <!-- Windshield & Dual Projector Headlights -->
+            <div class="w-full flex flex-col items-center">
+              <div class="w-full flex justify-between px-0.5 -mt-0.5">
+                <span class="w-1 h-1 rounded-full bg-white shadow-[0_0_6px_#AFF94F]"></span>
+                <span class="w-1 h-1 rounded-full bg-white shadow-[0_0_6px_#AFF94F]"></span>
+              </div>
+              <div class="w-4 h-2 bg-[#AFF94F] rounded-t-xs mt-0.5 opacity-90"></div>
+            </div>
+
+            <!-- Central Sat-Link Beacon -->
+            <div class="w-2.5 h-1 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center">
+              <span class="w-1 h-1 rounded-full bg-[#AFF94F] animate-pulse"></span>
+            </div>
+
+            <!-- Rear LED Taillights -->
+            <div class="w-full flex justify-between px-0.5 mb-0.5">
+              <span class="w-1 h-0.5 rounded-xs bg-red-500 shadow-[0_0_4px_#ef4444]"></span>
+              <span class="w-1 h-0.5 rounded-xs bg-red-500 shadow-[0_0_4px_#ef4444]"></span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Telemetry Badge (Stays horizontal, centered, and fully readable) -->
+        <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none z-30">
+          <div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-950/95 backdrop-blur-md border border-[#AFF94F]/70 text-[9px] font-mono text-white shadow-xl">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#AFF94F] animate-pulse"></span>
+            <span class="font-black text-[#AFF94F]">UNIDAD EN RUTA</span>
+            <span class="text-slate-400">•</span>
+            <span class="text-white font-bold">${activeRoute.speed}</span>
+          </div>
+        </div>
+
+      </div>
+    `;
+
+    const courierMarker = L.marker(initialPoint.coords, {
+      icon: L.divIcon({
+        className: "custom-leaflet-courier",
+        html: courierIconHtml,
+        iconSize: [60, 60],
+        iconAnchor: [30, 30],
+      }),
+      zIndexOffset: 1000,
+    });
+
+    courierMarker.addTo(layerGroup);
+
+    // 4. Smooth 60fps RequestAnimationFrame Driving Loop along Highway
+    let lastTime = null;
+
+    const animateVehicle = (timestamp) => {
+      if (!lastTime) lastTime = timestamp;
+      const deltaTime = timestamp - lastTime;
+      lastTime = timestamp;
+
+      if (!isPaused && pathMetrics.totalDist > 0) {
+        // Cruising speed: ~22 seconds for entire highway trip
+        const deltaProgress = deltaTime / 22000;
+        progress += deltaProgress;
+
+        if (progress >= 0.98) {
+          progress = 0.98;
+          isPaused = true;
+          // Arrived at destination: pause briefly, then restart patrolling smoothly
+          pauseTimeoutRef.current = setTimeout(() => {
+            progress = 0.05;
+            isPaused = false;
+          }, 1800);
+        }
+
+        const point = getPointAtProgress(pathMetrics, progress);
+        courierMarker.setLatLng(point.coords);
+
+        // Update rotation to follow road curve
+        const headingEl = document.getElementById("courier-heading-wrapper");
+        if (headingEl) {
+          headingEl.style.transform = `rotate(${Math.round(point.bearing)}deg)`;
+        }
+      }
+
+      animationRef.current = requestAnimationFrame(animateVehicle);
+    };
+
+    animationRef.current = requestAnimationFrame(animateVehicle);
+
+    // 5. Smooth Camera Fly-To bounds of path
     const bounds = L.latLngBounds(activeRoute.path);
     map.flyToBounds(bounds, {
       padding: [45, 45],
       duration: 0.9,
       maxZoom: 13,
     });
+
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+      if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
+    };
   }, [activeRoute]);
 
   // Zoom controls
@@ -261,7 +441,7 @@ export default function MinimalistRouteMap({ folio = "CN-849201" }) {
   return (
     <div className="relative w-full h-full min-h-[360px] sm:min-h-[420px] rounded-3xl overflow-hidden border border-slate-200 bg-slate-100 select-none shadow-inner">
       
-      {/* Grayscale CSS Filter Rule injected for OpenStreetMap tiles */}
+      {/* Grayscale CSS Filter Rule injected for OpenStreetMap tiles & Highway Animation */}
       <style>{`
         .minimalist-osm-tiles {
           filter: grayscale(100%) contrast(85%) brightness(105%) !important;
@@ -269,6 +449,21 @@ export default function MinimalistRouteMap({ folio = "CN-849201" }) {
         .leaflet-container {
           background: #f8fafc !important;
           font-family: inherit;
+        }
+        .custom-leaflet-courier {
+          background: transparent !important;
+          border: none !important;
+        }
+        .animated-highway-dash {
+          animation: highwayDash 1.4s linear infinite;
+        }
+        @keyframes highwayDash {
+          from {
+            stroke-dashoffset: 40;
+          }
+          to {
+            stroke-dashoffset: 0;
+          }
         }
       `}</style>
 

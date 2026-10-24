@@ -288,9 +288,9 @@ export default function LiveTrackingSection() {
                                 <Check size={11} strokeWidth={3} />
                               </div>
                             ) : isActive ? (
-                              <div className="w-5 h-5 rounded-full bg-slate-950 text-[#AFF94F] flex items-center justify-center relative">
-                                <span className="w-2 h-2 rounded-full bg-[#AFF94F] animate-ping absolute" />
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#AFF94F]" />
+                              <div className="w-6 h-6 rounded-full bg-slate-950 text-[#AFF94F] flex items-center justify-center relative shadow-xs">
+                                <span className="w-full h-full rounded-full bg-[#AFF94F]/40 animate-ping absolute" />
+                                <Truck size={12} className="relative z-10 animate-bounce" style={{ animationDuration: '2.4s' }} />
                               </div>
                             ) : (
                               <div className="w-5 h-5 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-mono font-bold text-[9px]">
@@ -301,8 +301,15 @@ export default function LiveTrackingSection() {
 
                           {/* Step Text */}
                           <div className="min-w-0 flex-1">
-                            <div className="text-xs font-heading font-black text-slate-900 leading-tight">
-                              {step.label}
+                            <div className="flex items-center gap-1.5">
+                              <span className="text-xs font-heading font-black text-slate-900 leading-tight">
+                                {step.label}
+                              </span>
+                              {isActive && (
+                                <span className="inline-flex items-center px-1.5 py-0.2 rounded-full bg-[#AFF94F] text-slate-950 text-[9px] font-mono font-black animate-pulse">
+                                  EN RUTA
+                                </span>
+                              )}
                             </div>
                             <div className="text-[10px] text-slate-500 leading-snug mt-0.5">
                               {step.sub}
@@ -318,7 +325,10 @@ export default function LiveTrackingSection() {
                 <div className="space-y-2 pt-2 border-t border-slate-100">
                   <div className="flex items-center justify-between text-xs bg-slate-50/80 p-2.5 rounded-xl border border-slate-100">
                     <span className="text-slate-500 flex items-center gap-1.5">
-                      <Truck size={13} className="text-slate-700" />
+                      <div className="relative">
+                        <Truck size={14} className="text-slate-900" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#65a30d] absolute -top-0.5 -right-0.5 animate-ping" />
+                      </div>
                       <span>Custodia</span>
                     </span>
                     <span className="font-heading font-black text-slate-900 text-right truncate max-w-[190px]">
