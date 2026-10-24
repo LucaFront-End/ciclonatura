@@ -130,267 +130,165 @@ export default function LiveTrackingSection() {
       {/* Background Soft Lime Ambient Glow */}
       <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-[#AFF94F]/10 rounded-full blur-3xl -z-10" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* ======================================================== */}
-        {/* HEADER: CLEAN, MINIMAL, DIRECT                           */}
+        {/* HEADER: CLEAN, QUIET, ESSENTIAL                          */}
         {/* ======================================================== */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#AFF94F]/20 border border-[#AFF94F]/60 text-slate-950 text-xs font-heading font-black mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#65a30d] shadow-[0_0_6px_#AFF94F] animate-pulse" />
-            <span>Trazabilidad Notarial en Tiempo Real</span>
-          </div>
-
-          <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 tracking-tight">
-            Rastrea tu Trámite Oficial
+        <div className="text-center max-w-lg mx-auto mb-8 sm:mb-10">
+          <h2 className="font-heading text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
+            Rastreo en Tiempo Real
           </h2>
-
-          <p className="text-slate-600 text-xs sm:text-sm mt-2 max-w-lg mx-auto">
-            Consulta en vivo la ubicación de tu valija, la etapa legal ante SMyT / SEMOVI y la hora estimada de entrega en mano.
+          <p className="text-slate-500 text-xs sm:text-sm mt-1.5">
+            Monitoreo satelital y estatus de entrega de la valija notarial.
           </p>
 
-          {/* Minimalist Search Bar */}
-          <div className="mt-6 max-w-md mx-auto">
-            <form onSubmit={handleSearchSubmit} className="relative flex items-center shadow-xs">
-              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
-                <Search size={15} />
-              </div>
-              <input
-                type="text"
-                placeholder="Ingresa tu folio (ej. CN-849201)"
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-                className="w-full pl-10 pr-24 py-2.5 rounded-full border border-slate-200 bg-white text-xs sm:text-sm font-mono font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#AFF94F] focus:ring-2 focus:ring-[#AFF94F]/30"
-              />
-              <button
-                type="submit"
-                className="absolute right-1.5 px-4 py-1.5 rounded-full bg-slate-950 hover:bg-[#AFF94F] text-white hover:text-slate-950 text-xs font-heading font-black transition-all cursor-pointer"
-              >
-                Consultar
-              </button>
-            </form>
-
-            {/* Quick Preset Folio Chips */}
-            <div className="flex items-center justify-center gap-2 flex-wrap mt-3">
-              <span className="text-[11px] font-mono text-slate-400">Ejemplos en vivo:</span>
-              {Object.keys(TRACKING_DATA).map((key) => {
-                const isSelected = selectedFolio === key;
-                return (
-                  <button
-                    key={key}
-                    type="button"
-                    onClick={() => setSelectedFolio(key)}
-                    className={`px-2.5 py-0.5 rounded-full text-[11px] font-mono transition-all cursor-pointer flex items-center gap-1.5 ${
-                      isSelected
-                        ? 'bg-slate-950 text-white font-bold ring-2 ring-[#AFF94F]/60'
-                        : 'bg-white hover:bg-slate-100 text-slate-600 border border-slate-200'
-                    }`}
-                  >
-                    <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-[#AFF94F]' : 'bg-slate-300'}`} />
-                    <span>#{key}</span>
-                  </button>
-                );
-              })}
-            </div>
+          {/* Minimal Folio Selector Pills */}
+          <div className="flex items-center justify-center gap-2 flex-wrap mt-5">
+            {Object.keys(TRACKING_DATA).map((key) => {
+              const isSelected = selectedFolio === key;
+              const item = TRACKING_DATA[key];
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => setSelectedFolio(key)}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-mono transition-all cursor-pointer flex items-center gap-2 ${
+                    isSelected
+                      ? 'bg-slate-950 text-white font-bold shadow-sm'
+                      : 'bg-white hover:bg-slate-100 text-slate-500 border border-slate-200'
+                  }`}
+                >
+                  <span className={`w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-[#AFF94F]' : 'bg-slate-300'}`} />
+                  <span>#{key}</span>
+                  <span className="text-[10px] text-slate-400 font-normal">({item.badge.split(' ')[0]})</span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
         {/* ======================================================== */}
-        {/* MAIN HERO CARD: 2-COLUMN BENTO WITH MINIMALIST MAP       */}
+        {/* MAIN HERO CARD: MINIMALIST BENTO                         */}
         {/* ======================================================== */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeCase.folio}
-            initial={{ opacity: 0, y: 8 }}
+            initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25 }}
-            className="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50 overflow-hidden"
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.2 }}
+            className="bg-white rounded-3xl border border-slate-200/90 shadow-lg shadow-slate-200/40 overflow-hidden"
           >
             {/* Top Bar: Vehicle, Folio & Status */}
-            <div className="p-5 sm:p-6 border-b border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-50/50">
-              
-              <div>
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span className="font-mono text-xs font-black text-slate-950 bg-white border border-slate-200 px-2 py-0.5 rounded-md flex items-center gap-1">
-                    #{activeCase.folio}
-                    <button
-                      type="button"
-                      onClick={() => handleCopyFolio(activeCase.folio)}
-                      title="Copiar folio"
-                      className="text-slate-400 hover:text-slate-950 ml-0.5 cursor-pointer"
-                    >
-                      {copied ? <Check size={11} className="text-[#65a30d]" /> : <Copy size={11} />}
-                    </button>
-                  </span>
-                  <span className="text-[10px] font-heading font-black uppercase tracking-wide text-slate-500 bg-white border border-slate-200 px-2 py-0.5 rounded">
-                    {activeCase.badge}
-                  </span>
-                </div>
-
-                <h3 className="font-heading font-black text-lg sm:text-xl text-slate-900 leading-tight">
+            <div className="p-4 sm:p-5 border-b border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-slate-50/50">
+              <div className="flex items-center gap-2.5">
+                <span className="font-mono text-xs font-black text-slate-950 bg-white border border-slate-200 px-2 py-0.5 rounded-md">
+                  #{activeCase.folio}
+                </span>
+                <h3 className="font-heading font-black text-base sm:text-lg text-slate-900">
                   {activeCase.vehicle}
                 </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  {activeCase.service} • <strong className="text-slate-700 font-medium">{activeCase.client}</strong>
-                </p>
               </div>
 
-              {/* Status Pill Badge & ETA */}
-              <div className="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-1 border-t sm:border-t-0 pt-2 sm:pt-0 border-slate-100">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#AFF94F] text-slate-950 font-heading font-black text-xs shadow-xs">
+              {/* Status Pill */}
+              <div className="flex items-center gap-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#AFF94F] text-slate-950 font-heading font-black text-xs">
                   <span className="w-1.5 h-1.5 rounded-full bg-slate-950 animate-ping" />
                   <span>{activeCase.status}</span>
                 </div>
-                <span className="text-[11px] font-mono text-slate-500 mt-0.5">
-                  ETA: <strong className="text-slate-900">{activeCase.eta}</strong>
+                <span className="text-xs font-mono text-slate-500">
+                  {activeCase.eta}
                 </span>
               </div>
-
             </div>
 
-            {/* Split 2-Column Body: Left Legal Stepper + Right Minimalist Map */}
+            {/* Split Body: Clean Vertical Timeline + Map */}
             <div className="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-slate-100">
               
-              {/* LEFT COLUMN: Legal Stepper & Logistics Details (Cols 5) */}
-              <div className="lg:col-span-5 p-5 sm:p-6 flex flex-col justify-between bg-white space-y-6">
+              {/* LEFT COLUMN: Clean Airy Timeline (Cols 5) */}
+              <div className="lg:col-span-5 p-5 sm:p-6 flex flex-col justify-between space-y-6">
+                
+                {/* 5-Step Vertical Timeline */}
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[11px] font-heading font-black text-slate-400 uppercase tracking-wider">
-                      Etapas Jurídicas Oficiales
-                    </span>
-                    <span className="text-[10px] font-mono font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full">
-                      Paso {activeCase.currentStep} de 5
-                    </span>
-                  </div>
+                  <span className="block text-[10px] font-heading font-black text-slate-400 uppercase tracking-wider mb-4">
+                    Etapas Oficiales
+                  </span>
 
-                  {/* Vertical Minimalist Stepper */}
-                  <div className="space-y-2.5">
+                  <div className="relative pl-5 space-y-4 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-100">
                     {activeCase.steps.map((step) => {
                       const isDone = step.done;
                       const isActive = step.active;
 
                       return (
-                        <div 
-                          key={step.id} 
-                          className={`flex items-start gap-3 p-2.5 rounded-xl border transition-all ${
-                            isActive
-                              ? 'bg-[#AFF94F]/15 border-[#84cc16]/50 shadow-xs'
-                              : isDone
-                                ? 'bg-slate-50/80 border-slate-100 text-slate-700'
-                                : 'bg-white border-slate-100 text-slate-400 opacity-60'
-                          }`}
-                        >
-                          {/* Step Node */}
-                          <div className="shrink-0 mt-0.5">
+                        <div key={step.id} className="relative flex items-center justify-between text-xs">
+                          {/* Dot / Check indicator */}
+                          <div className={`absolute -left-5 w-4 h-4 rounded-full flex items-center justify-center ${
+                            isDone 
+                              ? 'bg-[#AFF94F] text-slate-950' 
+                              : isActive 
+                                ? 'bg-slate-950 text-[#AFF94F] ring-4 ring-[#AFF94F]/30' 
+                                : 'bg-slate-200 text-white'
+                          }`}>
                             {isDone ? (
-                              <div className="w-5 h-5 rounded-full bg-[#AFF94F] text-slate-950 flex items-center justify-center font-bold text-[10px] shadow-2xs">
-                                <Check size={11} strokeWidth={3} />
-                              </div>
-                            ) : isActive ? (
-                              <div className="w-6 h-6 rounded-full bg-slate-950 text-[#AFF94F] flex items-center justify-center relative shadow-xs">
-                                <span className="w-full h-full rounded-full bg-[#AFF94F]/40 animate-ping absolute" />
-                                <Truck size={12} className="relative z-10 animate-bounce" style={{ animationDuration: '2.4s' }} />
-                              </div>
+                              <Check size={9} strokeWidth={3} />
                             ) : (
-                              <div className="w-5 h-5 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-mono font-bold text-[9px]">
-                                0{step.id}
-                              </div>
+                              <span className="w-1.5 h-1.5 rounded-full bg-current" />
                             )}
                           </div>
 
-                          {/* Step Text */}
-                          <div className="min-w-0 flex-1">
-                            <div className="flex items-center gap-1.5">
-                              <span className="text-xs font-heading font-black text-slate-900 leading-tight">
-                                {step.label}
-                              </span>
-                              {isActive && (
-                                <span className="inline-flex items-center px-1.5 py-0.2 rounded-full bg-[#AFF94F] text-slate-950 text-[9px] font-mono font-black animate-pulse">
-                                  EN RUTA
-                                </span>
-                              )}
-                            </div>
-                            <div className="text-[10px] text-slate-500 leading-snug mt-0.5">
-                              {step.sub}
-                            </div>
+                          {/* Label */}
+                          <div className="min-w-0 pr-2">
+                            <span className={`font-heading ${isActive ? 'font-black text-slate-950' : isDone ? 'font-bold text-slate-700' : 'text-slate-400 font-medium'}`}>
+                              {step.label}
+                            </span>
                           </div>
+
+                          {/* Small tag for active */}
+                          {isActive && (
+                            <span className="shrink-0 px-1.5 py-0.2 rounded bg-[#AFF94F] text-slate-950 text-[9px] font-mono font-black">
+                              ACTIVO
+                            </span>
+                          )}
                         </div>
                       );
                     })}
                   </div>
                 </div>
 
-                {/* 3 Essential Data Points */}
-                <div className="space-y-2 pt-2 border-t border-slate-100">
-                  <div className="flex items-center justify-between text-xs bg-slate-50/80 p-2.5 rounded-xl border border-slate-100">
-                    <span className="text-slate-500 flex items-center gap-1.5">
-                      <div className="relative">
-                        <Truck size={14} className="text-slate-900" />
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#65a30d] absolute -top-0.5 -right-0.5 animate-ping" />
-                      </div>
+                {/* Logistics Metadata & CTA */}
+                <div className="space-y-3 pt-4 border-t border-slate-100">
+                  <div className="space-y-1 text-xs">
+                    <div className="flex items-center justify-between text-slate-500">
                       <span>Custodia</span>
-                    </span>
-                    <span className="font-heading font-black text-slate-900 text-right truncate max-w-[190px]">
-                      {activeCase.courier}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center justify-between text-xs bg-slate-50/80 p-2.5 rounded-xl border border-slate-100">
-                    <span className="text-slate-500 flex items-center gap-1.5">
-                      <MapPin size={13} className="text-[#65a30d]" />
+                      <strong className="text-slate-900 font-medium truncate max-w-[200px]">{activeCase.courier}</strong>
+                    </div>
+                    <div className="flex items-center justify-between text-slate-500">
                       <span>Destino</span>
-                    </span>
-                    <span className="font-heading font-black text-slate-900 text-right truncate max-w-[190px]">
-                      {activeCase.destination}
-                    </span>
+                      <strong className="text-slate-900 font-medium truncate max-w-[200px]">{activeCase.destination}</strong>
+                    </div>
                   </div>
 
-                  <div className="flex items-center justify-between text-xs bg-[#AFF94F]/15 p-2.5 rounded-xl border border-[#AFF94F]/40">
-                    <span className="text-slate-950 font-bold flex items-center gap-1.5">
-                      <ShieldCheck size={13} className="text-slate-950" />
-                      <span>Precinto</span>
-                    </span>
-                    <span className="font-mono font-black text-slate-950">
-                      #{activeCase.seal}
-                    </span>
-                  </div>
-
-                  {/* WhatsApp Quick Action Button */}
                   <button
                     type="button"
                     onClick={handleWhatsApp}
-                    className="w-full mt-3 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-950 hover:bg-[#AFF94F] text-white hover:text-slate-950 text-xs font-heading font-black transition-all cursor-pointer shadow-xs hover:scale-[1.01]"
+                    className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-slate-950 hover:bg-[#AFF94F] text-white hover:text-slate-950 text-xs font-heading font-black transition-all cursor-pointer shadow-xs"
                   >
                     <MessageSquare size={13} />
-                    <span>Recibir Reporte Notarial en WhatsApp</span>
+                    <span>Consultar Estatus en WhatsApp</span>
                     <ArrowRight size={12} />
                   </button>
                 </div>
+
               </div>
 
-              {/* RIGHT COLUMN: Minimalist Route Map of Mexico (Cols 7) */}
-              <div className="lg:col-span-7 p-3 sm:p-4 bg-slate-50/40 flex flex-col justify-between">
-                <div className="w-full h-full min-h-[420px] lg:min-h-[500px]">
+              {/* RIGHT COLUMN: Pure Minimalist Map (Cols 7) */}
+              <div className="lg:col-span-7 p-2 sm:p-3 bg-slate-50/30 flex flex-col justify-between">
+                <div className="w-full h-full min-h-[380px] lg:min-h-[440px]">
                   <MinimalistRouteMap folio={activeCase.folio} />
                 </div>
               </div>
 
-            </div>
-
-            {/* Bottom Security Strip */}
-            <div className="p-4 bg-slate-50/90 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-              <span className="text-slate-500 text-center sm:text-left text-[11px]">
-                🛡️ Trámite respaldado con <strong>factura CFDI 4.0 deducible</strong> y garantía de cero tenencia oficial.
-              </span>
-              <div className="flex items-center gap-3 text-[11px] font-mono text-slate-400">
-                <span className="flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#65a30d]" />
-                  <span>GPS Satelital Activo</span>
-                </span>
-                <span>•</span>
-                <span>Precinto Inviolable</span>
-              </div>
             </div>
 
           </motion.div>

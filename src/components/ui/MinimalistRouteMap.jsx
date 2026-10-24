@@ -250,104 +250,71 @@ export default function MinimalistRouteMap({ folio = "CN-849201" }) {
         if (cp.type === "start") {
           iconHtml = `
             <div class="relative cursor-pointer select-none" style="transform: translate(-50%, -50%);">
-              <div class="bg-white text-slate-900 border-2 border-slate-900 px-2.5 py-1 rounded-full shadow-lg font-mono text-[10px] font-black whitespace-nowrap flex items-center gap-1.5 transition-transform hover:scale-105">
-                <span class="w-2 h-2 rounded-full bg-slate-900"></span>
-                <span>🏛️ ${cp.name}</span>
-                <span class="text-[9px] text-slate-500 font-bold uppercase tracking-wider">(${cp.label})</span>
+              <div class="bg-white text-slate-900 border border-slate-900 px-2 py-0.5 rounded-full shadow-sm font-mono text-[10px] font-bold whitespace-nowrap flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-900"></span>
+                <span>${cp.name.split(' ')[0]}</span>
               </div>
             </div>
           `;
         } else if (cp.type === "end") {
           iconHtml = `
             <div class="relative cursor-pointer select-none" style="transform: translate(-50%, -50%);">
-              <div class="bg-[#AFF94F] text-slate-950 border-2 border-slate-950 px-2.5 py-1 rounded-full shadow-xl font-mono text-[10px] font-black whitespace-nowrap flex items-center gap-1.5 transition-transform hover:scale-105">
-                <span>📍 ${cp.name}</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-slate-950 animate-pulse"></span>
-              </div>
-            </div>
-          `;
-        } else {
-          iconHtml = `
-            <div class="relative group cursor-pointer select-none" style="transform: translate(-50%, -50%);">
-              <div class="bg-white/95 backdrop-blur-md text-slate-800 border border-slate-300 px-2 py-0.5 rounded-full shadow-md font-mono text-[9px] font-bold whitespace-nowrap flex items-center gap-1">
-                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                <span>💳 ${cp.name}</span>
+              <div class="bg-[#AFF94F] text-slate-950 border border-slate-950 px-2 py-0.5 rounded-full shadow-sm font-mono text-[10px] font-bold whitespace-nowrap flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-950"></span>
+                <span>${cp.name.split(' ')[0]}</span>
               </div>
             </div>
           `;
         }
 
-        const marker = L.marker(cp.coords, {
-          icon: L.divIcon({
-            className: "custom-leaflet-marker",
-            html: iconHtml,
-            iconSize: [24, 24],
-            iconAnchor: [12, 12],
-          }),
-        });
-
-        marker.addTo(layerGroup);
+        if (iconHtml) {
+          const marker = L.marker(cp.coords, {
+            icon: L.divIcon({
+              className: "custom-leaflet-marker",
+              html: iconHtml,
+              iconSize: [24, 24],
+              iconAnchor: [12, 12],
+            }),
+          });
+          marker.addTo(layerGroup);
+        }
       });
 
-    // 3. Dedicated Live Animated Courier Vehicle ("El Camioncito")
+    // 3. Dedicated Minimalist Animated Vehicle ("El Camioncito")
     const pathMetrics = getPathMetrics(activeRoute.path);
-    let progress = 0.45; // Starts in active transit along the highway
+    let progress = 0.45;
     let isPaused = false;
 
     const initialPoint = getPointAtProgress(pathMetrics, progress);
 
-    // Custom High-End Delivery Transporter SVG Icon with Headlight Projection & Sonar Radar
+    // Pure Minimalist Delivery Transporter with Headlights and Soft Sonar Halo
     const courierIconHtml = `
-      <div class="courier-vehicle-wrapper relative w-[60px] h-[60px] flex items-center justify-center select-none" style="pointer-events: auto;">
+      <div class="relative w-[48px] h-[48px] flex items-center justify-center select-none" style="pointer-events: auto;">
         
-        <!-- Expanding Sonar Radar Wave 1 -->
-        <div class="absolute w-10 h-10 rounded-full bg-[#AFF94F]/35 animate-ping pointer-events-none" style="animation-duration: 2.2s;"></div>
+        {/* Soft Sonar Pulse */}
+        <div class="absolute w-8 h-8 rounded-full bg-[#AFF94F]/30 animate-ping pointer-events-none" style="animation-duration: 2.5s;"></div>
         
-        <!-- Expanding Sonar Radar Wave 2 -->
-        <div class="absolute w-12 h-12 rounded-full border border-[#AFF94F]/50 animate-pulse pointer-events-none"></div>
-
-        <!-- Rotating Vehicle Core (Follows road heading angle) -->
-        <div id="courier-heading-wrapper" class="relative w-8 h-12 flex items-center justify-center pointer-events-none" style="transform: rotate(${Math.round(initialPoint.bearing)}deg); transform-origin: center center; transition: transform 0.12s linear;">
+        {/* Rotating Vehicle & Headlight Core */}
+        <div id="courier-heading-wrapper" class="relative w-6 h-10 flex items-center justify-center pointer-events-none" style="transform: rotate(${Math.round(initialPoint.bearing)}deg); transform-origin: center center; transition: transform 0.12s linear;">
           
-          <!-- Forward Headlight Cones (Shines ahead along the highway) -->
-          <div class="absolute bottom-[22px] left-1/2 -translate-x-1/2 w-12 h-16 pointer-events-none"
-               style="background: linear-gradient(to top, rgba(175, 249, 79, 0.45) 0%, rgba(175, 249, 79, 0.15) 60%, transparent 100%); clip-path: polygon(30% 100%, 70% 100%, 100% 0%, 0% 0%); filter: blur(1.5px);">
+          {/* Subtle Headlight Cone */}
+          <div class="absolute bottom-[16px] left-1/2 -translate-x-1/2 w-8 h-12 pointer-events-none"
+               style="background: linear-gradient(to top, rgba(175, 249, 79, 0.4) 0%, transparent 100%); clip-path: polygon(30% 100%, 70% 100%, 100% 0%, 0% 0%); filter: blur(1px);">
           </div>
 
-          <!-- Executive Courier Transporter Body -->
-          <div class="relative z-10 w-6 h-10 bg-slate-950 rounded-md border-2 border-[#AFF94F] shadow-[0_0_14px_rgba(175,249,79,0.7)] flex flex-col items-center justify-between p-0.5">
-            
-            <!-- Windshield & Dual Projector Headlights -->
-            <div class="w-full flex flex-col items-center">
-              <div class="w-full flex justify-between px-0.5 -mt-0.5">
-                <span class="w-1 h-1 rounded-full bg-white shadow-[0_0_6px_#AFF94F]"></span>
-                <span class="w-1 h-1 rounded-full bg-white shadow-[0_0_6px_#AFF94F]"></span>
-              </div>
-              <div class="w-4 h-2 bg-[#AFF94F] rounded-t-xs mt-0.5 opacity-90"></div>
+          {/* Clean Vector Vehicle Silhouette */}
+          <div class="relative z-10 w-4.5 h-7.5 bg-slate-950 rounded-sm border border-[#AFF94F] shadow-md flex flex-col items-center justify-between p-0.5">
+            <div class="w-full flex justify-between px-0.5 -mt-0.5">
+              <span class="w-0.5 h-0.5 rounded-full bg-white"></span>
+              <span class="w-0.5 h-0.5 rounded-full bg-white"></span>
             </div>
-
-            <!-- Central Sat-Link Beacon -->
-            <div class="w-2.5 h-1 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center">
-              <span class="w-1 h-1 rounded-full bg-[#AFF94F] animate-pulse"></span>
+            <div class="w-3 h-1.5 bg-[#AFF94F] rounded-t-xs opacity-90"></div>
+            <div class="w-full flex justify-between px-0.5">
+              <span class="w-0.5 h-0.5 bg-red-500 rounded-xs"></span>
+              <span class="w-0.5 h-0.5 bg-red-500 rounded-xs"></span>
             </div>
-
-            <!-- Rear LED Taillights -->
-            <div class="w-full flex justify-between px-0.5 mb-0.5">
-              <span class="w-1 h-0.5 rounded-xs bg-red-500 shadow-[0_0_4px_#ef4444]"></span>
-              <span class="w-1 h-0.5 rounded-xs bg-red-500 shadow-[0_0_4px_#ef4444]"></span>
-            </div>
-
           </div>
-        </div>
 
-        <!-- Telemetry Badge (Stays horizontal, centered, and fully readable) -->
-        <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none z-30">
-          <div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-950/95 backdrop-blur-md border border-[#AFF94F]/70 text-[9px] font-mono text-white shadow-xl">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#AFF94F] animate-pulse"></span>
-            <span class="font-black text-[#AFF94F]">UNIDAD EN RUTA</span>
-            <span class="text-slate-400">•</span>
-            <span class="text-white font-bold">${activeRoute.speed}</span>
-          </div>
         </div>
 
       </div>
@@ -357,8 +324,8 @@ export default function MinimalistRouteMap({ folio = "CN-849201" }) {
       icon: L.divIcon({
         className: "custom-leaflet-courier",
         html: courierIconHtml,
-        iconSize: [60, 60],
-        iconAnchor: [30, 30],
+        iconSize: [48, 48],
+        iconAnchor: [24, 24],
       }),
       zIndexOffset: 1000,
     });
@@ -374,14 +341,13 @@ export default function MinimalistRouteMap({ folio = "CN-849201" }) {
       lastTime = timestamp;
 
       if (!isPaused && pathMetrics.totalDist > 0) {
-        // Cruising speed: ~22 seconds for entire highway trip
-        const deltaProgress = deltaTime / 22000;
+        // Cruising speed
+        const deltaProgress = deltaTime / 24000;
         progress += deltaProgress;
 
         if (progress >= 0.98) {
           progress = 0.98;
           isPaused = true;
-          // Arrived at destination: pause briefly, then restart patrolling smoothly
           pauseTimeoutRef.current = setTimeout(() => {
             progress = 0.05;
             isPaused = false;
@@ -391,7 +357,6 @@ export default function MinimalistRouteMap({ folio = "CN-849201" }) {
         const point = getPointAtProgress(pathMetrics, progress);
         courierMarker.setLatLng(point.coords);
 
-        // Update rotation to follow road curve
         const headingEl = document.getElementById("courier-heading-wrapper");
         if (headingEl) {
           headingEl.style.transform = `rotate(${Math.round(point.bearing)}deg)`;
@@ -406,8 +371,8 @@ export default function MinimalistRouteMap({ folio = "CN-849201" }) {
     // 5. Smooth Camera Fly-To bounds of path
     const bounds = L.latLngBounds(activeRoute.path);
     map.flyToBounds(bounds, {
-      padding: [45, 45],
-      duration: 0.9,
+      padding: [35, 35],
+      duration: 0.8,
       maxZoom: 13,
     });
 
@@ -417,31 +382,10 @@ export default function MinimalistRouteMap({ folio = "CN-849201" }) {
     };
   }, [activeRoute]);
 
-  // Zoom controls
-  const handleZoom = (dir) => {
-    const map = mapInstanceRef.current;
-    if (!map) return;
-    if (dir === "in") map.zoomIn();
-    else map.zoomOut();
-  };
-
-  const handleFit = () => {
-    const map = mapInstanceRef.current;
-    if (!map || !activeRoute) return;
-    const bounds = L.latLngBounds(activeRoute.path);
-    map.flyToBounds(bounds, { padding: [45, 45], duration: 0.8 });
-  };
-
-  const handleCountryView = () => {
-    const map = mapInstanceRef.current;
-    if (!map) return;
-    map.flyTo([23.6345, -102.5528], 5, { duration: 1.0 });
-  };
-
   return (
-    <div className="relative w-full h-full min-h-[360px] sm:min-h-[420px] rounded-3xl overflow-hidden border border-slate-200 bg-slate-100 select-none shadow-inner">
+    <div className="relative w-full h-full min-h-[380px] sm:min-h-[440px] rounded-2xl overflow-hidden border border-slate-200/80 bg-slate-100 select-none">
       
-      {/* Grayscale CSS Filter Rule injected for OpenStreetMap tiles & Highway Animation */}
+      {/* Grayscale CSS Filter Rule injected for OpenStreetMap tiles */}
       <style>{`
         .minimalist-osm-tiles {
           filter: grayscale(100%) contrast(85%) brightness(105%) !important;
@@ -467,88 +411,8 @@ export default function MinimalistRouteMap({ folio = "CN-849201" }) {
         }
       `}</style>
 
-      {/* Top Floating Telemetry Strip */}
-      <div className="absolute top-3 left-3 z-[1000] flex items-center gap-2 pointer-events-none">
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-xs font-mono font-bold text-slate-800 shadow-sm pointer-events-auto">
-          <span className="w-2 h-2 rounded-full bg-[#65a30d] shadow-[0_0_6px_#AFF94F] animate-pulse" />
-          <Radio size={12} className="text-slate-900" />
-          <span>GPS EN VIVO</span>
-        </div>
-
-        <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-950 text-white text-xs font-mono font-bold shadow-sm pointer-events-auto">
-          <Navigation size={11} className="text-[#AFF94F]" />
-          <span>{activeRoute.highway}</span>
-        </div>
-      </div>
-
-      {/* Top Right Camera Presets */}
-      <div className="absolute top-3 right-3 z-[1000] flex items-center gap-1 bg-white/95 backdrop-blur-md p-1 rounded-2xl border border-slate-200 shadow-sm">
-        <button
-          type="button"
-          onClick={handleFit}
-          className="px-2.5 py-1 rounded-xl text-xs font-mono font-bold bg-[#AFF94F] text-slate-950 shadow-2xs hover:bg-[#9ee83e] transition-colors cursor-pointer"
-          title="Centrar en el recorrido activo"
-        >
-          Enfoque Ruta
-        </button>
-
-        <button
-          type="button"
-          onClick={handleCountryView}
-          className="px-2.5 py-1 rounded-xl text-xs font-mono font-bold text-slate-600 hover:text-slate-950 hover:bg-slate-100 transition-colors cursor-pointer flex items-center gap-1"
-          title="Ver toda la República Mexicana"
-        >
-          <Layers size={11} />
-          <span>México</span>
-        </button>
-      </div>
-
-      {/* Floating Zoom Buttons (+ / - / Reset) */}
-      <div className="absolute right-3 bottom-14 z-[1000] flex flex-col items-center gap-1 bg-white/95 backdrop-blur-md p-1 rounded-2xl border border-slate-200 shadow-md">
-        <button
-          type="button"
-          onClick={() => handleZoom("in")}
-          title="Acercar (+)"
-          className="w-7 h-7 rounded-xl bg-slate-50 hover:bg-slate-950 hover:text-white text-slate-700 flex items-center justify-center transition-colors cursor-pointer"
-        >
-          <ZoomIn size={14} />
-        </button>
-
-        <div className="px-1 py-0.5 text-[9px] font-mono font-bold text-slate-400 border-y border-slate-100 text-center w-full">
-          Z{zoomLevel}
-        </div>
-
-        <button
-          type="button"
-          onClick={() => handleZoom("out")}
-          title="Alejar (-)"
-          className="w-7 h-7 rounded-xl bg-slate-50 hover:bg-slate-950 hover:text-white text-slate-700 flex items-center justify-center transition-colors cursor-pointer"
-        >
-          <ZoomOut size={14} />
-        </button>
-
-        <button
-          type="button"
-          onClick={handleFit}
-          title="Reajustar a la ruta"
-          className="w-7 h-7 rounded-xl hover:bg-[#AFF94F] text-slate-600 hover:text-slate-950 flex items-center justify-center transition-colors cursor-pointer border-t border-slate-100"
-        >
-          <RotateCcw size={12} />
-        </button>
-      </div>
-
-      {/* Leaflet Map DOM Element */}
+      {/* Pure, Clean Leaflet Map DOM Element (No overlay clutter) */}
       <div ref={mapContainerRef} className="w-full h-full" />
-
-      {/* Bottom Route Summary Banner */}
-      <div className="absolute bottom-3 left-3 z-[1000] flex items-center gap-2 text-xs font-mono text-slate-700 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200 shadow-sm pointer-events-none">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#65a30d]" />
-        <span>📍 {activeRoute.currentLocation}</span>
-        <span className="text-slate-300">•</span>
-        <span className="text-slate-900 font-bold">{activeRoute.distance}</span>
-        <span className="text-slate-300">•</span>
-        <span className="text-[#65a30d] font-bold">{activeRoute.speed}</span>
-      </div>
 
     </div>
   );
