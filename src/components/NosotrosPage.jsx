@@ -19,7 +19,8 @@ import {
   ChevronRight,
   ExternalLink,
   Shield,
-  Calendar
+  Calendar,
+  Quote
 } from 'lucide-react';
 import Navbar from './Navbar';
 import CinematicFooter from './ui/motion-footer';
@@ -503,35 +504,170 @@ export default function NosotrosPage({ onNavigateHome, onSelectService, onNaviga
         </section>
 
         {/* ========================================================== */}
-        {/* 5. NUESTRO MANIFIESTO INSTITUCIONAL                       */}
+        {/* 5. NUESTRO MANIFIESTO INSTITUCIONAL (FONDO BLANCO & EDITORIAL) */}
         {/* ========================================================== */}
-        <section className="py-20 sm:py-28 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white relative overflow-hidden">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:24px_24px] opacity-20" />
+        <section className="py-24 sm:py-36 bg-white text-slate-900 relative overflow-hidden border-t border-slate-200/80">
           
-          <div className="container max-w-4xl relative z-10 text-center">
-            <span className="text-[11px] font-mono font-bold text-[#AFF94F] uppercase tracking-widest block mb-4">
-              Manifiesto Ciclonatura
-            </span>
+          {/* Ambient Lighting & Subtle Grid Pattern */}
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:28px_28px] opacity-40" />
+          <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-emerald-100/40 via-[#AFF94F]/10 to-teal-100/30 rounded-full blur-3xl opacity-70" />
+          
+          {/* Watermark Quotation Mark */}
+          <div className="pointer-events-none absolute top-12 left-1/2 -translate-x-1/2 text-slate-100 select-none">
+            <Quote size={240} className="stroke-[0.75] opacity-60" />
+          </div>
 
-            <blockquote className="font-heading text-xl sm:text-2xl lg:text-3xl font-bold leading-relaxed text-slate-100">
-              «En México, el trámite vehicular se asoció históricamente con la incertidumbre de la banqueta y el temor a documentos apócrifos. Ciclonatura nació para romper ese paradigma: profesionalizar la gestión, blindar la seguridad jurídica y garantizar que cada conductor circule con la tranquilidad inquebrantable de estar al 100% ante la ley.»
-            </blockquote>
+          <div className="container max-w-5xl relative z-10 text-center">
+            
+            {/* Category Pill */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-mono font-semibold mb-6 shadow-xs"
+            >
+              <Sparkles size={12} className="text-emerald-600" />
+              <span className="uppercase tracking-widest text-[11px]">Manifiesto Institucional</span>
+            </motion.div>
 
-            <div className="mt-8 flex flex-col items-center">
-              <div className="w-12 h-1 bg-[#AFF94F] rounded-full mb-3" />
-              <div className="font-heading font-black text-white text-base">Dirección General & Mesa de Control</div>
-              <div className="text-xs text-slate-400 font-mono">Ciclonatura México · Calzada de Tlalpan #2144, CDMX</div>
-            </div>
+            {/* Core Manifesto Quote */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="max-w-4xl mx-auto"
+            >
+              <blockquote className="font-heading text-2xl sm:text-4xl lg:text-[42px] font-black text-slate-900 tracking-tight leading-[1.25]">
+                «En México, poner un auto en regla nunca debió ser un acto de fe en una banqueta.
+                <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-emerald-800 via-emerald-600 to-teal-700">
+                  Nacimos para transformar la incertidumbre en certeza jurídica inquebrantable.»
+                </span>
+              </blockquote>
 
-            <div className="pt-10 mt-10 border-t border-white/10 flex flex-wrap justify-center gap-4">
+              <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto mt-6 leading-relaxed font-normal">
+                Desterramos los intermediarios anónimos, las carpetas extraviadas y el temor a documentos apócrifos. Cada placa, tarjeta con chip y trámite vehicular está respaldado por instalaciones corporativas propias, trazabilidad en valija sellada y cotejo directo ante el REPUVE y el SAT.
+              </p>
+            </motion.div>
+
+            {/* 3 Pillars of Conviction */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto mt-14 text-left"
+            >
+              <div className="p-6 rounded-3xl bg-slate-50/90 border border-slate-200/80 hover:border-emerald-300 hover:bg-white hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[10px] font-mono font-bold text-emerald-800 bg-emerald-100/70 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                      Principio 01
+                    </span>
+                    <Scale size={16} className="text-emerald-700 group-hover:scale-110 transition-transform" />
+                  </div>
+                  <h4 className="font-heading font-black text-slate-900 text-base sm:text-lg leading-snug">
+                    Cero Banqueta
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                    Trámites radicados exclusivamente en ventanillas oficiales de SEMOVI CDMX, SMyT Morelos y GobEdomex. Cero atajos al margen de la ley.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-slate-200/60 flex items-center gap-1.5 text-[11px] font-mono font-medium text-emerald-700">
+                  <CheckCircle2 size={13} />
+                  <span>Ventanilla 100% Oficial</span>
+                </div>
+              </div>
+
+              <div className="p-6 rounded-3xl bg-slate-50/90 border border-slate-200/80 hover:border-emerald-300 hover:bg-white hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[10px] font-mono font-bold text-emerald-800 bg-emerald-100/70 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                      Principio 02
+                    </span>
+                    <ShieldCheck size={16} className="text-emerald-700 group-hover:scale-110 transition-transform" />
+                  </div>
+                  <h4 className="font-heading font-black text-slate-900 text-base sm:text-lg leading-snug">
+                    Auditoría Preventiva
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                    Validamos tu factura y número de serie en bases de datos federales del REPUVE antes de cobrar un solo anticipo.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-slate-200/60 flex items-center gap-1.5 text-[11px] font-mono font-medium text-emerald-700">
+                  <CheckCircle2 size={13} />
+                  <span>Cotejo Previo Gratuito</span>
+                </div>
+              </div>
+
+              <div className="p-6 rounded-3xl bg-slate-50/90 border border-slate-200/80 hover:border-emerald-300 hover:bg-white hover:shadow-lg transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[10px] font-mono font-bold text-emerald-800 bg-emerald-100/70 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                      Principio 03
+                    </span>
+                    <Building2 size={16} className="text-emerald-700 group-hover:scale-110 transition-transform" />
+                  </div>
+                  <h4 className="font-heading font-black text-slate-900 text-base sm:text-lg leading-snug">
+                    Respaldo Corporativo
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                    Sede física en Calzada de Tlalpan #2144, contratos formales, cuentas empresariales y facturación fiscal CFDI 4.0 al 100%.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-slate-200/60 flex items-center gap-1.5 text-[11px] font-mono font-medium text-emerald-700">
+                  <CheckCircle2 size={13} />
+                  <span>Sede Física & CFDI 4.0</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Author / Institutional Stamp */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              className="mt-14 pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-slate-900 text-[#AFF94F] flex items-center justify-center font-heading font-black text-base shadow-md">
+                CN
+              </div>
+              <div>
+                <div className="font-heading font-black text-slate-900 text-sm sm:text-base">
+                  Mesa de Control & Dirección Jurídico-Operativa
+                </div>
+                <div className="text-xs text-slate-500 font-mono mt-0.5">
+                  Ciclonatura México · Calzada de Tlalpan #2144, Corredor Sur CDMX
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Action Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="mt-10 flex flex-wrap items-center justify-center gap-4"
+            >
               <button
                 onClick={handleWhatsAppContact}
-                className="px-6 py-3.5 rounded-full bg-[#AFF94F] hover:bg-[#9de441] text-slate-950 font-heading font-black text-xs sm:text-sm flex items-center gap-2 shadow-xl shadow-[#AFF94F]/20 transition-all cursor-pointer"
+                className="px-7 py-4 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-heading font-black text-xs sm:text-sm flex items-center gap-2.5 shadow-xl shadow-slate-900/10 hover:shadow-2xl hover:scale-[1.02] transition-all cursor-pointer group"
               >
-                <Phone size={15} />
+                <Phone size={15} className="text-[#AFF94F] group-hover:rotate-12 transition-transform" />
                 <span>Agendar Consulta o Visita a Sede Tlalpan</span>
+                <ArrowRight size={14} className="text-slate-400 group-hover:translate-x-1 transition-transform" />
               </button>
-            </div>
+
+              <button
+                onClick={handleViewServices}
+                className="px-6 py-4 rounded-full bg-slate-100 hover:bg-slate-200/80 text-slate-800 font-heading font-bold text-xs sm:text-sm transition-all cursor-pointer"
+              >
+                Ver Catálogo de Trámites
+              </button>
+            </motion.div>
+
           </div>
         </section>
 
